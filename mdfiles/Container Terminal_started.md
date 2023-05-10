@@ -3,7 +3,7 @@
 
 # Container Terminal 시작하기
 
-이 안내서를 사용하여 K-ECP Container Terminal(이하. CT) 서비스를 시작 하십시오. CT의 서비스 신청서를 작성하고 연결하는 방법을 안내합니다. 
+이 안내서를 사용하여 **K-ECP Container Terminal(이하. CT)*** 서비스를 시작 하십시오. CT의 서비스 신청서를 작성하고 연결하는 방법을 안내합니다. 
 
 CT는 K-ECP에서 컨테이너를 관리하고 오케스트레이션 할 수 있는 터미널 입니다. CT에 접속하여 K-ECP OpenShift CLI인 `oc` 명령어와 Kubernetes 클러스터 작업을 위한 명령어인 `kubectl`를 사용하실 수 있습니다. 
 
@@ -22,7 +22,7 @@ CT는 K-ECP에서 컨테이너를 관리하고 오케스트레이션 할 수 있
 
 [2단계: Container Terminal 접속](#step2)
 
-[3단계: 주절의](#step3)
+[3단계: Container Terminal 사용](#step3)
 
 [다음 단계](#nextstep)
 
@@ -32,7 +32,7 @@ CT는 K-ECP에서 컨테이너를 관리하고 오케스트레이션 할 수 있
 
 ## 개요
 
-K-ECP CT 서비스를 사용하기 위해서는 아래와 같은 프로세스로 진행되며, KDN의 직원일 경우 User Console에서 소속 부서장의 결재가 필요합니다.
+K-ECP CT 서비스를 사용하기 위해서는 아래와 같은 프로세스로 진행되며, **KDN의 직원일 경우 User Console에서 소속 부서장의 결재**가 필요합니다.
 
 ```mermaid
 sequenceDiagram
@@ -47,7 +47,7 @@ sequenceDiagram
   K-ECP -->>- 사용자(KDN직원): CT 제공
 ```
 
-K-ECP CT는 User Console를 통해 신청한 후, 최종 승인 시 가상서버 형태로 제공 되며 SSL-VPN 또는 전용선(Direct Connect 서비스 사용시)을 이용하여 접속하실 수 있습니다.
+K-ECP CT는 User Console를 통해 신청한 후 최종 승인 시 가상서버 형태로 제공 되며, 아래 개념도와 같이 **SSL-VPN 또는 전용선(Direct Connect 서비스 사용시)을 이용하여 접속**하실 수 있습니다.
 
   ![개념도](./../resource/concept_ct.png "서비스 개념도")
 
@@ -66,8 +66,8 @@ CT 접속 후 CLI 명령어인 `oc`를 통해 Container Project를 위한 다음
 * 시작하기 전에 [K-ECP User Console](https://kecp.kdn.com/mbr/ "인터넷에서 접속 시")에 회원가입이 되어 있어야 합니다. 
 
 * 사전에 CT를 신청할 프로젝트가 생성되어 있어야 합니다. 
-  
-  > :bulb: **Tip:** KDN 직원의 경우  KDN 내부망에서 [KDN 전용 User Console](http://kdnecp.kdn.com:8585/mbr/ "KDN 내부망에서 접속 시")로도 접속이 가능합니다.
+
+> :bulb: **Tip:** KDN 직원의 경우  KDN 내부망에서 [KDN 전용 User Console](http://kdnecp.kdn.com:8585/mbr/ "KDN 내부망에서 접속 시")로도 접속이 가능합니다.
 
 ---
 
@@ -75,41 +75,53 @@ CT 접속 후 CLI 명령어인 `oc`를 통해 Container Project를 위한 다음
 
 ## 1단계: Container Terminal 서비스 신청
 
-1. K-ECP User Console에서   `[서비스 신청] 자원 > 컨테이너 신청 > Container Terminal 신청`의 돋보기 아이콘 클릭
+1. K-ECP User Console에서 `[서비스 신청] 자원 > 컨테이너 신청 > Container Terminal 신청`의 돋보기 아이콘 클릭
 
 2. 서비스 신청서 내역 작성 
    
-   ```주절이
-   주절이
-   ```
+   > :bell: **안내:** CT는 VM Server 형태로 제공되며, 프로젝트 당 1개를 초과할 수 없습니다.
+   
+   * 프로젝트명: *CT가 포함되어야 될 기 생성완료된 프로젝트 선택*
+   
+   * 서버대역: *CT에 할당될 IP Subnet 대역 선택* 
 
-3. ㄹㅇㄴㅁㄹㅇㅁㄴㄹ
-
-4. ㄹㅇㄴㄹㄴㅇㅁㄹㅇ
-
-5. ㄹㅇㄴㅁㄹㅇㄴㅁ
+3. `신청` 버튼을 클릭 하여 CT 서비스 신청 (단, KDN 직원일 경우 소속 부서장으로 결재자 지정 후 서비스 신청)
 
 ---
 
 <span id="step2"/>
 
-## 2단계: Container Terminal 서비스 신청
+## 2단계: Container Terminal 접속
 
-1. K-ECP User Console에서   `[서비스 신청] 자원 > 컨테이너 신청 > Container Terminal 신청`의 돋보기 아이콘 클릭
+> :warning: **주의사항:** K-ECP SSL VPN이 사전에 신청되어 있어야 합니다.
 
-2. 서비스 신청서 내역 작성 
+1. CT 서비스 신청 승인이 완료 된 경우 K-ECP User Console에서 `서비스 현황 > 가상서버`로 이동하여 해당 프로젝트 선택
+
+2. 선택된 프로젝트내에 VM Server형태로 생성된 CT의 **IP 주소 확인**
+
+3. `[서비스 신청] 기술지원 > 관리서비스 신청 > 보안작업 서비스 신청`의 돋보기 아이콘 클릭
+
+4. 보안적업 서비스 신청정보 기술 후 신청 요청
    
-   ```주절이
-   주절이
-   ```
+   * 클러스터: *CT가 생성된 클러스터 선택*
+   
+   * 프로젝트명: *CT가 생성된 프로젝트 선택*
+   
+   * 가상서버: *해당 CT 선택*
+   
+   * 서비스명: *`SSL VPN 접속 가능서버 추가 요청` 기술*
 
-3. ㄹㅇㄴㅁㄹㅇㅁㄴㄹ
+5. K-ECP 운영팀으로 부터 보안작업 완료 통보를 받은 후 인터넷 가능환경에서 브라우저를 통해 [K-ECP SSL VPN](https://kecp-vpn.kdn.com/) 접속 
+
+> :bell: **안내:** SSL VPN 접속방법 및 사용법은 `SSL VPN 시작하기` 가이드 문서 참고
+
+6. 주절이
 
 ---
 
 <span id="step3"/>
 
-## 3단계: Container Terminal 서비스 신청
+## 3단계: Container Terminal 사용
 
 1. K-ECP User Console에서   `[서비스 신청] 자원 > 컨테이너 신청 > Container Terminal 신청`의 돋보기 아이콘 클릭
 
