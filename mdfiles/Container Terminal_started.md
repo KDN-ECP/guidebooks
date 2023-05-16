@@ -11,6 +11,7 @@ CT는 K-ECP에서 컨테이너를 관리하고 오케스트레이션 할 수 있
 
 * Project 만들기
 * SSL VPN 시작하기
+* Container 시작하기
 
 ### 목차
 
@@ -23,6 +24,8 @@ CT는 K-ECP에서 컨테이너를 관리하고 오케스트레이션 할 수 있
 [2단계: Container Terminal 접속](#step2)
 
 [3단계: Container Terminal 사용](#step3)
+
+[4단계:Container Terminal 정리](#step4)
 
 [다음 단계](#nextstep)
 
@@ -115,7 +118,13 @@ CT 접속 후 CLI 명령어인 `oc`를 통해 Container Project를 위한 다음
 
 > :bell: **안내:** SSL VPN 접속방법 및 사용법은 `SSL VPN 시작하기` 가이드 문서 참고
 
-6. 주절이
+6. K-ECP 운영팀으로 부터 초기 ID/PW을 전달 받은 후 SSH 프로토콜을 통해 서버 접속
+   
+   ```주절
+   $ssh -p 10040 kecpuser@[CT_IP]
+   ```
+
+> :bell: **안내:** 접속 후 초기PW 변경 필요
 
 ---
 
@@ -123,15 +132,59 @@ CT 접속 후 CLI 명령어인 `oc`를 통해 Container Project를 위한 다음
 
 ## 3단계: Container Terminal 사용
 
-1. K-ECP User Console에서   `[서비스 신청] 자원 > 컨테이너 신청 > Container Terminal 신청`의 돋보기 아이콘 클릭
+1. K-ECP 운영팀에게 OpenShift의 원하는 PW 전달
 
-2. 서비스 신청서 내역 작성 
+> :bell:**안내**:원하는 PW가 없는 경우 K-ECP 운영팀에서 임의 설정
+
+2. 접속한 CT서버에서 OpenShift 로그인
+
+```주절
+$oc login -u [ID] https://api.ocp4.kdnecp.com:6443
+```
+
+3. Openshift 접속 확인
+* 접속확인
+
+```주절이
+Login successful.
+You have one project on this server: "[server_name]"
+Using project "[server_name]".
+```
+
+* 접속 계정 확인 명령어
+
+```주절이
+$oc whoami
+```
+
+```주절이
+[ID]
+```
+
+---
+
+<span id="step4"/>
+
+## 4단계: Container Terminal 정리
+
+1. `oc`명령어를 통해 CT에서 OpenShift계정 로그아웃을 할 수 있습니다.
    
    ```주절이
-   주절이
+   $oc logout
+   ```
+   
+   ```주절이
+   Logged "[ID]" out on "https:api.ocp4.kdnecp.com:6443"
    ```
 
-3. ㄹㅇㄴㅁㄹㅇㅁㄴㄹ
+2. CT자원을 완전히 삭제하길 원하는 경우 `서비스 변경 및 삭제 신청 > 삭제신청`로 이동
+* 프로젝트: 해당`CT`가 있는 프로젝트 선택
+
+* 자원: 가상서버, `CT`의 서버 선택
+
+* `x삭제신청` 버튼 클릭  
+
+> :warning:**주의사항**:CT 서비스를 삭제할 경우 OpenShift계정 또한 삭제됩니다.
 
 ---
 
@@ -139,12 +192,52 @@ CT 접속 후 CLI 명령어인 `oc`를 통해 Container Project를 위한 다음
 
 ## 다음 단계
 
-1. K-ECP User Console에서   `[서비스 신청] 자원 > 컨테이너 신청 > Container Terminal 신청`의 돋보기 아이콘 클릭
+`CT`서비스 시작한 후 다음과 같은 명령어를 통해 컨테이너를 관리할 수 있습니다.
 
-2. 서비스 신청서 내역 작성 
-   
-   ```
-        주절이
-   ```
+* `$oc status`: 서비스, 배포, 빌드 구성 등 현재 프로젝트에 대한 정보 확인
 
-3. ㄹㅇㄴㅁㄹㅇㅁㄴㄹ
+```주절
+$oc status
+In project SSG-TEST (ssg-test-del) on server https://api.ocp4.kdnecp.com:6443
+
+http://ssgtest-ssg-test-del.apps.ocp4.kdnecp.com (svc/ssgtest)
+  dc/ssgtest deploys istag/ssgtest:latest <-
+    bc/ssgtest source builds http://10.100.11.114/222216/k-ecp-test-delete.git on openshift/jboss-webserver56-openjdk11-tomcat9-openshift-ubi8:5.6.0
+    deployment #4 deployed 3 days ago - 1 pod
+    deployment #3 deployed 3 days ago
+    deployment #2 deployed 3 days ago
+```
+
+* `$oc projects`: 내 프로젝트
+
+* `$oc project [project_name]`: 프로젝트[project_name] 선택
+
+```주절이
+$oc projects
+Using Project "[project_name]" on server "https://api.ocp4.kdnecp.com:6443"
+```
+
+* `oc get pod`: Pod 정보 확인
+
+```주절이
+$oc get pod
+NAME               READY   STATUS      RESTARTS   AGE
+ssg0412-2-build    0/1     Completed   0          32d
+ssg0412-3-build    0/1     Completed   0          32d
+ssgtest-1-build    0/1     Completed   0          20d
+ssgtest-1-deploy   0/1     Completed   0          20d
+ssgtest-2-build    0/1     Completed   0          3d20h
+ssgtest-2-deploy   0/1     Completed   0          3d20h
+ssgtest-3-build    0/1     Completed   0          3d20h
+ssgtest-3-deploy   0/1     Completed   0          3d20h
+ssgtest-4-465g4    1/1     Running     0          3d6h
+ssgtest-4-build    0/1     Completed   0          3d6h
+ssgtest-4-deploy   0/1     Completed   0          3d6h
+```
+
+* `oc rsh [pod_name]`:컨테이너 내의 [pod_name]로 접속
+
+```주절이
+$oc rsh [pod_name]
+oc rsh [pod_name]>
+```
