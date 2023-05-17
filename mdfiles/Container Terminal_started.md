@@ -78,7 +78,7 @@ CT 접속 후 CLI 명령어인 `oc`를 통해 Container Project를 위한 다음
 
 ## 1단계: Container Terminal 서비스 신청
 
-1. K-ECP User Console에서 `[서비스 신청] 자원 > 컨테이너 신청 > Container Terminal 신청`의 돋보기 아이콘 클릭
+1. K-ECP User Console에서 `[서비스 신청] 자원 > 컨테이너 신청 > Container Terminal 신청`의 돋보기 아이콘:mag: 클릭
 
 2. 서비스 신청서 내역 작성 
    
@@ -102,7 +102,7 @@ CT 접속 후 CLI 명령어인 `oc`를 통해 Container Project를 위한 다음
 
 2. 선택된 프로젝트내에 VM Server형태로 생성된 CT의 **IP 주소 확인**
 
-3. `[서비스 신청] 기술지원 > 관리서비스 신청 > 보안작업 서비스 신청`의 돋보기 아이콘 클릭
+3. `[서비스 신청] 기술지원 > 관리서비스 신청 > 보안작업 서비스 신청`의                         돋보기 아이콘:mag: 클릭
 
 4. 보안적업 서비스 신청정보 기술 후 신청 요청
    
@@ -118,13 +118,15 @@ CT 접속 후 CLI 명령어인 `oc`를 통해 Container Project를 위한 다음
 
 > :bell: **안내:** SSL VPN 접속방법 및 사용법은 `SSL VPN 시작하기` 가이드 문서 참고
 
-6. K-ECP 운영팀으로 부터 초기 ID/PW을 전달 받은 후 SSH 프로토콜을 통해 서버 접속
+6. ㅇ
+
+7. K-ECP 운영팀으로 부터 초기 ID/PW을 전달 받은 후 SSH 프로토콜을 통해 서버 접속
    
    ```주절
    $ssh -p 10040 kecpuser@[CT_IP]
    ```
 
-> :bell: **안내:** 접속 후 초기PW 변경 필요
+> :bell: **안내:** 접속 후 초기PW 변경이 필요합니다.
 
 ---
 

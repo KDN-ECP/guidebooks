@@ -119,7 +119,7 @@ VM 신청 시 서버 운영 목적에 따라 다음과 같은 다양한 이미�
 
 2. 선택된 프로젝트내에 VM의 **IP 주소 확인**
 
-3. `[서비스 신청] 기술지원 > 관리서비스 신청 > 보안작업 서비스 신청`의 돋보기 아이콘:mag: 클릭
+3. `[서비스 신청] 기술지원 > 관리서비스 신청 > 보안작업 서비스 신청`의                         돋보기 아이콘:mag: 클릭
 
 4. 보안적업 서비스 신청정보 기술 후 `신청` 요청
    
@@ -135,11 +135,37 @@ VM 신청 시 서버 운영 목적에 따라 다음과 같은 다양한 이미�
 
 > :bell: **안내:** SSL VPN 접속방법 및 사용법은 [SSL VPN 시작하기](http://kdnecp.kdn.com:8585/mbr/ "SSL VPN 시작하기")가이드 문서 참고
 
-6. K-ECP 운영팀으로 부터 VM서버의 초기 ID/PW을 전달 받은 후 SSH 프로토콜을 통해 서버 접속
+6. K-ECP User Console에서`서비스현황 > 가상서버`이동 후 해당 VM이 속한 프로젝트의  돋보기 아이콘:mag:클릭
+
+7. 해당 VM의 보안그룹의 돋보기 아이콘:mag:클릭
+
+8. 작업의 돋보기 아이콘:mag:클릭
+
+9. `규칙추가`버튼 클릭
    
-   ```주절
-   $ssh -p 10040 kecpuser@[CT_IP]
-   ```
+   * 설명: 보안그룹 설명 추가
+   
+   * 트래픽 방향: 인바운드/아웃바운드 선택
+   
+   * 포트 구분
+     
+     * 포트범위: 해당 범위의 포트를 허용합니다.
+     
+     * 모든포트: 모든포트에서 허용합니다.
+     
+     * 포트: 해당 포트에서 허용합니다.
+   
+   * 원격지IP: 원격지IP 표기
+   
+   > :bell:**안내**: SSL VPN IP를 입력합니다.
+   
+   * Ether 타입: IPv4, IPv6 선택
+
+10. K-ECP 운영팀으로 부터 VM서버의 초기 ID/PW을 전달 받은 후 SSH 프로토콜을 통해 서버 접속
+    
+    ```주절
+    $ssh -p 10040 kecpuser@[VM_IP]
+    ```
 
 > :warning: **주의사항:** 접속 후 초기PW 변경이 필요합니다.
 
@@ -147,42 +173,29 @@ VM 신청 시 서버 운영 목적에 따라 다음과 같은 다양한 이미�
 
 <span id="step3"/>
 
-## 3단계: Container Terminal 사용
+## 3단계: VM Server 사용
 
-1. K-ECP 운영팀에게 OpenShift의 원하는 PW 전달
+> :bell:**안내**: K-ECP User Console에서 가상서버 기동 및 상태를 확인할 수 있습니다.
 
-> :bell:**안내**:원하는 PW가 없는 경우 K-ECP 운영팀에서 임의 설정
-
-2. 접속한 CT서버에서 OpenShift 로그인
-
-```주절
-$oc login -u [ID] https://api.ocp4.kdnecp.com:6443
-```
-
-3. Openshift 접속 확인
-* 접속확인
-
-```주절이
-Login successful.
-You have one project on this server: "[server_name]"
-Using project "[server_name]".
-```
-
-* 접속 계정 확인 명령어
-
-```주절이
-$oc whoami
-```
-
-```주절이
-[ID]
-```
+1. K-ECP User Console에서`서비스현황 > 가상서버`이동 후 해당 VM이 속한 프로젝트의 돋보기 아이콘:mag: 클릭
+   * 운전상태: ACTIVE / SHUTDOWN 등 현재 서버의 상태를 확인할 수 있습니다.
+   
+   * 정지 :white_square_button::
+   
+   * 시작 :arrow_forward::
+   
+   * 재시작 :arrows_counterclockwise::
+   
+   * 보안그룹 :mag::
+   
+   * 상세 :mag::
+2. 
 
 ---
 
 <span id="step4"/>
 
-## 4단계: Container Terminal 정리
+## 4단계: VM Server 변경 및 반납
 
 1. `oc`명령어를 통해 CT에서 OpenShift계정 로그아웃을 할 수 있습니다.
    
