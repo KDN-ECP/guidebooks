@@ -118,7 +118,7 @@ CT 접속 후 CLI 명령어인 `oc`를 통해 Container Project를 위한 다음
 
 > :bell: **안내:** SSL VPN 접속방법 및 사용법은 `SSL VPN 시작하기` 가이드 문서 참고
 
-6. ㅇ
+6. 보안그룹 설정 필요
 
 7. K-ECP 운영팀으로 부터 초기 ID/PW을 전달 받은 후 SSH 프로토콜을 통해 서버 접속
    
