@@ -1,5 +1,5 @@
-[문서 최종 수정일자 : 2023-05-05]: # 
-[문서 최종 수정자 : 류정호]: # 
+[문서 최종 수정일자 : 2023-05-19]: # 
+[문서 최종 수정자 : 신승규]: # 
 
 # Container Terminal 시작하기
 
@@ -24,8 +24,6 @@ CT는 K-ECP에서 컨테이너를 관리하고 오케스트레이션 할 수 있
 [2단계: Container Terminal 접속](#step2)
 
 [3단계: Container Terminal 사용](#step3)
-
-[4단계:Container Terminal 정리](#step4)
 
 [다음 단계](#nextstep)
 
@@ -114,16 +112,28 @@ CT 접속 후 CLI 명령어인 `oc`를 통해 Container Project를 위한 다음
    
    * 서비스명: *`SSL VPN 접속 가능서버 추가 요청` 기술*
 
-5. K-ECP 운영팀으로 부터 보안작업 완료 통보를 받은 후 인터넷 가능환경에서 브라우저를 통해 [K-ECP SSL VPN](https://kecp-vpn.kdn.com/) 접속 
+5. K-ECP 운영팀으로 부터 보안작업 완료 통보를 받은 후 인터넷 가능환경에서 브라우저를 통해 https://kecp-vpn.kdn.com/ 접속 
 
-> :bell: **안내:** SSL VPN 접속방법 및 사용법은 `SSL VPN 시작하기` 가이드 문서 참고
+> :bell: **안내:** SSL VPN 접속방법 및 사용법은 `SSL VPN 시작하기` 가이드 문서 참고바랍니다.
 
-6. 보안그룹 설정 필요
+6. [보안그룹 설정]([https://kecp-vpn.kdn.com/](https://kecp-vpn.kdn.com/"보안그룹 설정하기"))을 통해 vpn으로 부터 서버 접근을 허용 작업 수행
 
-7. K-ECP 운영팀으로 부터 초기 ID/PW을 전달 받은 후 SSH 프로토콜을 통해 서버 접속
+7. K-ECP 운영팀으로 부터 초기 아이디와 비밀번호를 전달 받은 후 SSH 프로토콜을 통해 서버 접속
    
    ```주절
-   $ssh -p 10040 kecpuser@[CT_IP]
+   ssh -p 10040 kecpuser@[CT_IP]
+   ```
+
+8. 비밀번호 입력 후 로그인
+   
+   ```빈
+   kecpuser@[CT_IP] password:
+   Activate the web console with: systemctl enable --now cockpit.socket
+   
+   This system is not registered to Red Hat Insights. See https://cloud.redhat.com/
+   To register this system, run: insights-client --register
+   
+   Last login: Thu May 18 17:34:52 2023 from [IP]
    ```
 
 > :bell: **안내:** 접속 후 초기PW 변경이 필요합니다.
@@ -136,57 +146,36 @@ CT 접속 후 CLI 명령어인 `oc`를 통해 Container Project를 위한 다음
 
 1. K-ECP 운영팀에게 OpenShift의 원하는 PW 전달
 
-> :bell:**안내**:원하는 PW가 없는 경우 K-ECP 운영팀에서 임의 설정
+> :bell:**안내**:원하는 PW가 없는 경우 K-ECP 운영팀에서 임의로 설정합니다.
 
 2. 접속한 CT서버에서 OpenShift 로그인
 
 ```주절
-$oc login -u [ID] https://api.ocp4.kdnecp.com:6443
+oc login -u [ID] https://api.ocp4.kdnecp.com:6443
+```
+
+```Authentication
+Username: [ID]
+Password:
+Login successful.
 ```
 
 3. Openshift 접속 확인
-* 접속확인
 
 ```주절이
-Login successful.
-You have one project on this server: "[server_name]"
-Using project "[server_name]".
+oc status  
 ```
 
-* 접속 계정 확인 명령어
+```docker
+In project SSG-TEST (ssg-test-del) on server https://api.ocp4.kdnecp.com:6443
 
-```주절이
-$oc whoami
+http://ssgtest-ssg-test-del.apps.ocp4.kdnecp.com (svc/ssgtest)
+  dc/ssgtest deploys istag/ssgtest:latest <-
+    bc/ssgtest source builds http://10.100.11.114/222216/k-ecp-test-delete.git on openshift/jboss-webserver56-openjdk11-tomcat9-openshift-ubi8:5.6.0
+    deployment #4 deployed 7 days ago - 1 pod
+    deployment #3 deployed 7 days ago
+    deployment #2 deployed 7 days ago
 ```
-
-```주절이
-[ID]
-```
-
----
-
-<span id="step4"/>
-
-## 4단계: Container Terminal 정리
-
-1. `oc`명령어를 통해 CT에서 OpenShift계정 로그아웃을 할 수 있습니다.
-   
-   ```주절이
-   $oc logout
-   ```
-   
-   ```주절이
-   Logged "[ID]" out on "https:api.ocp4.kdnecp.com:6443"
-   ```
-
-2. CT자원을 완전히 삭제하길 원하는 경우 `서비스 변경 및 삭제 신청 > 삭제신청`로 이동
-* 프로젝트: 해당`CT`가 있는 프로젝트 선택
-
-* 자원: 가상서버, `CT`의 서버 선택
-
-* `x삭제신청` 버튼 클릭  
-
-> :warning:**주의사항**:CT 서비스를 삭제할 경우 OpenShift계정 또한 삭제됩니다.
 
 ---
 
@@ -194,52 +183,6 @@ $oc whoami
 
 ## 다음 단계
 
-`CT`서비스 시작한 후 다음과 같은 명령어를 통해 컨테이너를 관리할 수 있습니다.
+* [Container Terminal 명령어](https://kecp.kdn.com/mbr/ "CT 명령어")를 통해서 `CT`서비스를 활용할 수 있습니다.(향후 제공 예정)
 
-* `$oc status`: 서비스, 배포, 빌드 구성 등 현재 프로젝트에 대한 정보 확인
-
-```주절
-$oc status
-In project SSG-TEST (ssg-test-del) on server https://api.ocp4.kdnecp.com:6443
-
-http://ssgtest-ssg-test-del.apps.ocp4.kdnecp.com (svc/ssgtest)
-  dc/ssgtest deploys istag/ssgtest:latest <-
-    bc/ssgtest source builds http://10.100.11.114/222216/k-ecp-test-delete.git on openshift/jboss-webserver56-openjdk11-tomcat9-openshift-ubi8:5.6.0
-    deployment #4 deployed 3 days ago - 1 pod
-    deployment #3 deployed 3 days ago
-    deployment #2 deployed 3 days ago
-```
-
-* `$oc projects`: 내 프로젝트
-
-* `$oc project [project_name]`: 프로젝트[project_name] 선택
-
-```주절이
-$oc projects
-Using Project "[project_name]" on server "https://api.ocp4.kdnecp.com:6443"
-```
-
-* `oc get pod`: Pod 정보 확인
-
-```주절이
-$oc get pod
-NAME               READY   STATUS      RESTARTS   AGE
-ssg0412-2-build    0/1     Completed   0          32d
-ssg0412-3-build    0/1     Completed   0          32d
-ssgtest-1-build    0/1     Completed   0          20d
-ssgtest-1-deploy   0/1     Completed   0          20d
-ssgtest-2-build    0/1     Completed   0          3d20h
-ssgtest-2-deploy   0/1     Completed   0          3d20h
-ssgtest-3-build    0/1     Completed   0          3d20h
-ssgtest-3-deploy   0/1     Completed   0          3d20h
-ssgtest-4-465g4    1/1     Running     0          3d6h
-ssgtest-4-build    0/1     Completed   0          3d6h
-ssgtest-4-deploy   0/1     Completed   0          3d6h
-```
-
-* `oc rsh [pod_name]`:컨테이너 내의 [pod_name]로 접속
-
-```주절이
-$oc rsh [pod_name]
-oc rsh [pod_name]>
-```
+* [VM Server 변경 및 반납하기](https://kecp.kdn.com/mbr/ "VM Server 변경 및 반납")를 통해 사용중인 `CT`서비스를 반납할 수 있습니다.(향후 제공 예정)
