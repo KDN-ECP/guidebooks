@@ -112,21 +112,21 @@ CT 접속 후 CLI 명령어인 `oc`를 통해 Container Project를 위한 다음
    
    * 서비스명: *`SSL VPN 접속 가능서버 추가 요청` 기술*
 
-5. K-ECP 운영팀으로 부터 보안작업 완료 통보를 받은 후 인터넷 가능환경에서 브라우저를 통해 https://kecp-vpn.kdn.com/ 접속 
+5. K-ECP 운영팀으로 부터 보안작업 완료 통보를 받은 후 인터넷 가능환경에서 브라우저를 통해 [https://kecp-vpn.kdn.com](https://kecp-vpn.kdn.com)접속 
 
 > :bell: **안내:** SSL VPN 접속방법 및 사용법은 `SSL VPN 시작하기` 가이드 문서 참고바랍니다.
 
-6. [보안그룹 설정]([https://kecp-vpn.kdn.com/](https://kecp-vpn.kdn.com/"보안그룹 설정하기"))을 통해 vpn으로 부터 서버 접근을 허용 작업 수행
+6. [보안그룹 설정](https://kecp-vpn.kdn.com/"보안그룹 설정하기")을 통해 vpn으로 부터 서버 접근을 허용 작업 수행
 
 7. K-ECP 운영팀으로 부터 초기 아이디와 비밀번호를 전달 받은 후 SSH 프로토콜을 통해 서버 접속
    
-   ```주절
+   ```
    ssh -p 10040 kecpuser@[CT_IP]
    ```
 
 8. 비밀번호 입력 후 로그인
    
-   ```빈
+   ```
    kecpuser@[CT_IP] password:
    Activate the web console with: systemctl enable --now cockpit.socket
    
@@ -136,7 +136,7 @@ CT 접속 후 CLI 명령어인 `oc`를 통해 Container Project를 위한 다음
    Last login: Thu May 18 17:34:52 2023 from [IP]
    ```
 
-> :bell: **안내:** 접속 후 초기PW 변경이 필요합니다.
+> :bell: **안내:** 접속 후 초기 비밀번호 변경이 필요합니다.
 
 ---
 
@@ -144,17 +144,17 @@ CT 접속 후 CLI 명령어인 `oc`를 통해 Container Project를 위한 다음
 
 ## 3단계: Container Terminal 사용
 
-1. K-ECP 운영팀에게 OpenShift의 원하는 PW 전달
+1. K-ECP 운영팀에게 OpenShift의 원하는 비밀번호 전달
 
-> :bell:**안내**:원하는 PW가 없는 경우 K-ECP 운영팀에서 임의로 설정합니다.
+> :bell:**안내**:원하는 비밀번호가 없는 경우 K-ECP 운영팀에서 임의로 설정합니다.
 
 2. 접속한 CT서버에서 OpenShift 로그인
 
-```주절
+```
 oc login -u [ID] https://api.ocp4.kdnecp.com:6443
 ```
 
-```Authentication
+```
 Username: [ID]
 Password:
 Login successful.
@@ -162,11 +162,11 @@ Login successful.
 
 3. Openshift 접속 확인
 
-```주절이
+```
 oc status  
 ```
 
-```docker
+```
 In project SSG-TEST (ssg-test-del) on server https://api.ocp4.kdnecp.com:6443
 
 http://ssgtest-ssg-test-del.apps.ocp4.kdnecp.com (svc/ssgtest)
@@ -185,4 +185,4 @@ http://ssgtest-ssg-test-del.apps.ocp4.kdnecp.com (svc/ssgtest)
 
 * [Container Terminal 명령어](https://kecp.kdn.com/mbr/ "CT 명령어")를 통해서 `CT`서비스를 활용할 수 있습니다.(향후 제공 예정)
 
-* [VM Server 변경 및 반납하기](https://kecp.kdn.com/mbr/ "VM Server 변경 및 반납")를 통해 사용중인 `CT`서비스를 반납할 수 있습니다.(향후 제공 예정)
+* [VM Server 변경 및 해지하기](https://kecp.kdn.com/mbr/ "VM Server 변경 및 반납")를 통해 사용중인 `CT`서비스를 반납할 수 있습니다.(향후 제공 예정)
