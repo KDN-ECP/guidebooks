@@ -114,9 +114,9 @@ CT 접속 후 CLI 명령어인 `oc`를 통해 Container Project를 위한 다음
 
 5. K-ECP 운영팀으로 부터 보안작업 완료 통보를 받은 후 인터넷 가능환경에서 브라우저를 통해 [https://kecp-vpn.kdn.com](https://kecp-vpn.kdn.com)접속 
 
-> :bell: **안내:** SSL VPN 접속방법 및 사용법은 `SSL VPN 시작하기` 가이드 문서 참고바랍니다.
+> :bell: **안내:** SSL VPN 접속방법 및 사용법은 `SSL VPN 시작하기` 가이드 문서를 참고바랍니다.
 
-6. [보안그룹 설정하기](https://kecp.kdn.com/"보안그룹 설정하기")를 통해 vpn으로 부터 서버접근 허용 작업 수행
+6. [보안그룹 설정하기](https://kecp.kdn.com/ "보안그룹 설정하기")를 통해 vpn으로 부터 서버접근 허용 작업 수행
 
 7. K-ECP 운영팀으로 부터 초기 아이디와 비밀번호를 전달 받은 후 SSH 프로토콜을 통해 서버 접속
    

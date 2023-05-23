@@ -26,8 +26,6 @@ VM은 K-ECP에서 서버를 생성하여 컴퓨팅 인프라를 가상화하여 
 
 [3단계: VM Server 사용](#step3)
 
-[4단계:VM Server 정리](#step4)
-
 [다음 단계](#nextstep)
 
 ---
@@ -133,41 +131,23 @@ VM 신청 시 서버 운영 목적에 따라 다음과 같은 다양한 이미�
 
 5. K-ECP 운영팀으로 부터 보안작업 완료 통보를 받은 후 인터넷 가능환경에서 브라우저를 통해 [K-ECP SSL VPN](https://kecp-vpn.kdn.com/) 접속 
 
-> :bell: **안내:** SSL VPN 접속방법 및 사용법은 [SSL VPN 시작하기](http://kdnecp.kdn.com:8585/mbr/ "SSL VPN 시작하기")가이드 문서 참고
+> :bell: **안내:** SSL VPN 접속방법 및 사용법은 [SSL VPN 시작하기](http://kdnecp.kdn.com:8585/mbr/ "SSL VPN 시작하기")가이드 문서를 참고 바랍니다.
 
-6. K-ECP User Console에서`서비스현황 > 가상서버`이동 후 해당 VM이 속한 프로젝트의  돋보기 아이콘:mag:클릭
+6. [보안그룹설정하기](https://kdnecp.com/ "보안그룹설정")를 통해 vpn으로 부터 서버접근 허용 작업 수행
 
-7. 해당 VM의 보안그룹의 돋보기 아이콘:mag:클릭
+7. K-ECP 운영팀으로 부터 VM서버의 초기 ID/PW을 전달 받은 후 SSH 프로토콜을 통해 서버 접속
+   
+   ```
+   ssh -p 10040 kecpuser@[VM_IP]
+   ```
 
-8. 작업의 돋보기 아이콘:mag:클릭
+8. 비밀번호 입력 후 로그인
+   
+   ```주절
+   ssh
+   ```
 
-9. `규칙추가`버튼 클릭
-   
-   * 설명: 보안그룹 설명 추가
-   
-   * 트래픽 방향: 인바운드/아웃바운드 선택
-   
-   * 포트 구분
-     
-     * 포트범위: 해당 범위의 포트를 허용합니다.
-     
-     * 모든포트: 모든포트에서 허용합니다.
-     
-     * 포트: 해당 포트에서 허용합니다.
-   
-   * 원격지IP: 원격지IP 표기
-   
-   > :bell:**안내**: SSL VPN IP를 입력합니다.
-   
-   * Ether 타입: IPv4, IPv6 선택
-
-10. K-ECP 운영팀으로 부터 VM서버의 초기 ID/PW을 전달 받은 후 SSH 프로토콜을 통해 서버 접속
-    
-    ```주절
-    $ssh -p 10040 kecpuser@[VM_IP]
-    ```
-
-> :warning: **주의사항:** 접속 후 초기PW 변경이 필요합니다.
+> :bell: **안내:** 접속 후 초기PW 변경이 필요합니다.
 
 ---
 
@@ -178,43 +158,18 @@ VM 신청 시 서버 운영 목적에 따라 다음과 같은 다양한 이미�
 > :bell:**안내**: K-ECP User Console에서 가상서버 기동 및 상태를 확인할 수 있습니다.
 
 1. K-ECP User Console에서`서비스현황 > 가상서버`이동 후 해당 VM이 속한 프로젝트의 돋보기 아이콘:mag: 클릭
+   
    * 운전상태: ACTIVE / SHUTDOWN 등 현재 서버의 상태를 확인할 수 있습니다.
    
-   * 정지 :white_square_button::
+   * 정지 :white_square_button::  ACTICE 상태의 서버를 중지할 수 있습니다.
    
-   * 시작 :arrow_forward::
+   * 시작 :arrow_forward::SHUTDOWN 상태의 서버를 기동시킬 수 있습니다.
    
-   * 재시작 :arrows_counterclockwise::
+   * 재시작 :arrows_counterclockwise:: 해당 서버를 재기동 할 수 있습니다.
    
-   * 보안그룹 :mag::
+   * 보안그룹 :mag:: [보안그룹 설정하기](https://kdn-ecp.com/ "보안그룹 설정하기")를 통해 서버 접근을 설정할 수 있습니다.
    
-   * 상세 :mag::
-2. 
-
----
-
-<span id="step4"/>
-
-## 4단계: VM Server 변경 및 반납
-
-1. `oc`명령어를 통해 CT에서 OpenShift계정 로그아웃을 할 수 있습니다.
-   
-   ```주절이
-   $oc logout
-   ```
-   
-   ```주절이
-   Logged "[ID]" out on "https:api.ocp4.kdnecp.com:6443"
-   ```
-
-2. CT자원을 완전히 삭제하길 원하는 경우 `서비스 변경 및 삭제 신청 > 삭제신청`로 이동
-* 프로젝트: 해당`CT`가 있는 프로젝트 선택
-
-* 자원: 가상서버, `CT`의 서버 선택
-
-* `x삭제신청` 버튼 클릭  
-
-> :warning:**주의사항**:CT 서비스를 삭제할 경우 OpenShift계정 또한 삭제됩니다.
+   * 상세 :mag:: 상세 페이지를 통해서 해당 가상서버의 상세 사항 확인 및 `서버명` 수정, [VM Server 변경 및 해지하기](https://kdn-ecp.com/ "변경 및 해지")를 사용할 수 있습니다.
 
 ---
 
@@ -222,52 +177,6 @@ VM 신청 시 서버 운영 목적에 따라 다음과 같은 다양한 이미�
 
 ## 다음 단계
 
-`CT`서비스 시작한 후 다음과 같은 명령어를 통해 컨테이너를 관리할 수 있습니다.
+* [Block Storage시작하기](https://kdn-ecp.com/ "block storage시작하기")를 통해 VM Server의 Storage를 추가할 수 있습니다.(향후 제공 예정)
 
-* `$oc status`: 서비스, 배포, 빌드 구성 등 현재 프로젝트에 대한 정보 확인
-
-```주절
-$oc status
-In project SSG-TEST (ssg-test-del) on server https://api.ocp4.kdnecp.com:6443
-
-http://ssgtest-ssg-test-del.apps.ocp4.kdnecp.com (svc/ssgtest)
-  dc/ssgtest deploys istag/ssgtest:latest <-
-    bc/ssgtest source builds http://10.100.11.114/222216/k-ecp-test-delete.git on openshift/jboss-webserver56-openjdk11-tomcat9-openshift-ubi8:5.6.0
-    deployment #4 deployed 3 days ago - 1 pod
-    deployment #3 deployed 3 days ago
-    deployment #2 deployed 3 days ago
-```
-
-* `$oc projects`: 내 프로젝트
-
-* `$oc project [project_name]`: 프로젝트[project_name] 선택
-
-```주절이
-$oc projects
-Using Project "[project_name]" on server "https://api.ocp4.kdnecp.com:6443"
-```
-
-* `oc get pod`: Pod 정보 확인
-
-```주절이
-$oc get pod
-NAME               READY   STATUS      RESTARTS   AGE
-ssg0412-2-build    0/1     Completed   0          32d
-ssg0412-3-build    0/1     Completed   0          32d
-ssgtest-1-build    0/1     Completed   0          20d
-ssgtest-1-deploy   0/1     Completed   0          20d
-ssgtest-2-build    0/1     Completed   0          3d20h
-ssgtest-2-deploy   0/1     Completed   0          3d20h
-ssgtest-3-build    0/1     Completed   0          3d20h
-ssgtest-3-deploy   0/1     Completed   0          3d20h
-ssgtest-4-465g4    1/1     Running     0          3d6h
-ssgtest-4-build    0/1     Completed   0          3d6h
-ssgtest-4-deploy   0/1     Completed   0          3d6h
-```
-
-* `oc rsh [pod_name]`:컨테이너 내의 [pod_name]로 접속
-
-```주절이
-$oc rsh [pod_name]
-oc rsh [pod_name]>
-```
+* [VM Server 변경 및 해지하기](https://kecp.kdn.com/mbr/ "VM Server 변경 및 반납")를 통해 사용중인 `CT`서비스를 반납할 수 있습니다.(향후 제공 예정)
