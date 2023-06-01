@@ -141,13 +141,32 @@ VM 신청 시 서버 운영 목적에 따라 다음과 같은 다양한 이미�
    ssh -p 10040 kecpuser@[VM_IP]
    ```
 
-8. 비밀번호 입력 후 로그인
+8. 초기 비밀번호 입력 후 로그인
    
-   ```주절
-   ssh
+   ```
+   kecpuser@10.100.12.51's password:
+   Last login: Wed May 31 13:41:07 2023 from 10.100.8.50
+   #################################################################
+   #                   _    _           _   _                      #
+   #                  / \  | | ___ _ __| |_| |                     #
+   #                 / _ \ | |/ _ \ '__| __| |                     #
+   #                / ___ \| |  __/ |  | |_|_|                     #
+   #               /_/   \_\_|\___|_|   \__(_)                     #
+   #                                                               #
+   #           You are entering into a secured area!               #
+   #                                                               #
+   #                      This service                             #
+   #                   is restricted  to                           #
+   #           Cloud Department Administrator only.                #
+   #                                                               #
+   #          All activities on this system are logged.            #
+   #  Unauthorized access will be fully investigated and reported  #
+   #        to the appropriate law enforcement agencies.           #
+   #################################################################
+   Last login: Wed May 31 13:41:07 2023 from [IP]
    ```
 
-> :bell: **안내:** 접속 후 초기PW 변경이 필요합니다.
+> :bell: **안내:** 접속 후 초기 비밀번호의 변경이 필요합니다.
 
 ---
 
@@ -169,7 +188,7 @@ VM 신청 시 서버 운영 목적에 따라 다음과 같은 다양한 이미�
    
    * 보안그룹 :mag:: [보안그룹 설정하기](https://kdn-ecp.com/ "보안그룹 설정하기")를 통해 서버 접근을 설정할 수 있습니다.
    
-   * 상세 :mag:: 상세 페이지를 통해서 해당 가상서버의 상세 사항 확인 및 `서버명` 수정, [VM Server 변경 및 해지하기](https://kdn-ecp.com/ "변경 및 해지")를 사용할 수 있습니다.
+   * 상세 :mag:: 상세 페이지를 통해서 해당 가상서버의 상세 사항 확인 및 `서버명` 수정, [VM 변경 및 해지하기](https://kdn-ecp.com/ "변경 및 해지")를 사용할 수 있습니다.
 
 ---
 
@@ -177,6 +196,6 @@ VM 신청 시 서버 운영 목적에 따라 다음과 같은 다양한 이미�
 
 ## 다음 단계
 
-* [Block Storage시작하기](https://kdn-ecp.com/ "block storage시작하기")를 통해 VM Server의 Storage를 추가할 수 있습니다.(향후 제공 예정)
+* [Block Storage시작하기](https://kdn-ecp.com/ "block storage시작하기")를 통해 `VM`의 Storage를 추가할 수 있습니다.(향후 제공 예정)
 
-* [VM Server 변경 및 해지하기](https://kecp.kdn.com/mbr/ "VM Server 변경 및 반납")를 통해 사용중인 `CT`서비스를 반납할 수 있습니다.(향후 제공 예정)
+* [VM 변경 및 해지하기](https://kecp.kdn.com/mbr/ "VM Server 변경 및 반납")를 통해 사용중인 `VM`서비스를 반납할 수 있습니다.(향후 제공 예정)
