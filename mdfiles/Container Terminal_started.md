@@ -22,7 +22,7 @@ CT는 K-ECP에서 컨테이너를 관리하고 오케스트레이션 할 수 있
 
 [2단계: Container Terminal 접속](#step2)
 
-[3단계: Container Terminal 사용](#step3)
+[3단계: OpenShift 로그인 및 CLI 사용](#step3)
 
 [다음 단계](#nextstep)
 
@@ -115,15 +115,32 @@ CT 접속 후 CLI 명령어인 `oc`를 통해 Container Project를 위한 다음
 
 > :bell: **안내:** SSL VPN 접속방법 및 사용법은 `SSL VPN 시작하기` 가이드 문서 참고
 
-6. 주절이
+6. SSL VPN 연결 후 SSH 접속 툴 또는 커맨드을 통해 CT의 IP로 접속 (계정명: kecpuser, 초기 비밀번호: K-ECP 운영팀에게 문의)
+   
+   **Windows에서 SSH로 접속하는 Command**
+   
+   ```powershell
+   ssh -p [SSH Port] kecpuser@[CT IP Address]
+   ```
+   
+   > :bell: **안내:** 최초 접속 시 비밀번호를 변경하셔야 정상접속 됩니다.
+
+7. 
 
 ---
 
 <span id="step3"/>
 
-## 3단계: Container Terminal 사용
+## 3단계: OpenShift 로그인 및 CLI 사용
 
-1. K-ECP User Console에서   `[서비스 신청] 자원 > 컨테이너 신청 > Container Terminal 신청`의 돋보기 아이콘 클릭
+1. SSH를 통해 CT에 접속한 후 K-ECP OpenShift Platform에 로그인
+
+```terminal
+> oc login -u [사용자ID] https://api.ocp4.kdnecp.com:6443
+Authentication required for https://api.ocp4.kdnecp.com:6443 (openshift)
+Password:
+Login successful.
+```
 
 2. 서비스 신청서 내역 작성 
    
