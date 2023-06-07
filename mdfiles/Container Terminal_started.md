@@ -1,5 +1,5 @@
-[문서 최종 수정일자 : 2023-05-05]: # 
-[문서 최종 수정자 : 류정호]: # 
+[문서 최종 수정일자 : 2023-05-19]: # 
+[문서 최종 수정자 : 신승규]: # 
 
 # Container Terminal 시작하기
 
@@ -11,6 +11,7 @@ CT는 K-ECP에서 컨테이너를 관리하고 오케스트레이션 할 수 있
 
 * Project 만들기
 * SSL VPN 시작하기
+* [Container 시작하기](./Container_started.md)
 
 ### 목차
 
@@ -75,7 +76,7 @@ CT 접속 후 CLI 명령어인 `oc`를 통해 Container Project를 위한 다음
 
 ## 1단계: Container Terminal 서비스 신청
 
-1. K-ECP User Console에서 `[서비스 신청] 자원 > 컨테이너 신청 > Container Terminal 신청`의 돋보기 아이콘 클릭
+1. K-ECP User Console에서 `[서비스 신청] 자원 > 컨테이너 신청 > Container Terminal 신청`의 돋보기 아이콘:mag: 클릭
 
 2. 서비스 신청서 내역 작성 
    
@@ -99,7 +100,7 @@ CT 접속 후 CLI 명령어인 `oc`를 통해 Container Project를 위한 다음
 
 2. 선택된 프로젝트내에 VM Server형태로 생성된 CT의 **IP 주소 확인**
 
-3. `[서비스 신청] 기술지원 > 관리서비스 신청 > 보안작업 서비스 신청`의 돋보기 아이콘 클릭
+3. `[서비스 신청] 기술지원 > 관리서비스 신청 > 보안작업 서비스 신청`의                         돋보기 아이콘:mag: 클릭
 
 4. 보안적업 서비스 신청정보 기술 후 신청 요청
    
@@ -111,10 +112,11 @@ CT 접속 후 CLI 명령어인 `oc`를 통해 Container Project를 위한 다음
    
    * 서비스명: *`SSL VPN 접속 가능서버 추가 요청` 기술*
 
-5. K-ECP 운영팀으로 부터 보안작업 완료 통보를 받은 후 인터넷 가능환경에서 브라우저를 통해 [K-ECP SSL VPN](https://kecp-vpn.kdn.com/) 접속 
+5. K-ECP 운영팀으로 부터 보안작업 완료 통보를 받은 후 인터넷 가능환경에서 브라우저를 통해 [https://kecp-vpn.kdn.com](https://kecp-vpn.kdn.com)접속 
 
-> :bell: **안내:** SSL VPN 접속방법 및 사용법은 `SSL VPN 시작하기` 가이드 문서 참고
+> :bell: **안내:** SSL VPN 접속방법 및 사용법은 `SSL VPN 시작하기` 가이드 문서를 참고바랍니다.
 
+<<<<<<< HEAD
 6. SSL VPN 연결 후 SSH 접속 툴 또는 커맨드을 통해 CT의 IP로 접속 (계정명: kecpuser, 초기 비밀번호: K-ECP 운영팀에게 문의)
    
    **Windows에서 SSH로 접속하는 Command**
@@ -126,6 +128,29 @@ CT 접속 후 CLI 명령어인 `oc`를 통해 Container Project를 위한 다음
    > :bell: **안내:** 최초 접속 시 비밀번호를 변경하셔야 정상접속 됩니다.
 
 7. 
+=======
+6. [보안그룹 설정하기](https://kecp.kdn.com/ "보안그룹 설정하기")를 통해 vpn으로 부터 서버접근 허용 작업 수행
+
+7. K-ECP 운영팀으로 부터 초기 아이디와 비밀번호를 전달 받은 후 SSH 프로토콜을 통해 서버 접속
+   
+   ```
+   ssh -p 10040 kecpuser@[CT_IP]
+   ```
+
+8. 비밀번호 입력 후 로그인
+   
+   ```
+   kecpuser@[CT_IP] password:
+   Activate the web console with: systemctl enable --now cockpit.socket
+   
+   This system is not registered to Red Hat Insights. See https://cloud.redhat.com/
+   To register this system, run: insights-client --register
+   
+   Last login: Thu May 18 17:34:52 2023 from [IP]
+   ```
+
+> :bell: **안내:** 접속 후 초기 비밀번호 변경이 필요합니다.
+>>>>>>> 45484f246f1a09c282ec010d8d22e7acd60797ee
 
 ---
 
@@ -133,6 +158,7 @@ CT 접속 후 CLI 명령어인 `oc`를 통해 Container Project를 위한 다음
 
 ## 3단계: OpenShift 로그인 및 CLI 사용
 
+<<<<<<< HEAD
 1. SSH를 통해 CT에 접속한 후 K-ECP OpenShift Platform에 로그인
 
 ```terminal
@@ -141,14 +167,40 @@ Authentication required for https://api.ocp4.kdnecp.com:6443 (openshift)
 Password:
 Login successful.
 ```
+=======
+1. K-ECP 운영팀에게 OpenShift의 원하는 비밀번호 전달
+>>>>>>> 45484f246f1a09c282ec010d8d22e7acd60797ee
 
-2. 서비스 신청서 내역 작성 
-   
-   ```주절이
-   주절이
-   ```
+> :bell:**안내**:원하는 비밀번호가 없는 경우 K-ECP 운영팀에서 임의로 설정합니다.
 
-3. ㄹㅇㄴㅁㄹㅇㅁㄴㄹ
+2. 접속한 CT서버에서 OpenShift 로그인
+
+```
+oc login -u [ID] https://api.ocp4.kdnecp.com:6443
+```
+
+```
+Username: [ID]
+Password:
+Login successful.
+```
+
+3. Openshift 접속 확인
+
+```
+oc status  
+```
+
+```
+In project SSG-TEST (ssg-test-del) on server https://api.ocp4.kdnecp.com:6443
+
+http://ssgtest-ssg-test-del.apps.ocp4.kdnecp.com (svc/ssgtest)
+  dc/ssgtest deploys istag/ssgtest:latest <-
+    bc/ssgtest source builds http://10.100.11.114/222216/k-ecp-test-delete.git on openshift/jboss-webserver56-openjdk11-tomcat9-openshift-ubi8:5.6.0
+    deployment #4 deployed 7 days ago - 1 pod
+    deployment #3 deployed 7 days ago
+    deployment #2 deployed 7 days ago
+```
 
 ---
 
@@ -156,12 +208,6 @@ Login successful.
 
 ## 다음 단계
 
-1. K-ECP User Console에서   `[서비스 신청] 자원 > 컨테이너 신청 > Container Terminal 신청`의 돋보기 아이콘 클릭
+* [Container Terminal 명령어](https://kecp.kdn.com/mbr/ "CT 명령어")를 통해서 `CT`서비스를 활용할 수 있습니다.(향후 제공 예정)
 
-2. 서비스 신청서 내역 작성 
-   
-   ```
-        주절이
-   ```
-
-3. ㄹㅇㄴㅁㄹㅇㅁㄴㄹ
+* [VM Server 변경 및 해지하기](https://kecp.kdn.com/mbr/ "VM Server 변경 및 반납")를 통해 사용중인 `CT`서비스를 반납할 수 있습니다.(향후 제공 예정)
