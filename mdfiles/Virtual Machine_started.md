@@ -49,9 +49,9 @@ sequenceDiagram
   K-ECP -->>- 사용자(KDN직원): VM 제공
 ```
 
-K-ECP VM은 User Console를 통해 신청한 후 최종 승인 시 사용 가능합니다. 아래 개념도와 같이 **SSL-VPN 또는 전용선(Direct Connect 서비스 사용시)을 이용하여 접속**하실 수 있습니다.
+K-ECP VM은 User Console를 통해 신청한 후 최종 승인 시 사용 가능합니다. 아래 개념도와 같이 **SSL-VPN 또는 전용선(Direct Connect 서비스 사용시)을 이용하여 접속**하실 수 있습니다. 접속 가능 영역으로는 공공 인터넷 영역(DMZ)와 공공 업무망 영역이 있습니다.
 
-  ![개념도](./../resource/concept_ct.png "서비스 개념도")
+<img src="file:///D:/Git%20workspace/guidebooks/resource/concept_vm.png" title="" alt="concept_vm.png" width="714">
 
 VM 신청 시 서버 운영 목적에 따라 다음과 같은 다양한 이미지를 제공 받을 수 있습니다.
 

@@ -9,8 +9,8 @@ CT는 K-ECP에서 컨테이너를 관리하고 오케스트레이션 할 수 있
 
 ### 관련 안내서
 
-* Project 만들기
-* SSL VPN 시작하기
+* [Project 만들기](./Project.md)
+* [SSL VPN 시작하기](./SSLVPN_started.md)
 * [Container 시작하기](./Container_started.md)
 
 ### 목차
@@ -118,39 +118,40 @@ CT 접속 후 CLI 명령어인 `oc`를 통해 Container Project를 위한 다음
 
 <<<<<<< HEAD
 6. SSL VPN 연결 후 SSH 접속 툴 또는 커맨드을 통해 CT의 IP로 접속 (계정명: kecpuser, 초기 비밀번호: K-ECP 운영팀에게 문의)
-   
+
    **Windows에서 SSH로 접속하는 Command**
-   
-   ```powershell
-   ssh -p [SSH Port] kecpuser@[CT IP Address]
-   ```
-   
-   > :bell: **안내:** 최초 접속 시 비밀번호를 변경하셔야 정상접속 됩니다.
 
-7. 
-=======
-6. [보안그룹 설정하기](https://kecp.kdn.com/ "보안그룹 설정하기")를 통해 vpn으로 부터 서버접근 허용 작업 수행
+```powershell
+ssh -p [SSH Port] kecpuser@[CT IP Address]
+```
 
-7. K-ECP 운영팀으로 부터 초기 아이디와 비밀번호를 전달 받은 후 SSH 프로토콜을 통해 서버 접속
+> :bell: **안내:** 최초 접속 시 비밀번호를 변경하셔야 정상접속 됩니다.
+
+7. =======
+
+8. [보안그룹 설정하기](https://kecp.kdn.com/ "보안그룹 설정하기")를 통해 vpn으로 부터 서버접근 허용 작업 수행
+
+9. K-ECP 운영팀으로 부터 초기 아이디와 비밀번호를 전달 받은 후 SSH 프로토콜을 통해 서버 접속
    
    ```
    ssh -p 10040 kecpuser@[CT_IP]
    ```
 
-8. 비밀번호 입력 후 로그인
-   
-   ```
-   kecpuser@[CT_IP] password:
-   Activate the web console with: systemctl enable --now cockpit.socket
-   
-   This system is not registered to Red Hat Insights. See https://cloud.redhat.com/
-   To register this system, run: insights-client --register
-   
-   Last login: Thu May 18 17:34:52 2023 from [IP]
-   ```
+10. 비밀번호 입력 후 로그인
+    
+    ```
+    kecpuser@[CT_IP] password:
+    Activate the web console with: systemctl enable --now cockpit.socket
+    
+    This system is not registered to Red Hat Insights. See https://cloud.redhat.com/
+    To register this system, run: insights-client --register
+    
+    Last login: Thu May 18 17:34:52 2023 from [IP]
+    ```
 
 > :bell: **안내:** 접속 후 초기 비밀번호 변경이 필요합니다.
->>>>>>> 45484f246f1a09c282ec010d8d22e7acd60797ee
+> 
+> > > > > > > 45484f246f1a09c282ec010d8d22e7acd60797ee
 
 ---
 
@@ -159,6 +160,7 @@ CT 접속 후 CLI 명령어인 `oc`를 통해 Container Project를 위한 다음
 ## 3단계: OpenShift 로그인 및 CLI 사용
 
 <<<<<<< HEAD
+
 1. SSH를 통해 CT에 접속한 후 K-ECP OpenShift Platform에 로그인
 
 ```terminal
@@ -167,9 +169,12 @@ Authentication required for https://api.ocp4.kdnecp.com:6443 (openshift)
 Password:
 Login successful.
 ```
+
 =======
+
 1. K-ECP 운영팀에게 OpenShift의 원하는 비밀번호 전달
->>>>>>> 45484f246f1a09c282ec010d8d22e7acd60797ee
+   
+   > > > > > > > 45484f246f1a09c282ec010d8d22e7acd60797ee
 
 > :bell:**안내**:원하는 비밀번호가 없는 경우 K-ECP 운영팀에서 임의로 설정합니다.
 

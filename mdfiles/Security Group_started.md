@@ -32,7 +32,7 @@
 
 ## 개요
 
-K-ECP `SG` 서비스를 사용하기 위해서는 아래와 같은 프로세스로 진행됩니다.
+K-ECP의 SG 서비스를 사용하기 위해서는 아래와 같은 프로세스로 진행됩니다.
 
 ```mermaid
 sequenceDiagram
@@ -46,6 +46,12 @@ sequenceDiagram
   KDN부서장 -->>+ K-ECP: [결재완료] CT 사용신청
   K-ECP -->>- 사용자(KDN직원): CT 제공
 ```
+
+K-ECP의 SG서비스를 통해서 VPN을 통하여 서버로 접근하는 사용자 중 **인가된 사용자**만 
+
+![concept_sg.PNG](D:\Git%20workspace\guidebooks\resource\concept_sg.PNG)
+
+> :warning:**주의사항**: K-ECP의 SG는 Instance 당 1개의 그룹만 제공합니다. 보안그룹 내에서 여러개의 인/아웃바운드 규칙을 적용하여 트래픽을 제어할 수 있습니다.
 
 ---
 
