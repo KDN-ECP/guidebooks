@@ -8,8 +8,8 @@ SSL VPN(Secure Sockets Layer VPN)은 컴퓨터 네트워크에 통신 보안을 
 
 ### 관련 안내서
 
-- VM Sever 시작하기
-- Security Group 시작하기
+- [VM Sever 시작하기](./VirtualMachine_started.md)
+- [Security Group 시작하기](./SecurityGroup_started.md)
 
 ### 목차
 

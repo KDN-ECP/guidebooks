@@ -10,9 +10,9 @@
 
 ### 관련안내서
 
-* [VM 시작하기](https://kecp-kdn.com/ "VM 시작하기)
+* [VM 시작하기](./VirtualMachine_started.md)
 
-* [CT 시작하기](https://kecp-kdn.com/ "CT 시작하기")
+* [CT 시작하기](./ContainerTerminal_started.md)
 
 ### 목차
 
@@ -59,9 +59,9 @@ K-ECP의 SG서비스를 통해서 VPN을 통하여 서버로 접근하는 사용
 
 ### 전제 조건
 
-- [VM 시작하기](https://kecp-kdn.com/ "VM 시작하기")를 통하여서 User Console에서 VM을 할당 받아야 합니다.
+- [VM 시작하기](./VirtualMachine_started.md)를 통하여서 User Console에서 VM을 할당 받아야 합니다.
 
-- [SSL VPN](https://kecp-kdn.com/ "SSL_VPN 시작하기")를 통해 해당 VM으로 접근 가능해야 합니다.
+- [SSL VPN](./SSLVPN_started.md)를 통해 해당 VM으로 접근 가능해야 합니다.
 
 ---
 

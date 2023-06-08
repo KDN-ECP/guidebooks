@@ -9,8 +9,8 @@ VM은 K-ECP에서 서버를 생성하여 컴퓨팅 인프라를 가상화하여 
 
 ### 관련 안내서
 
-* Project 만들기
-* SSL VPN 시작하기
+* [Project 만들기](./Project.md)
+* [SSL VPN 시작하기](./SSLVPN_started.md)
 * Storage 시작하기
 * VM Backup 시작하기
 
@@ -131,9 +131,9 @@ VM 신청 시 서버 운영 목적에 따라 다음과 같은 다양한 이미�
 
 5. K-ECP 운영팀으로 부터 보안작업 완료 통보를 받은 후 인터넷 가능환경에서 브라우저를 통해 [K-ECP SSL VPN](https://kecp-vpn.kdn.com/) 접속 
 
-> :bell: **안내:** SSL VPN 접속방법 및 사용법은 [SSL VPN 시작하기](http://kdnecp.kdn.com:8585/mbr/ "SSL VPN 시작하기")가이드 문서를 참고 바랍니다.
+> :bell: **안내:** SSL VPN 접속방법 및 사용법은 [SSL VPN 시작하기](./SSLVPN_started.md)가이드 문서를 참고 바랍니다.
 
-6. [보안그룹설정하기](https://kdnecp.com/ "보안그룹설정")를 통해 vpn으로 부터 서버접근 허용 작업 수행
+6. [보안그룹설정하기](./SecurityGroup_started.md)를 통해 vpn으로 부터 서버접근 허용 작업 수행
 
 7. K-ECP 운영팀으로 부터 VM서버의 초기 ID/PW을 전달 받은 후 SSH 프로토콜을 통해 서버 접속
    
@@ -186,7 +186,7 @@ VM 신청 시 서버 운영 목적에 따라 다음과 같은 다양한 이미�
    
    * 재시작 :arrows_counterclockwise:: 해당 서버를 재기동 할 수 있습니다.
    
-   * 보안그룹 :mag:: [보안그룹 설정하기](https://kdn-ecp.com/ "보안그룹 설정하기")를 통해 서버 접근을 설정할 수 있습니다.
+   * 보안그룹 :mag:: [보안그룹 설정하기](./SecurityGroup_started.md)를 통해 서버 접근을 설정할 수 있습니다.
    
    * 상세 :mag:: 상세 페이지를 통해서 해당 가상서버의 상세 사항 확인 및 `서버명` 수정, [VM 변경 및 해지하기](https://kdn-ecp.com/ "변경 및 해지")를 사용할 수 있습니다.
 

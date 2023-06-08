@@ -129,7 +129,7 @@ ssh -p [SSH Port] kecpuser@[CT IP Address]
 
 7. =======
 
-8. [보안그룹 설정하기](https://kecp.kdn.com/ "보안그룹 설정하기")를 통해 vpn으로 부터 서버접근 허용 작업 수행
+8. [보안그룹 설정하기](./SecurityGroup_started.md)를 통해 vpn으로 부터 서버접근 허용 작업 수행
 
 9. K-ECP 운영팀으로 부터 초기 아이디와 비밀번호를 전달 받은 후 SSH 프로토콜을 통해 서버 접속
    
@@ -213,6 +213,6 @@ http://ssgtest-ssg-test-del.apps.ocp4.kdnecp.com (svc/ssgtest)
 
 ## 다음 단계
 
-* [Container Terminal 명령어](https://kecp.kdn.com/mbr/ "CT 명령어")를 통해서 `CT`서비스를 활용할 수 있습니다.(향후 제공 예정)
+* [Container Terminal 활용하기](./ContainerTerminal_use.md)를 통해서 `CT`서비스를 활용할 수 있습니다.(향후 제공 예정)
 
 * [VM Server 변경 및 해지하기](https://kecp.kdn.com/mbr/ "VM Server 변경 및 반납")를 통해 사용중인 `CT`서비스를 반납할 수 있습니다.(향후 제공 예정)
