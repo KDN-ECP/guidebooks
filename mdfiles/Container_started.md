@@ -8,6 +8,8 @@
 
 Container는 소프트웨어 서비스를 실행하는 데 필요한 특정 버전의 프로그래밍 언어 런타임 및 라이브러리와 같은 종속 항목과 애플리케이션 코드를 함께 포함하는 경량 패키지입니다.
 
+K-ECP의 Container서비스는 `CT`서비스와 함께 사용할 수 있습니다. CLI를 사용해 컨테이너 이미지를 컨테이너 레지스트리로 쉽게 전달할 수 있고, 이미지를 직접 운영 서버에 가져와 배포할 수 있어 개발부터 서비스 배포까지 필요한 작업을 간소화할 수 있습니다.
+
 ### 관련안내서
 
 - [CT 시작하기](./ContainerTerminal_started.md)
@@ -20,11 +22,13 @@ Container는 소프트웨어 서비스를 실행하는 데 필요한 특정 버�
 
 [전제 조건](#precondition)
 
-[0단계](#step0)
+[0단계: GitLab 가입하기](#step0)
 
-[1단계](#step1)
+[1단계: GitLab프로젝트 및 리파지토리 생성](#step1)
 
-[2단계](#step2)
+[2단계: GitLab에서 소스 업로드](#step2)
+
+[3단계: 컨테이너 신청](#step3)
 
 [다음단계](#nextstep)
 
@@ -53,7 +57,7 @@ sequenceDiagram
 
 ### 전제 조건
 
-- [VM 시작하기](./VirtualMachine_started.md)를 통하여서 User Console에서 VM을 할당 받아야 합니다.
+- [Project 만들기](./Project.md)를 통하여 Container 서비스를 신청할 프로젝트를 생성해야합니다.
 
 - [SSL VPN](./SSLVPN_started.md)를 통해 해당 VM으로 접근 가능해야 합니다.
 
@@ -67,7 +71,6 @@ sequenceDiagram
 
 <span id= "step0"/>
 
-
 # 0단계: GitLab가입하기
 
 1. K-ECP 자료실에서 Git 파일 다운로드 후 설치
@@ -75,49 +78,155 @@ sequenceDiagram
 2. GitLab URL접속: http://10.100.11.114
 
 3. GitLab 화면에서 `Register Now`버튼 클릭
+* First name: 한글 성 입력
 
-4. 
+* Last name: 한글 이름 입력
 
----
+* Username: 사번 입력
 
-## 1단계: Security Group 서비스 사용
+* Email: 사용자 이메일 정보 입력
 
-1. K-ECP User Console에 로그인
-2. K-ECP User Console에서 `서비스 현황 > 가상서버`이동 후 `SG`서비스를 사용할 VM이 속한 프로젝트의 돋보기 아이콘:mag:클릭
-3. `SG`서비스를 사용할 VM의 `호스트명`과 `IP 주소`를 확인한 후 해당 VM의 보안그룹 돋보기 아이콘:mag:클릭
-4. 보안그룹의 작업 돋보기 아이콘:mag:클릭
+* Password: 사용자 패스워드 입력
+4. GitLab 가입 이후 해당 정보로 로그인
+* 원하는 역할(Role) 선택
 
----
-
-## 2단계: Security Group 서비스 설정
-
-1. `규칙추가`버튼 클릭
-   
-   - 설명: 보안그룹 설명 추가
-   
-   - 트래픽 방향: 인바운드/아웃바운드 선택
-   
-   - 포트 구분
-     
-     - 포트범위: 해당 범위의 포트를 허용합니다.
-     
-     - 모든포트: 모든포트에서 허용합니다.
-     
-     - 포트: 해당 포트에서 허용합니다.
-   
-   - 원격지IP: 원격지IP 표기
-
-> :bell:**안내**: SSL VPN IP를 입력합니다.
-
-- Ether 타입: IPv4, IPv6 선택
-
-- `확인`버튼 클릭
-  
-  2. 이후 `트래픽 방향`, `Ether 타입`, `IP 프로토콜`, `원격지IP`, `포트 범위min`, `포트 범위max`, `설명`을 통하여 보안그룹 규칙을 확인할 수 있습니다.
-3. `삭제`버튼을 클릭하여 보안그룹 규칙을 삭제할 수 있습니다.
+* `Get started!`버튼 클릭
 
 ---
 
-## 다음단계
+## 1단계: GitLab 프로젝트 및 리파지토리 생성
 
-- `SG`서비스를 통해 `VM`서버를 관리할 수 있습니다.
+1. 오른쪽 상단 배너에서 :heavy_plus_sign: > `New project/repository`클릭
+
+2. `Create blank project` 클릭
+
+3. `Create blank project` 상세 내역 작성
+* Project name: 프로젝트 이름 입력
+
+* Project slug: 프로젝트 slug 임의 입력
+
+* Visibility Level : **Public** 선택
+
+> :warning:**주의**: 반드시 **Public**으로 선택해야 합니다.
+
+4. `Create Project`버튼 클릭
+
+5. 생성된 Project 정보 확인후 `Clone`버튼 클릭
+
+6. `Clone`드롭다운 메뉴내에서 `Clone with HTTP`의 URL 복사
+
+> :bulb:**안내**: URL 주소는 복사 후 별도 저장이 필요합니다.
+
+---
+
+## 2단계: GitLab에서 소스 업로드
+
+1. 소스를 보관할 디렉토리(test) 생성
+   
+   ```
+   mkdir test
+   ```
+
+2. 디렉토리로 이동
+   
+   ```
+   cd test
+   ```
+
+3. 1단계에서 복사한 URL주소를 입력하여 Clone 실행
+   
+   ```
+   git clone [Clone with Http]
+   ```
+
+4. 이후 디렉토리에 프로젝트명(testProject)의 폴더가 생성되었는지 확인 후 해당 폴더로 이동
+
+5. README.md 파일 확인
+
+6. 배포하려는 파일을 생성된 폴더(testProject)로 이동
+
+7. 배포하려는 파일명을 `ROOT.war`로 수정
+
+8. 실행중인 cmd 창에서 생성된 폴더로 이동
+   
+   ```
+   cd testProject
+   ```
+
+9. 해당 리파지토리에 유저 정보 등록
+   
+   ```
+   git config --global user.name"[User ID]"
+   ```
+   
+   ```
+   git config --global user.email"[User Email]"
+   ```
+
+10. 등록된 정보 확인
+    
+    ```
+    git config --list
+    ```
+
+11. GitLab에 소스 업로드
+    
+    * 현재 디렉토리의 모든 소스 추가
+      
+      ```
+      git add .
+      ```
+    
+    * GitLab으로 commit
+      
+      ```
+      git commit -m "commit 메시지"
+      ```
+    
+    * 로컬 소스를 Git(Main Branch로)에 업로드
+      
+      ```
+      git push -u origin main
+      ```
+
+---
+
+## 3단계: 컨테이너 신청
+
+1. GitLab에서 업로드된 소스를 확인
+
+2. `Clone with HTTP`의 git 주소 복사
+
+3. K-ECP User Console에서 `[서비스 신청] 자원 > 컨테이너 신청`으로 이동
+   
+   * WAS, HTTP, KDN Python Django 기반 어플리케이션 중 선택하여 돋보기:mag:아이콘 클릭
+
+4.  컨테이너 신청 상세 내역 작성
+   
+   * 프로젝트명 :*컨테이너를 신청할 프로젝트 선택*
+   
+   * 서버대역: *컨테이너를 신청할 클러스터 선택*
+   
+   * 어플리케이션 명:*사용자가 어플리케이션 명 임의 지정*
+   
+   * 버전: *배포할 컨테이너의 표준 템플릿 지정(Base OS + 설치된 Libarary)*
+   
+   * Git URL wnth: *2.에서 복사한 git 주소 입력*
+   
+   * 서버사양: *원하는 서버 사양 선택*
+   
+   * 컨테이너 수: *생성할 컨테이너 수 지정*
+   
+   * 기타사항: *컨테이너 관련 추가 요청사항 작성*
+
+5. `신청`버튼 클릭
+
+---
+
+<span id="nextstep"/>
+
+</span>
+
+# 다음단계
+
+* [컨테이너 터미널 활용하기](./ContainerTerminal_use.md)를 통하여 컨테이너를 관리할 수 있습니다.

@@ -46,7 +46,9 @@ sequenceDiagram
   K-ECP -->>- 사용자(KDN직원): VM 제공
 ```
 
-K-ECP SSL VPN은 User Console를 통해 신청한 후 최종 승인 시 사용 가능합니다. 아래 개념도와 같이 **SSL-VPN을 통해서 K-ECP의 서비스**에 접속하실 수 있습니다. 접속 가능 영역으로는 공공 인터넷 영역(DMZ)와 공공 업무망 영역이 있습니다.
+K-ECP SSL VPN은 User Console를 통해 신청한 후 최종 승인 시 사용 가능합니다. 아래 개념도와 같이 **SSL-VPN을 통해서 K-ECP의 서비스**에 접속하실 수 있습니다. 접속 가능 영역으로는 공공 인터넷 영역(DMZ)와 공공 업무망 영역이 있습니다.(공공 업무망의 경우 방화벽 정책 필요)
+
+<img title="" src="file:///D:/Git%20workspace/guidebooks/resource/concept_sslvpn.png" alt="concept_sslvpn.png" data-align="center">
 
 ---
 
@@ -130,6 +132,4 @@ K-ECP SSL VPN은 User Console를 통해 신청한 후 최종 승인 시 사용 �
 
 ## 다음 단계
 
-- [Block Storage시작하기](https://kdn-ecp.com/ "block storage시작하기")를 통해 `VM`의 Storage를 추가할 수 있습니다.(향후 제공 예정)
-
-- [VM 변경 및 해지하기](https://kecp.kdn.com/mbr/ "VM Server 변경 및 반납")를 통해 사용중인 `VM`서비스를 반납할 수 있습니다.(향후 제공 예정)
+- [Security Group 시작하기](./SecurityGroup_started.md)를 통해 SSL VPN에 접근하는 사용자에 대한 보안 정책을 설정할 수 있습니다.

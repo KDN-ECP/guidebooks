@@ -116,9 +116,8 @@ CT 접속 후 CLI 명령어인 `oc`를 통해 Container Project를 위한 다음
 
 > :bell: **안내:** SSL VPN 접속방법 및 사용법은 `SSL VPN 시작하기` 가이드 문서를 참고바랍니다.
 
-<<<<<<< HEAD
 6. SSL VPN 연결 후 SSH 접속 툴 또는 커맨드을 통해 CT의 IP로 접속 (계정명: kecpuser, 초기 비밀번호: K-ECP 운영팀에게 문의)
-
+   
    **Windows에서 SSH로 접속하는 Command**
 
 ```powershell
@@ -127,39 +126,33 @@ ssh -p [SSH Port] kecpuser@[CT IP Address]
 
 > :bell: **안내:** 최초 접속 시 비밀번호를 변경하셔야 정상접속 됩니다.
 
-7. =======
+7. [보안그룹 설정하기](./SecurityGroup_started.md)를 통해 vpn으로 부터 서버접근 허용 작업 수행
 
-8. [보안그룹 설정하기](./SecurityGroup_started.md)를 통해 vpn으로 부터 서버접근 허용 작업 수행
-
-9. K-ECP 운영팀으로 부터 초기 아이디와 비밀번호를 전달 받은 후 SSH 프로토콜을 통해 서버 접속
+8. K-ECP 운영팀으로 부터 초기 아이디와 비밀번호를 전달 받은 후 SSH 프로토콜을 통해 서버 접속
    
    ```
    ssh -p 10040 kecpuser@[CT_IP]
    ```
 
-10. 비밀번호 입력 후 로그인
-    
-    ```
-    kecpuser@[CT_IP] password:
-    Activate the web console with: systemctl enable --now cockpit.socket
-    
-    This system is not registered to Red Hat Insights. See https://cloud.redhat.com/
-    To register this system, run: insights-client --register
-    
-    Last login: Thu May 18 17:34:52 2023 from [IP]
-    ```
+9. 비밀번호 입력 후 로그인
+   
+   ```
+   kecpuser@[CT_IP] password:
+   Activate the web console with: systemctl enable --now cockpit.socket
+   
+   This system is not registered to Red Hat Insights. See https://cloud.redhat.com/
+   To register this system, run: insights-client --register
+   
+   Last login: Thu May 18 17:34:52 2023 from [IP]
+   ```
 
 > :bell: **안내:** 접속 후 초기 비밀번호 변경이 필요합니다.
-> 
-> > > > > > > 45484f246f1a09c282ec010d8d22e7acd60797ee
 
 ---
 
 <span id="step3"/>
 
 ## 3단계: OpenShift 로그인 및 CLI 사용
-
-<<<<<<< HEAD
 
 1. SSH를 통해 CT에 접속한 후 K-ECP OpenShift Platform에 로그인
 
@@ -173,8 +166,6 @@ Login successful.
 =======
 
 1. K-ECP 운영팀에게 OpenShift의 원하는 비밀번호 전달
-   
-   > > > > > > > 45484f246f1a09c282ec010d8d22e7acd60797ee
 
 > :bell:**안내**:원하는 비밀번호가 없는 경우 K-ECP 운영팀에서 임의로 설정합니다.
 
