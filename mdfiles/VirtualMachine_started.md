@@ -11,8 +11,8 @@ VM은 K-ECP에서 서버를 생성하여 컴퓨팅 인프라를 가상화하여 
 
 * [Project 만들기](./Project.md)
 * [SSL VPN 시작하기](./SSLVPN_started.md)
-* Storage 시작하기
-* VM Backup 시작하기
+* [Storage 시작하기](./Storage_started)
+* [VM Backup 시작하기](./VMBacup_started)
 
 ### 목차
 
@@ -119,7 +119,7 @@ VM 신청 시 서버 운영 목적에 따라 다음과 같은 다양한 이미�
 
 3. `[서비스 신청] 기술지원 > 관리서비스 신청 > 보안작업 서비스 신청`의                         돋보기 아이콘:mag: 클릭
 
-4. 보안적업 서비스 신청정보 기술 후 `신청` 요청
+4. 보안작업 서비스 신청정보 기술 후 `신청` 요청
    
    * 클러스터: *VM가 생성된 클러스터 선택*
    

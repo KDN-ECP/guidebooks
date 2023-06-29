@@ -12,9 +12,9 @@ K-ECP의 Container서비스는 `CT`서비스와 함께 사용할 수 있습니�
 
 ### 관련안내서
 
-- [CT 시작하기](./ContainerTerminal_started.md)
+- [Container Terminal 시작하기](./ContainerTerminal_started.md)
 
-- [CT 활용하기](./ContainerTerminal_use.md)
+- [Container Terminal 활용하기](./ContainerTerminal_use.md)
 
 ### 목차
 
@@ -45,12 +45,12 @@ sequenceDiagram
   actor 사용자(일반)
   actor 사용자(KDN직원)
   actor KDN부서장
-  사용자(일반) ->>+ K-ECP: CT 사용신청
-  K-ECP ->>- 사용자(일반): CT 제공
-  사용자(KDN직원) -->> KDN부서장: CT 사용신청 승인요청?
-  Note over 사용자(KDN직원), KDN부서장: CT 사용자가 KDN직원일 경우User Console를 통하여소속 부서장이 결재 진행.
-  KDN부서장 -->>+ K-ECP: [결재완료] CT 사용신청
-  K-ECP -->>- 사용자(KDN직원): CT 제공
+  사용자(일반) ->>+ K-ECP: Container 사용신청
+  K-ECP ->>- 사용자(일반): Container 제공
+  사용자(KDN직원) -->> KDN부서장: Container 사용신청 승인요청?
+  Note over 사용자(KDN직원), KDN부서장: Container 사용자가 KDN직원일 경우User Console를 통하여소속 부서장이 결재 진행.
+  KDN부서장 -->>+ K-ECP: [결재완료] Container 사용신청
+  K-ECP -->>- 사용자(KDN직원): Container 제공
 ```
 
 ---
@@ -121,55 +121,59 @@ sequenceDiagram
 
 ## 2단계: GitLab에서 소스 업로드
 
-1. 소스를 보관할 디렉토리(test) 생성
+1. 로컬 PC workplace 폴더 생성
+
+2. 폴더 공간에서 우클릭 후 Git Bash Here 선택
+
+3. 소스를 보관할 디렉토리(test) 생성
    
    ```
    mkdir test
    ```
 
-2. 디렉토리로 이동
+4. 디렉토리로 이동
    
    ```
    cd test
    ```
 
-3. 1단계에서 복사한 URL주소를 입력하여 Clone 실행
+5. 1단계에서 복사한 URL주소를 입력하여 Clone 실행
    
    ```
    git clone [Clone with Http]
    ```
 
-4. 이후 디렉토리에 프로젝트명(testProject)의 폴더가 생성되었는지 확인 후 해당 폴더로 이동
+6. 이후 디렉토리에 프로젝트명(testProject)의 폴더가 생성되었는지 확인 후 해당 폴더로 이동
 
-5. README.md 파일 확인
+7. README.md 파일 확인
 
-6. 배포하려는 파일을 생성된 폴더(testProject)로 이동
+8. 배포하려는 파일을 생성된 폴더(testProject)로 이동
 
-7. 배포하려는 파일명을 `ROOT.war`로 수정
+9. 배포하려는 파일명을 `ROOT.war`로 수정
 
-8. 실행중인 cmd 창에서 생성된 폴더로 이동
-   
-   ```
-   cd testProject
-   ```
+10. 실행중인 cmd 창에서 생성된 폴더로 이동
+    
+    ```
+    cd testProject
+    ```
 
-9. 해당 리파지토리에 유저 정보 등록
-   
-   ```
-   git config --global user.name"[User ID]"
-   ```
-   
-   ```
-   git config --global user.email"[User Email]"
-   ```
+11. 해당 리파지토리에 유저 정보 등록
+    
+    ```
+    git config --global user.name"[User ID]"
+    ```
+    
+    ```
+    git config --global user.email"[User Email]"
+    ```
 
-10. 등록된 정보 확인
+12. 등록된 정보 확인
     
     ```
     git config --list
     ```
 
-11. GitLab에 소스 업로드
+13. GitLab에 소스 업로드
     
     * 현재 디렉토리의 모든 소스 추가
       
@@ -201,7 +205,7 @@ sequenceDiagram
    
    * WAS, HTTP, KDN Python Django 기반 어플리케이션 중 선택하여 돋보기:mag:아이콘 클릭
 
-4.  컨테이너 신청 상세 내역 작성
+4. 컨테이너 신청 상세 내역 작성
    
    * 프로젝트명 :*컨테이너를 신청할 프로젝트 선택*
    
@@ -229,4 +233,4 @@ sequenceDiagram
 
 # 다음단계
 
-* [컨테이너 터미널 활용하기](./ContainerTerminal_use.md)를 통하여 컨테이너를 관리할 수 있습니다.
+* [Container Terminal 활용하기](./ContainerTerminal_use.md)를 통하여 `Container`를 관리할 수 있습니다.

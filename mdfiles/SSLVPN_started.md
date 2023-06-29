@@ -38,12 +38,12 @@ sequenceDiagram
   actor 사용자(일반)
   actor 사용자(KDN직원)
   actor KDN부서장
-  사용자(일반) ->>+ K-ECP: VM 사용신청
-  K-ECP ->>- 사용자(일반): VM 제공
-  사용자(KDN직원) -->> KDN부서장: VM 사용신청 승인요청?
-  Note over 사용자(KDN직원), KDN부서장: VM 사용자가 KDN직원일 경우User Console를 통하여소속 부서장이 결재 진행.
-  KDN부서장 -->>+ K-ECP: [결재완료] VM 사용신청
-  K-ECP -->>- 사용자(KDN직원): VM 제공
+  사용자(일반) ->>+ K-ECP: SSL VPN 사용신청
+  K-ECP ->>- 사용자(일반): SSL VPN 제공
+  사용자(KDN직원) -->> KDN부서장: SSL VPN 사용신청 승인요청?
+  Note over 사용자(KDN직원), KDN부서장: SSL VPN 사용자가 KDN직원일 경우User Console를 통하여소속 부서장이 결재 진행.
+  KDN부서장 -->>+ K-ECP: [결재완료] SSL VPN 사용신청
+  K-ECP -->>- 사용자(KDN직원): SSL VPN 제공
 ```
 
 K-ECP SSL VPN은 User Console를 통해 신청한 후 최종 승인 시 사용 가능합니다. 아래 개념도와 같이 **SSL-VPN을 통해서 K-ECP의 서비스**에 접속하실 수 있습니다. 접속 가능 영역으로는 공공 인터넷 영역(DMZ)와 공공 업무망 영역이 있습니다.(공공 업무망의 경우 방화벽 정책 필요)
@@ -74,11 +74,15 @@ K-ECP SSL VPN은 User Console를 통해 신청한 후 최종 승인 시 사용 �
    
    * 클러스터:*DMZ, Open IaaS, Open PaaS, 사용 IaaS, Naver cloud Platform*중 선택
    
+   > :bulb:**안내**: 접속해야하는 해당 접속대상서버의 클러스터를 선택
+   
    * 프로젝트명: *해당 Project명 검색 후 선택*
 
 3. 추가 요청사항:*접속대상서버의 IP 입력*
 
-4. :heavy_check_mark:`신청` 버튼 클릭
+> :bulb:**안내**: 접속대상서버의 IP는 `서비스 현황 > 가상서버`에서 확인 가능합니다.
+
+1. :heavy_check_mark:`신청` 버튼 클릭
 
 ---
 
@@ -92,7 +96,7 @@ K-ECP SSL VPN은 User Console를 통해 신청한 후 최종 승인 시 사용 �
 
 > :bulb:**안내**: VPN URL: [https://kecp-vpn.kdn.com]("https://kecp-vpn.kdn.com")
 
-2. 최초 VPN 접속 후 `인증센터` 버튼 클릭
+2. 최초 VPN 접속 후 `인증센터` 버튼 클릭, `클라이언트 다운로드`버튼 클릭
 
 3. 아이디 / 패스워드 입력 후 `인증번호 발송`버튼 클릭
 
@@ -102,7 +106,9 @@ K-ECP SSL VPN은 User Console를 통해 신청한 후 최종 승인 시 사용 �
 
 5. 인증서 발급화면에서 인증서 비밀번호 설정 후 `발급`버튼 클릭
 
-6. 인증서 선택화면에서 `공급자`>`KECPVPN`인 인증서 선택 후 본인이 설정한 비밀번호 입력 `확인`버튼 클릭
+6. VPN 접속 주소를 통해 재접속 후 다시 로그인
+
+7. 인증서 선택화면에서 `공급자`>`KECPVPN`인 인증서 선택 후 본인이 설정한 비밀번호 입력 `확인`버튼 클릭
 
 ---
 
@@ -110,21 +116,11 @@ K-ECP SSL VPN은 User Console를 통해 신청한 후 최종 승인 시 사용 �
 
 ## 3단계: SSL VPN 확인
 
-> :bell:**안내**: K-ECP User Console에서 가상서버 기동 및 상태를 확인할 수 있습니다.
+1. 윈도우 작업표시줄에서 숨겨진 아이콘 표시 클릭
 
-1. K-ECP User Console에서`서비스현황 > 가상서버`이동 후 해당 VM이 속한 프로젝트의 돋보기 아이콘:mag: 클릭
-   
-   - 운전상태: ACTIVE / SHUTDOWN 등 현재 서버의 상태를 확인할 수 있습니다.
-   
-   - 정지 :white_square_button:: ACTICE 상태의 서버를 중지할 수 있습니다.
-   
-   - 시작 :arrow_forward::SHUTDOWN 상태의 서버를 기동시킬 수 있습니다.
-   
-   - 재시작 :arrows_counterclockwise:: 해당 서버를 재기동 할 수 있습니다.
-   
-   - 보안그룹 :mag:: [보안그룹 설정하기](https://kdn-ecp.com/ "보안그룹 설정하기")를 통해 서버 접근을 설정할 수 있습니다.
-   
-   - 상세 :mag:: 상세 페이지를 통해서 해당 가상서버의 상세 사항 확인 및 `서버명` 수정, [VM 변경 및 해지하기](https://kdn-ecp.com/ "변경 및 해지")를 사용할 수 있습니다.
+2. `SecuwaySSLU`앱에 마우스커서 이동
+
+3. `Assigned IP: [IP]` [IP]를 통해서 SSLVPN IP확인
 
 ---
 

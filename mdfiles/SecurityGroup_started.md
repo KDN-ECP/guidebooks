@@ -10,9 +10,9 @@
 
 ### 관련안내서
 
-* [VM 시작하기](./VirtualMachine_started.md)
+* [VM Server 시작하기](./VirtualMachine_started.md)
 
-* [CT 시작하기](./ContainerTerminal_started.md)
+* [Container Terminal 시작하기](./ContainerTerminal_started.md)
 
 ### 목차
 
@@ -31,21 +31,6 @@
 <span id="abstract"/>
 
 ## 개요
-
-K-ECP의 SG 서비스를 사용하기 위해서는 아래와 같은 프로세스로 진행됩니다.
-
-```mermaid
-sequenceDiagram
-  actor 사용자(일반)
-  actor 사용자(KDN직원)
-  actor KDN부서장
-  사용자(일반) ->>+ K-ECP: CT 사용신청
-  K-ECP ->>- 사용자(일반): CT 제공
-  사용자(KDN직원) -->> KDN부서장: CT 사용신청 승인요청?
-  Note over 사용자(KDN직원), KDN부서장: CT 사용자가 KDN직원일 경우User Console를 통하여소속 부서장이 결재 진행.
-  KDN부서장 -->>+ K-ECP: [결재완료] CT 사용신청
-  K-ECP -->>- 사용자(KDN직원): CT 제공
-```
 
 K-ECP의 SG서비스를 통해서 VPN을 통하여 서버로 접근하는 사용자 중 **인가된 사용자**만 
 

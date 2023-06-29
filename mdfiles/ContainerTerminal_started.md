@@ -200,10 +200,10 @@ http://ssgtest-ssg-test-del.apps.ocp4.kdnecp.com (svc/ssgtest)
 
 ---
 
-<span id="nextstep"/>
+<span id ="next step"/>
+
+</span>
 
 ## 다음 단계
 
 * [Container Terminal 활용하기](./ContainerTerminal_use.md)를 통해서 `CT`서비스를 활용할 수 있습니다.(향후 제공 예정)
-
-* [VM Server 변경 및 해지하기](https://kecp.kdn.com/mbr/ "VM Server 변경 및 반납")를 통해 사용중인 `CT`서비스를 반납할 수 있습니다.(향후 제공 예정)
