@@ -123,7 +123,7 @@ sequenceDiagram
 
 1. 로컬 PC workplace 폴더 생성
 
-2. 폴더 공간에서 우클릭 후 Git Bash Here 선택
+2. 폴더 공간에서 우클릭 후 `Git Bash Here` 선택
 
 3. 소스를 보관할 디렉토리(test) 생성
    
@@ -215,7 +215,7 @@ sequenceDiagram
    
    * 버전: *배포할 컨테이너의 표준 템플릿 지정(Base OS + 설치된 Libarary)*
    
-   * Git URL wnth: *2.에서 복사한 git 주소 입력*
+   * Git URL 주소: *2.에서 복사한 git 주소 입력*
    
    * 서버사양: *원하는 서버 사양 선택*
    
@@ -233,4 +233,4 @@ sequenceDiagram
 
 # 다음단계
 
-* [Container Terminal 활용하기](./ContainerTerminal_use.md)를 통하여 `Container`를 관리할 수 있습니다.
+* [Container Terminal 시작하기](./ContainerTerminal_started.md)를 통하여 `Container`를 관리할 수 있습니다.

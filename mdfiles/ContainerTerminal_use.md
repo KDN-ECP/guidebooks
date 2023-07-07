@@ -119,7 +119,7 @@ imagestream.image.openshift.io "ssg123" deleted
   oc new-app [image] --name [app_name]
   ```
 
-> [imape]는 gitlab의 저장된 코드의 URL를 통해서 업로드 가능합니다.
+> :bulb:**안내**: [image]는 gitlab의 저장된 코드의 URL를 통해서 업로드 가능합니다.
 
 ---
 
@@ -135,7 +135,7 @@ In project SSG-TEST (ssg-test-del) on server https://api.ocp4.kdnecp.com:6443
 
 http://ssgtest-ssg-test-del.apps.ocp4.kdnecp.com (svc/ssgtest)
   dc/ssgtest deploys istag/ssgtest:latest <-
-    bc/ssgtest source builds http://10.100.11.114/222216/k-ecp-test-delete.git on openshift/jboss-webserver56-openjdk11-tomcat9-openshift-ubi8:5.6.0
+    bc/ssgtest source builds http:[gitlab_URL]
     deployment #4 deployed 3 days ago - 1 pod
     deployment #3 deployed 3 days ago
     deployment #2 deployed 3 days ago

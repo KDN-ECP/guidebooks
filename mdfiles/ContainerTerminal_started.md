@@ -3,7 +3,7 @@
 
 # Container Terminal 시작하기
 
-이 안내서를 사용하여 **K-ECP Container Terminal(이하. CT)*** 서비스를 시작 하십시오. CT의 서비스 신청서를 작성하고 연결하는 방법을 안내합니다. 
+이 안내서를 사용하여 **K-ECP Container Terminal(이하. CT)** 서비스를 시작 하십시오. CT의 서비스 신청서를 작성하고 연결하는 방법을 안내합니다. 
 
 CT는 K-ECP에서 컨테이너를 관리하고 오케스트레이션 할 수 있는 터미널 입니다. CT에 접속하여 K-ECP OpenShift CLI인 `oc` 명령어와 Kubernetes 클러스터 작업을 위한 명령어인 `kubectl`를 사용하실 수 있습니다. 
 
@@ -95,30 +95,16 @@ CT 접속 후 CLI 명령어인 `oc`를 통해 Container Project를 위한 다음
 ## 2단계: Container Terminal 접속
 
 > :warning: **주의사항:** K-ECP SSL VPN이 사전에 신청되어 있어야 합니다.
+> 
+> :bulb:**안내**: [보안그룹 설정하기](./SecurityGroup_started.md)를 통해 vpn으로 부터 서버접 근이 허용되야 합니다.
 
 1. CT 서비스 신청 승인이 완료 된 경우 K-ECP User Console에서 `서비스 현황 > 가상서버`로 이동하여 해당 프로젝트 선택
 
 2. 선택된 프로젝트내에 VM Server형태로 생성된 CT의 **IP 주소 확인**
 
-3. `[서비스 신청] 기술지원 > 관리서비스 신청 > 보안작업 서비스 신청`의                         돋보기 아이콘:mag: 클릭
+3. SSL VPN 연결 후 SSH 접속 툴 또는 커맨드을 통해 CT의 IP로 접속 (계정명: kecpuser, 초기 비밀번호: K-ECP 운영팀에게 문의)
 
-4. 보안적업 서비스 신청정보 기술 후 신청 요청
-   
-   * 클러스터: *CT가 생성된 클러스터 선택*
-   
-   * 프로젝트명: *CT가 생성된 프로젝트 선택*
-   
-   * 가상서버: *해당 CT 선택*
-   
-   * 서비스명: *`SSL VPN 접속 가능서버 추가 요청` 기술*
-
-5. K-ECP 운영팀으로 부터 보안작업 완료 통보를 받은 후 인터넷 가능환경에서 브라우저를 통해 [https://kecp-vpn.kdn.com](https://kecp-vpn.kdn.com)접속 
-
-> :bell: **안내:** SSL VPN 접속방법 및 사용법은 `SSL VPN 시작하기` 가이드 문서를 참고바랍니다.
-
-6. SSL VPN 연결 후 SSH 접속 툴 또는 커맨드을 통해 CT의 IP로 접속 (계정명: kecpuser, 초기 비밀번호: K-ECP 운영팀에게 문의)
-   
-   **Windows에서 SSH로 접속하는 Command**
+**Windows에서 SSH로 접속하는 Command**
 
 ```powershell
 ssh -p [SSH Port] kecpuser@[CT IP Address]
@@ -126,15 +112,7 @@ ssh -p [SSH Port] kecpuser@[CT IP Address]
 
 > :bell: **안내:** 최초 접속 시 비밀번호를 변경하셔야 정상접속 됩니다.
 
-7. [보안그룹 설정하기](./SecurityGroup_started.md)를 통해 vpn으로 부터 서버접근 허용 작업 수행
-
-8. K-ECP 운영팀으로 부터 초기 아이디와 비밀번호를 전달 받은 후 SSH 프로토콜을 통해 서버 접속
-   
-   ```
-   ssh -p 10040 kecpuser@[CT_IP]
-   ```
-
-9. 비밀번호 입력 후 로그인
+7. 비밀번호 입력 후 로그인
    
    ```
    kecpuser@[CT_IP] password:
@@ -153,17 +131,6 @@ ssh -p [SSH Port] kecpuser@[CT IP Address]
 <span id="step3"/>
 
 ## 3단계: OpenShift 로그인 및 CLI 사용
-
-1. SSH를 통해 CT에 접속한 후 K-ECP OpenShift Platform에 로그인
-
-```terminal
-> oc login -u [사용자ID] https://api.ocp4.kdnecp.com:6443
-Authentication required for https://api.ocp4.kdnecp.com:6443 (openshift)
-Password:
-Login successful.
-```
-
-=======
 
 1. K-ECP 운영팀에게 OpenShift의 원하는 비밀번호 전달
 
@@ -192,7 +159,7 @@ In project SSG-TEST (ssg-test-del) on server https://api.ocp4.kdnecp.com:6443
 
 http://ssgtest-ssg-test-del.apps.ocp4.kdnecp.com (svc/ssgtest)
   dc/ssgtest deploys istag/ssgtest:latest <-
-    bc/ssgtest source builds http://10.100.11.114/222216/k-ecp-test-delete.git on openshift/jboss-webserver56-openjdk11-tomcat9-openshift-ubi8:5.6.0
+    bc/ssgtest source builds http://[gitlab_URL]
     deployment #4 deployed 7 days ago - 1 pod
     deployment #3 deployed 7 days ago
     deployment #2 deployed 7 days ago
