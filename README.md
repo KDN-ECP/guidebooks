@@ -16,6 +16,8 @@
 
 #### Storage
 
+1. Block Storage 시작하기
+
 #### Container
 
 1. [Container 시작하기](./mdfiles/Container_started.md) : Container_started.md
