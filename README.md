@@ -2,7 +2,6 @@
 
 ---
 
-
 #### 공통
 
 1. K-ECP 시작하기
@@ -10,21 +9,21 @@
 
 #### Computing
 
-1. [VM Server 시작하기](./mdfiles/VM_started.md) : VM_started.md
+1. [VM Server 시작하기](./mdfiles/VirtualMachine_started.md) : VirtualMachine_started.md
 
 2. VM Server 삭제하기
 
 #### Storage
 
-1. Block Storage 시작하기
+1. [Block Storage 시작하기](./mdfiles/BlockStorage_started.md): BlockStorage_started.md
 
 #### Container
 
 1. [Container 시작하기](./mdfiles/Container_started.md) : Container_started.md
 
-2. [Container Terminal 시작하기](./mdfiles/Container%20Terminal_started.md) : Container Terminal_started.md
+2. [Container Terminal 시작하기](./mdfiles/ContainerTerminal_started.md) : ContainerTerminal_started.md
 
-3. [Container Terminal 활용하기](./mdfiles/Container%20Terminal_CLI.md) : Container Terminal_use.md
+3. [Container Terminal 활용하기](./mdfiles/ContainerTerminal_use.md) : ContainerTerminal_use.md
 
 #### Database
 
@@ -54,15 +53,15 @@
 ## 목차(Index)
 
 * [Project 만들기](./mdfiles/Project.md) : Project.md
-  
+
   #### Computing
 
 * [VM Server 시작하기](./mdfiles/VirtualMachine_started.md) : VM_started.md
-  
+
   #### Storage
 
 * [Block Storage 시작하기](./mdfiles/BlockStorage_started.md): Block Storage_started.md
-  
+
   #### Container
 
 * [Container 시작하기](./mdfiles/Container_started.md) : Container_started.md
@@ -70,18 +69,19 @@
 * [Container Terminal 시작하기](./mdfiles/ContainerTerminal_started.md) : ContainerTerminal_started.md
 
 * [Container Terminal 활용하기](./mdfiles/ContainerTerminal_use.md) : ContainerTerminal_use.md
-  
+
   #### Database
-  
+
   #### Network
-  
+
   #### Security
 
 * [SSL VPN 시작하기](./mdfiles/SSLVPN_started.md) : SSLVPN_started.md
-  
+
   #### System S/W
-  
+
   #### Management
 =======
 ```
->>>>>>> 7bcda49544c9a2ac5d4d66fcdba66eedb01d13f1
+
+> > > > > > > 7bcda49544c9a2ac5d4d66fcdba66eedb01d13f1
