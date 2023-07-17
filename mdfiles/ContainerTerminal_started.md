@@ -5,7 +5,7 @@
 
 이 안내서를 사용하여 **K-ECP Container Terminal(이하. CT)** 서비스를 시작 하십시오. CT의 서비스 신청서를 작성하고 연결하는 방법을 안내합니다. 
 
-CT는 K-ECP에서 컨테이너를 관리하고 오케스트레이션 할 수 있<mark>는 터미널 입니다. CT에 접속하여 K-ECP OpenShift CLI인 `oc` 명령어와 Kubernetes 클러스터 작업을 위한 명령어인 `kubectl`를 사용하실 수 있습니다. </mark>
+CT는 K-ECP에서 컨테이너를 관리하고 오케스트레이션 할 수 있는 터미널 입니다. CT에 접속하여 K-ECP OpenShift CLI인 `oc` 명령어와 Kubernetes 클러스터 작업을 위한 명령어인 `kubectl`를 사용하실 수 있습니다.
 
 ### 관련 안내서
 

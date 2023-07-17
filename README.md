@@ -15,17 +15,19 @@
   
   #### Computing
 
-* [VM Server 시작하기](./mdfiles/VM_started.md) : VM_started.md
+* [VM Server 시작하기](./mdfiles/VirtualMachine_started.md) : VM_started.md
   
   #### Storage
+
+* [Block Storage 시작하기](./mdfiles/BlockStorage_started.md): Block Storage_started.md
   
   #### Container
 
 * [Container 시작하기](./mdfiles/Container_started.md) : Container_started.md
 
-* [Container Terminal 시작하기](./mdfiles/Container%20Terminal_started.md) : Container Terminal_started.md
+* [Container Terminal 시작하기](./mdfiles/ContainerTerminal_started.md) : ContainerTerminal_started.md
 
-* [Container Terminal 활용하기](./mdfiles/Container%20Terminal_CLI.md) : Container Terminal_use.md
+* [Container Terminal 활용하기](./mdfiles/ContainerTerminal_use.md) : ContainerTerminal_use.md
   
   #### Database
   
