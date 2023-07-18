@@ -12,7 +12,7 @@ VM은 K-ECP에서 서버를 생성하여 컴퓨팅 인프라를 가상화하여 
 * [Project 만들기](./Project.md)
 * [SSL VPN 시작하기](./SSLVPN_started.md)
 * [Storage 시작하기](./Storage_started)
-* [VM Backup 시작하기](./VMBacup_started)
+* VM Backup 시작하기
 
 ### 목차
 
@@ -51,7 +51,7 @@ sequenceDiagram
 
 K-ECP VM은 User Console를 통해 신청한 후 최종 승인 시 사용 가능합니다. 아래 개념도와 같이 **SSL-VPN 또는 전용선(Direct Connect 서비스 사용시)을 이용하여 접속**하실 수 있습니다. 접속 가능 영역으로는 공공 인터넷 영역(DMZ)와 공공 업무망 영역이 있습니다.
 
-<img src="file:///D:/Git%20workspace/guidebooks/resource/concept_vm.png" title="" alt="concept_vm.png" width="714">
+![concept_vm.png](D:\kdn_cloud\Git-workplace\guidebooks\resource\concept_vm.png)
 
 VM 신청 시 서버 운영 목적에 따라 다음과 같은 다양한 이미지를 제공 받을 수 있습니다.
 

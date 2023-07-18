@@ -30,20 +30,30 @@ Project는 K-ECP에서 업무 시스템을 의미하며, 프로젝트 신청 이
 
 K-ECP Project 서비스를 사용하기 위해서는 아래와 같은 프로세스로 진행되며, **KDN의 직원일 경우 User Console에서 소속 부서장의 결재**가 필요합니다.
 
+* KDN 직원이 사용할 경우
+
 ```mermaid
 sequenceDiagram
-  actor 사용자(일반)
   actor 사용자(KDN직원)
   actor KDN부서장
-  사용자(일반) ->>+ K-ECP: Project 사용신청
-  K-ECP ->>- 사용자(일반): Project 제공
   사용자(KDN직원) -->> KDN부서장: Project 사용신청 승인요청?
   Note over 사용자(KDN직원), KDN부서장: Project 사용자가 KDN직원일 경우User Console를 통하여소속 부서장이 결재 진행.
   KDN부서장 -->>+ K-ECP: [결재완료] Project 사용신청
   K-ECP -->>- 사용자(KDN직원): Project 제공
 ```
 
+* 일반 사용자
+
+```mermaid
+sequenceDiagram
+  actor 사용자(일반)
+  사용자(일반) -->>+ K-ECP: Project 사용신청 승인요청
+  K-ECP -->>- 사용자(일반): Project 제공
+```
+
 K-ECP Project는 User Console를 통해 신청한 후 최종 승인 시 사용 가능합니다.  Project안에서 서비스를 구성하여 K-ECP 서비스를 사용할 수 있습니다.
+
+<img src="file:///D:/kdn_cloud/Git-workplace/guidebooks/resource/concept_project.PNG" title="" alt="concept_project.PNG" width="540">
 
 ---
 
