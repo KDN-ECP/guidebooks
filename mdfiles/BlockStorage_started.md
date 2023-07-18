@@ -31,17 +31,25 @@ BS는 데이터를 일정한 크기의 덩어리(Block)로 나누어 저장하�
 
 K-ECP CT 서비스를 사용하기 위해서는 아래와 같은 프로세스로 진행되며, **KDN의 직원일 경우 User Console에서 소속 부서장의 결재**가 필요합니다.
 
+* KDN 직원이 사용할 경우
+
+```mermaid
+sequenceDiagram
+  actor 사용자(KDN직원)
+  actor KDN부서장
+  사용자(KDN직원) -->> KDN부서장: BS 사용신청 승인요청
+  Note over 사용자(KDN직원), KDN부서장: BS 사용자가 KDN직원일 경우User Console를 통하여소속 부서장이 결재 진행.
+  KDN부서장 -->>+ K-ECP: [결재완료] BS 사용신청
+  K-ECP -->>- 사용자(KDN직원): BS 제공
+```
+
+* 일반 사용자
+
 ```mermaid
 sequenceDiagram
   actor 사용자(일반)
-  actor 사용자(KDN직원)
-  actor KDN부서장
-  사용자(일반) ->>+ K-ECP: CT 사용신청
-  K-ECP ->>- 사용자(일반): CT 제공
-  사용자(KDN직원) -->> KDN부서장: CT 사용신청 승인요청?
-  Note over 사용자(KDN직원), KDN부서장: CT 사용자가 KDN직원일 경우User Console를 통하여소속 부서장이 결재 진행.
-  KDN부서장 -->>+ K-ECP: [결재완료] CT 사용신청
-  K-ECP -->>- 사용자(KDN직원): CT 제공
+  사용자(일반) -->>+ K-ECP: BS 사용신청 승인요청
+  K-ECP -->>- 사용자(일반): BS 제공
 ```
 
 K-ECP CT는 User Console를 통해 신청한 후 최종 승인 시 가상서버 형태로 제공 되며, 아래 개념도와 같이 **SSL-VPN 또는 전용선(Direct Connect 서비스 사용시)을 이용하여 접속**하실 수 있습니다.

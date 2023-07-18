@@ -40,17 +40,25 @@ K-ECP의 Container서비스는 `ContainerTerminal`서비스와 함께 사용할 
 
 K-ECP Container서비스를 사용하기 위해서는 아래와 같은 프로세스로 진행됩니다.
 
+* KDN 직원이 사용할 경우
+
 ```mermaid
 sequenceDiagram
-  actor 사용자(일반)
   actor 사용자(KDN직원)
   actor KDN부서장
-  사용자(일반) ->>+ K-ECP: Container 사용신청
-  K-ECP ->>- 사용자(일반): Container 제공
-  사용자(KDN직원) -->> KDN부서장: Container 사용신청 승인요청?
+  사용자(KDN직원) -->> KDN부서장: Container 사용신청 승인요청
   Note over 사용자(KDN직원), KDN부서장: Container 사용자가 KDN직원일 경우User Console를 통하여소속 부서장이 결재 진행.
   KDN부서장 -->>+ K-ECP: [결재완료] Container 사용신청
   K-ECP -->>- 사용자(KDN직원): Container 제공
+```
+
+* 일반 사용자
+
+```mermaid
+sequenceDiagram
+  actor 사용자(일반)
+  사용자(일반) -->>+ K-ECP: Container 사용신청 승인요청
+  K-ECP -->>- 사용자(일반): Container 제공
 ```
 
 ---
@@ -64,6 +72,7 @@ sequenceDiagram
 > :bulb:**안내**: K-ECP 자료실에서 다운로드 할 수 있습니다.
 
 - GitLab에 가입되어 있어야 합니다.
+- [K-ECP SW 자료실](./http://10.100.11.114/k-ecp/software)에서 Git 파일 다운로드 후 설치
 
 ---
 
@@ -73,7 +82,7 @@ sequenceDiagram
 
 1. SSL-VPN 접속
 
-2. GitLab URL접속: http://10.100.11.114
+2. GitLab URL접속: http://gitlab.ocp4.kdnecp.com
 
 3. GitLab 화면에서 `Register Now`버튼 클릭
    
@@ -92,8 +101,6 @@ sequenceDiagram
    * 원하는 역할(Role) 선택
    
    * `Get started!`버튼 클릭
-
-5. [K-ECP SW 자료실](./http://10.100.11.114/k-ecp/software)에서 Git 파일 다운로드 후 설치
 
 ---
 
