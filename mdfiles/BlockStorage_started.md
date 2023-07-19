@@ -23,8 +23,6 @@ BS는 데이터를 일정한 크기의 덩어리(Block)로 나누어 저장하�
 
 [4단계:Block Storage 자동마운트](step#4)
 
-[다음 단계](#nextstep)
-
 ---
 
 <span id= "abstract"/>
@@ -359,9 +357,3 @@ tmpfs           379M     0  379M   0% /run/user/901
 ```
 
 ---
-
-<span id= "nextstep"/>
-
-## 다음 단계
-
-- [Container Terminal 활용하기](./ContainerTerminal_use.md)를 통해서 `CT`서비스를 활용할 수 있습니다.
