@@ -40,7 +40,7 @@ K-ECP의 Container서비스는 `ContainerTerminal`서비스와 함께 사용할 
 
 K-ECP Container서비스를 사용하기 위해서는 아래와 같은 프로세스로 진행됩니다.
 
-* KDN 직원이 사용할 경우
+* KDN 직원인 경우
 
 ```mermaid
 sequenceDiagram
@@ -52,7 +52,7 @@ sequenceDiagram
   K-ECP -->>- 사용자(KDN직원): Container 제공
 ```
 
-* 일반 사용자
+* 일반 사용자인 경우
 
 ```mermaid
 sequenceDiagram
