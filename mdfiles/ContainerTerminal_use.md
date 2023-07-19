@@ -174,6 +174,7 @@ localhost/nginx  latest      021283c8eb95  2 weeks ago  191 MB
    ```아오
    podman stop my-nginx
    ```
+
 2. 컨테이너 제거
    
    ```아오
