@@ -34,7 +34,7 @@ SG를 통하여 클라우드 상의 가상서버의 송수신 트래픽을 제�
 
 K-ECP의 SG서비스를 통해서 VPN을 통하여 서버로 접근하는 사용자 중 **인가된 사용자**만 
 
-![concept_sg.PNG](D:\Git%20workspace\guidebooks\resource\concept_sg.PNG)
+![concept_sg.PNG](./../resource/concept_sg.PNG)
 
 > :warning:**주의사항**: K-ECP의 SG는 Instance 당 1개의 그룹만 제공합니다. 보안그룹 내에서 여러개의 인/아웃바운드 규칙을 적용하여 트래픽을 제어할 수 있습니다.
 

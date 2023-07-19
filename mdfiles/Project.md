@@ -53,7 +53,11 @@ sequenceDiagram
 
 K-ECP Project는 User Console를 통해 신청한 후 최종 승인 시 사용 가능합니다.  Project안에서 서비스를 구성하여 K-ECP 서비스를 사용할 수 있습니다.
 
+<<<<<<< HEAD
 ![개념도](./../resource/concpet_project.png "서비스 개념도")
+=======
+![concept_project.PNG](./../resource/concept_project.PNG)
+>>>>>>> 1f419b1b95189a4542b8ffa9d563977864374158
 
 ---
 

@@ -51,7 +51,7 @@ sequenceDiagram
 
 K-ECP VM은 User Console를 통해 신청한 후 최종 승인 시 사용 가능합니다. 아래 개념도와 같이 **SSL-VPN 또는 전용선(Direct Connect 서비스 사용시)을 이용하여 접속**하실 수 있습니다. 접속 가능 영역으로는 공공 인터넷 영역(DMZ)와 공공 업무망 영역이 있습니다.
 
-![concept_vm.png](D:\kdn_cloud\Git-workplace\guidebooks\resource\concept_vm.png)
+![concept_vm.png](./../resource/concept_vm.png)
 
 VM 신청 시 서버 운영 목적에 따라 다음과 같은 다양한 이미지를 제공 받을 수 있습니다.
 
@@ -95,7 +95,7 @@ VM 신청 시 서버 운영 목적에 따라 다음과 같은 다양한 이미�
    
    * DISK: *50GB 기본 설정*
    
-   > :bulb:**Tip**: 추가 DISK를 원할 경우 [스토리지 신청](http://kdnecp.kdn.com:8585/mbr/ "스토리지 시작하기")을 통해 서버에 추가 할당 할 수 있습니다.
+   > :bulb:**Tip**: 추가 DISK를 원할 경우 [스토리지 신청](./BlockStorage_started.md)을 통해 서버에 추가 할당 할 수 있습니다.
    
    * 서버사양: 소형서버, 중형서버, 대형서버, CPU-Intensive, Memory-Intensive 중 선택 후 서버 스펙 선택
    
@@ -176,7 +176,7 @@ VM 신청 시 서버 운영 목적에 따라 다음과 같은 다양한 이미�
    
    * 보안그룹 :mag:: [보안그룹 설정하기](./SecurityGroup_started.md)를 통해 서버 접근을 설정할 수 있습니다.
    
-   * 상세 :mag:: 상세 페이지를 통해서 해당 가상서버의 상세 사항 확인 및 `서버명` 수정, [VM 변경 및 해지하기](https://kdn-ecp.com/ "변경 및 해지")를 사용할 수 있습니다.
+   * 상세 :mag:: 상세 페이지를 통해서 해당 가상서버의 상세 사항 확인 및 `서버명` 수정, VM 변경 및 해지하기를 사용할 수 있습니다.
 
 ---
 
@@ -184,6 +184,6 @@ VM 신청 시 서버 운영 목적에 따라 다음과 같은 다양한 이미�
 
 ## 다음 단계
 
-* [Block Storage시작하기](https://kdn-ecp.com/ "block storage시작하기")를 통해 `VM`의 Storage를 추가할 수 있습니다.(향후 제공 예정)
+* [Block Storage시작하기](./BlockStorage_started.md)를 통해 `VM`의 Storage를 추가할 수 있습니다.
 
-* [VM 변경 및 해지하기](https://kecp.kdn.com/mbr/ "VM Server 변경 및 반납")를 통해 사용중인 `VM`서비스를 반납할 수 있습니다.(향후 제공 예정)
+* VM 변경 및 해지하기를 통해 사용중인 `VM`서비스를 반납할 수 있습니다.(향후 제공 예정)
