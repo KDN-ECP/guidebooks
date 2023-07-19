@@ -48,7 +48,7 @@ sequenceDiagram
 
 K-ECP SSL VPN은 User Console를 통해 신청한 후 최종 승인 시 사용 가능합니다. 아래 개념도와 같이 **SSL-VPN을 통해서 K-ECP의 서비스**에 접속하실 수 있습니다. 접속 가능 영역으로는 공공 인터넷 영역(DMZ)와 공공 업무망 영역이 있습니다.(공공 업무망의 경우 방화벽 정책 필요)
 
-![concept_sslvpn.PNG](./../resource/concept_sslvpn.PNG)
+![concept_sslvpn.PNG](resource/concept_sslvpn.png)
 
 ---
 
