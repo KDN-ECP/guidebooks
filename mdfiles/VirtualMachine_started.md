@@ -131,7 +131,7 @@ VM 신청 시 서버 운영 목적에 따라 다음과 같은 다양한 이미�
 5. K-ECP 운영팀으로 부터 VM서버의 초기 ID/PW을 전달 받은 후 SSH 프로토콜을 통해 서버 접속
    
    ```powershell
-   ssh -p [Port] kecpuser@[VM_IP_address]
+   ssh -p [ssh Port] kecpuser@[VM_IP_address]
    ```
 
 6. 초기 비밀번호 입력 후 로그인
