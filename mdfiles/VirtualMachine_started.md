@@ -184,6 +184,6 @@ VM 신청 시 서버 운영 목적에 따라 다음과 같은 다양한 이미�
 
 ## 다음 단계
 
-* [Block Storage시작하기](https://kdn-ecp.com/ "block storage시작하기")를 통해 `VM`의 Storage를 추가할 수 있습니다.(향후 제공 예정)
+* [Block Storage시작하기](./BlockStorage_started.md)를 통해 `VM`의 Storage를 추가할 수 있습니다.
 
-* [VM 변경 및 해지하기](https://kecp.kdn.com/mbr/ "VM Server 변경 및 반납")를 통해 사용중인 `VM`서비스를 반납할 수 있습니다.(향후 제공 예정)
+* VM 변경 및 해지하기를 통해 사용중인 `VM`서비스를 반납할 수 있습니다.(향후 제공 예정)
