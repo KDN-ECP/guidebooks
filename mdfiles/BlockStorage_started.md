@@ -364,4 +364,4 @@ tmpfs           379M     0  379M   0% /run/user/901
 
 ## 다음 단계
 
-- [Container Terminal 활용하기](./ContainerTerminal_use.md)를 통해서 `CT`서비스를 활용할 수 있습니다.(향후 제공 예정)
+- [Container Terminal 활용하기](./ContainerTerminal_use.md)를 통해서 `CT`서비스를 활용할 수 있습니다.
