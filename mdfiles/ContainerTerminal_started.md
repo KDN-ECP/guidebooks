@@ -123,7 +123,7 @@ ssh -p [SSH Port] kecpuser@[CT IP Address]
 
 7. 비밀번호 입력 후 로그인
    
-   ```
+   ```powershell
    kecpuser@[CT_IP] password:
    Activate the web console with: systemctl enable --now cockpit.socket
    
@@ -147,11 +147,11 @@ ssh -p [SSH Port] kecpuser@[CT IP Address]
 
 2. 접속한 CT서버에서 OpenShift 로그인
 
-```
+```powershell
 oc login -u [ID] https://api.ocp4.kdnecp.com:6443
 ```
 
-```
+```powershell
 Username: [ID]
 Password:
 Login successful.
@@ -159,11 +159,11 @@ Login successful.
 
 3. Openshift 접속 확인
 
-```
+```powershell
 oc status  
 ```
 
-```
+```powershell
 In project SSG-TEST (ssg-test-del) on server https://api.ocp4.kdnecp.com:6443
 
 http://ssgtest-ssg-test-del.apps.ocp4.kdnecp.com (svc/ssgtest)
