@@ -104,7 +104,7 @@ VM 신청 시 서버 운영 목적에 따라 다음과 같은 다양한 이미�
    
    * 서버사양: 소형서버, 중형서버, 대형서버, CPU-Intensive, Memory-Intensive 중 선택 후 서버 스펙 선택
    
-   > :bulb:**Tip**: 상세 사양 및 요금은 [요금표](http://kdnecp.kdn.com:8585/mbr/ "KDN 요금표")에서 확인 가능합니다.
+   > :bulb:**Tip**: 상세 사양 및 요금은 K-ECP요금표에서 확인 가능합니다.
    
    * 백업네트워크: 포함 선택시 `Backup IP`추가 할당
 
