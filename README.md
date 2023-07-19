@@ -86,5 +86,3 @@
   #### Management
 =======
 ```
-
-> > > > > > > 7bcda49544c9a2ac5d4d66fcdba66eedb01d13f1
