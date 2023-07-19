@@ -99,13 +99,13 @@ K-ECP SSL VPN은 User Console를 통해 신청한 후 최종 승인 시 사용 �
 
 1. 웹 브라우저 주소창에 VPN 접속 주소 입력
 
-> :bulb:**안내**: VPN URL: [https://kecp-vpn.kdn.com]("https://kecp-vpn.kdn.com")
+> :bulb:**안내**: VPN URL: https://kecp-vpn.kdn.com
 
 2. 최초 VPN 접속 후 `인증센터` 버튼 클릭, `클라이언트 다운로드`버튼 클릭
 
 3. 아이디 / 패스워드 입력 후 `인증번호 발송`버튼 클릭
 
-> :bulb:**안내**: 최초 아이디/패스워드는 사번/OOOO 입니다.
+> :bulb:**안내**: 최초 아이디/패스워드는 사번/OOOO 입니다.(최초 비밀번호의 경우 운영팀에 문의)
 
 4. 핸드폰 문자 인증 후 로그인
 
