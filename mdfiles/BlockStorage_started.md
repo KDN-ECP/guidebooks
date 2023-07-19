@@ -27,6 +27,8 @@ BS는 데이터를 일정한 크기의 덩어리(Block)로 나누어 저장하�
 
 ---
 
+<span id= "abstract"/>
+
 ## 개요
 
 K-ECP CT 서비스를 사용하기 위해서는 아래와 같은 프로세스로 진행되며, **KDN의 직원일 경우 User Console에서 소속 부서장의 결재**가 필요합니다.
@@ -54,6 +56,8 @@ sequenceDiagram
 
 ---
 
+<span id= "precondition"/>
+
 ## 전제 조건
 
 - 시작하기 전에 [K-ECP User Console](https://kecp.kdn.com/mbr/ "인터넷에서 접속 시")에 회원가입이 되어 있어야 합니다.
@@ -63,6 +67,8 @@ sequenceDiagram
 > :bulb: **Tip:** KDN 직원의 경우 KDN 내부망에서 [KDN 전용 User Console](http://kdnecp.kdn.com:8585/mbr/ "KDN 내부망에서 접속 시")로도 접속이 가능합니다.
 
 ---
+
+<span id= "step1"/>
 
 ## 1단계: Block Storage 서비스 신청
 
@@ -83,6 +89,8 @@ sequenceDiagram
 3. `신청` 버튼을 클릭 하여 BS 서비스 신청
 
 ---
+
+<span id="step2"/>
 
 ## 2단계: Block Storage 파티셔닝
 
@@ -189,6 +197,8 @@ Syncing disks.
 
 ## 3단계: Block Storage 마운트
 
+<span id="step3"/>
+
 1. 파티셔닝된 디스크를 xfs 파일시스템으로 포맷
 
 ```powershell
@@ -261,6 +271,8 @@ tmpfs           379M     0  379M   0% /run/user/901
 ---
 
 ## 4단계: Block Storage 자동 마운트
+
+<span id= "step4"/>
 
 > :bulb:**안내**: 자동 마운트를 설정하지 않으면, 부팅할 때마다 디스크를 마운트 해야하기 때문에 자동마운트 설정을 실행합니다.
 
@@ -349,6 +361,8 @@ tmpfs           379M     0  379M   0% /run/user/901
 ```
 
 ---
+
+<span id= "nextstep"/>
 
 ## 다음 단계
 
