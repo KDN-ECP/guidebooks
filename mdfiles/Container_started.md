@@ -63,6 +63,8 @@ sequenceDiagram
 
 ---
 
+<span id= "prediction"/>
+
 ### 전제 조건
 
 - [Project 만들기](./Project.md)를 통하여 Container 서비스를 신청할 프로젝트를 생성해야합니다.
@@ -72,7 +74,7 @@ sequenceDiagram
 > :bulb:**안내**: K-ECP 자료실에서 다운로드 할 수 있습니다.
 
 - GitLab에 가입되어 있어야 합니다.
-- [K-ECP SW 자료실](./http://10.100.11.114/k-ecp/software)에서 Git 파일 다운로드 후 설치
+- [K-ECP SW 자료실](./http://10.100.11.114/k-ecp/software)에서 Git 파일 다운로드 후 설치(SSLVPN 접속상태에서 가능합니다.)
 
 ---
 
