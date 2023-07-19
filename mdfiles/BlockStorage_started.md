@@ -99,7 +99,7 @@ sequenceDiagram
 **Windows에서 SSH로 접속하는 Command**
 
 ```powershell
-ssh -p [SSH Port] kecpuser@[VM IP Address]
+ssh -p [ssh Port] kecpuser@[VM IP Address]
 ```
 
 > :warning:**주의사항**: 파일 시스템을 파티셔닝하고 마운트하는 작업으로 root 권한으로 작업하여야 합니다.
