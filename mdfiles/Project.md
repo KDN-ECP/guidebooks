@@ -113,6 +113,6 @@ K-ECP Project는 User Console를 통해 신청한 후 최종 승인 시 사용 �
 
 ## 다음 단계
 
-- [VM Server 시작하기](./mdfiles/VirtualMachine_started.md)를 통해 Project에서 `VM`서비스를 시작할 수 있습니다.
+- [VM Server 시작하기](./VirtualMachine_started.md)를 통해 Project에서 `VM`서비스를 시작할 수 있습니다.
 
-- [Container 시작하기](./mdfiles/Container_started.md)를 통해 Project에서 `Container`서비스를 시작할 수 있습니다.
+- [Container 시작하기](./Container_started.md)를 통해 Project에서 `Container`서비스를 시작할 수 있습니다.
