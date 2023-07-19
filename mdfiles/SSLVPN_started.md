@@ -134,5 +134,5 @@ K-ECP SSL VPN은 User Console를 통해 신청한 후 최종 승인 시 사용 �
 ## 다음 단계
 
 - [Security Group 시작하기](./SecurityGroup_started.md)를 통해 SSL VPN에 접근하는 사용자에 대한 보안 정책을 설정할 수 있습니다.
-- [K-ECP Console](http://cmp.ocp4.kdnecp.com:8585)에 SSL VPN을 통해 접속할 수 있습니다.
-- [K-ECP Gitlab](http://gitlab.ocp4.kdnecp.com)에 SSL VPN을 통해 접속할 수 있습니다.
+- [K-ECP Console](http://cmp.ocp4.kdnecp.com:8585)에 SSL VPN을 통해 접속할 수 있습니다. URL: http://cmp.ocp4.kdnecp.com:8585
+- [K-ECP Gitlab](http://gitlab.ocp4.kdnecp.com)에 SSL VPN을 통해 접속할 수 있습니다. URL: http://gitlab.ocp4.kdnecp.com
