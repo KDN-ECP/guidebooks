@@ -138,7 +138,7 @@ sequenceDiagram
 
 3. 1단계에서 복사한 URL주소를 입력하여 Clone 실행
    
-   ```
+   ```powershell
    git clone [Clone with Http]
    ```
 
@@ -152,23 +152,23 @@ sequenceDiagram
 
 8. 실행중인 cmd 창에서 생성된 폴더로 이동
    
-   ```
+   ```powershell
    cd [Project name]
    ```
 
 9. 해당 리파지토리에 유저 정보 등록
    
-   ```
+   ```powershell
    git config --global user.name"[사]"
    ```
    
-   ```
+   ```powershell
    git config --global user.email"[User Email]"
    ```
 
 10. 등록된 정보 확인
     
-    ```
+    ```powershell
     git config --list | grep user.
     ```
 
@@ -176,19 +176,19 @@ sequenceDiagram
     
     * 현재 디렉토리의 모든 소스를 로컬 디렉토리에 추가
       
-      ```
+      ```powershell
       git add .
       ```
     
     * GitLab으로 commit
       
-      ```
+      ```powershell
       git commit -m "commit 메시지"
       ```
     
     * 로컬 소스를 Git(Main Branch로)에 업로드
       
-      ```
+      ```powershell
       git push -u origin main
       ```
 
