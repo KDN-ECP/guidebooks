@@ -30,7 +30,7 @@ Project는 K-ECP에서 업무 시스템을 의미하며, 프로젝트 신청 이
 
 K-ECP Project 서비스를 사용하기 위해서는 아래와 같은 프로세스로 진행되며, **KDN의 직원일 경우 User Console에서 소속 부서장의 결재**가 필요합니다.
 
-* KDN 직원이 사용할 경우
+* KDN 직원인 경우
 
 ```mermaid
 sequenceDiagram
@@ -42,7 +42,7 @@ sequenceDiagram
   K-ECP -->>- 사용자(KDN직원): Project 제공
 ```
 
-* 일반 사용자
+* 일반 사용자인 경우
 
 ```mermaid
 sequenceDiagram
