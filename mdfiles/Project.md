@@ -53,7 +53,7 @@ sequenceDiagram
 
 K-ECP Project는 User Console를 통해 신청한 후 최종 승인 시 사용 가능합니다.  Project안에서 서비스를 구성하여 K-ECP 서비스를 사용할 수 있습니다.
 
-![concept_project.PNG](D:\kdn_cloud\Git-workplace\guidebooks\resource\concept_project.PNG)
+![개념도](./../resource/concpet_project.png "서비스 개념도")
 
 ---
 
@@ -106,8 +106,6 @@ K-ECP Project는 User Console를 통해 신청한 후 최종 승인 시 사용 �
 2. Project를 선택하면 해당 Project에 대한 승인 프로세스 정보와Project 신청 시 입력한 Project 신청 정보를 확인할 수 있습니다.
 
 3. 이후 `[서비스 신청]`시 Project선택 항목에서 사용자가 원하는 Project를 선택하여 해당 Project에서 서비스를 구성하여 사용할 수 있습니다.
-
-4. 
 
 ---
 
