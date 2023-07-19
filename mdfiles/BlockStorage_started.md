@@ -33,7 +33,7 @@ BS는 데이터를 일정한 크기의 덩어리(Block)로 나누어 저장하�
 
 K-ECP CT 서비스를 사용하기 위해서는 아래와 같은 프로세스로 진행되며, **KDN의 직원일 경우 User Console에서 소속 부서장의 결재**가 필요합니다.
 
-* KDN 직원이 사용할 경우
+* KDN 직원인 경우
 
 ```mermaid
 sequenceDiagram
@@ -45,7 +45,7 @@ sequenceDiagram
   K-ECP -->>- 사용자(KDN직원): BS 제공
 ```
 
-* 일반 사용자
+* 일반 사용자인 경우
 
 ```mermaid
 sequenceDiagram
