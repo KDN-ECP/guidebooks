@@ -7,7 +7,7 @@ BS는 데이터를 일정한 크기의 덩어리(Block)로 나누어 저장하�
 ### 관련 안내서
 
 - [Project 만들기](./Project.md)
-- [Virtual Server 시작하기](./Virtual Server_started.md)
+- [Virtual Server 시작하기](./VirtualMachine_started.md)
 
 ### 목차
 
