@@ -33,17 +33,22 @@ SSL VPN(Secure Sockets Layer VPN)은 컴퓨터 네트워크에 통신 보안을 
 
 K-ECP SSL VPN서비스를 사용하기 위해서는 아래와 같은 프로세스로 진행되며, **KDN의 직원일 경우 User Console에서 소속 부서장의 결재**가 필요합니다.
 
+*KDN 사용자의 경우
 ```mermaid
 sequenceDiagram
-  actor 사용자(일반)
   actor 사용자(KDN직원)
   actor KDN부서장
-  사용자(일반) ->>+ K-ECP: SSL VPN 사용신청
-  K-ECP ->>- 사용자(일반): SSL VPN 제공
   사용자(KDN직원) -->> KDN부서장: SSL VPN 사용신청 승인요청?
   Note over 사용자(KDN직원), KDN부서장: SSL VPN 사용자가 KDN직원일 경우User Console를 통하여소속 부서장이 결재 진행.
   KDN부서장 -->>+ K-ECP: [결재완료] SSL VPN 사용신청
   K-ECP -->>- 사용자(KDN직원): SSL VPN 제공
+```
+* 일반 사용자의 경우
+```mermaid
+sequenceDiagram
+  actor 사용자(일반)
+  사용자(일반) ->>+ K-ECP: SSL VPN 사용신청
+  K-ECP ->>- 사용자(일반): SSL VPN 제공
 ```
 
 K-ECP SSL VPN은 User Console를 통해 신청한 후 최종 승인 시 사용 가능합니다. 아래 개념도와 같이 **SSL-VPN을 통해서 K-ECP의 서비스**에 접속하실 수 있습니다. 접속 가능 영역으로는 공공 인터넷 영역(DMZ)와 공공 업무망 영역이 있습니다.(공공 업무망의 경우 방화벽 정책 필요)
