@@ -5,7 +5,8 @@
 #### 공통
 
 1. K-ECP 시작하기
-2. [Project 만들기](./mdfiles/Project.md) : Project.md
+   
+1. [Project 만들기](./mdfiles/Project.md) : Project.md
 
 #### Computing
 
