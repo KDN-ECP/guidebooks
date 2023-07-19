@@ -52,14 +52,6 @@ sequenceDiagram
   K-ECP -->>- 사용자(일반): BS 제공
 ```
 
-K-ECP CT는 User Console를 통해 신청한 후 최종 승인 시 가상서버 형태로 제공 되며, 아래 개념도와 같이 **SSL-VPN 또는 전용선(Direct Connect 서비스 사용시)을 이용하여 접속**하실 수 있습니다.
-
-CT 접속 후 CLI 명령어인 `oc`를 통해 Container Project를 위한 다음과 같은 다양한 작업을 수행할 수 있습니다.
-
-- 프로젝트 소스 코드로 직접 작업
-- K-ECP Container Platform 작업 스크립팅
-- 애플리케이션 빌드, 배포 및 관리
-
 ---
 
 ## 전제 조건
@@ -108,19 +100,19 @@ ssh -p [SSH Port] kecpuser@[VM IP Address]
 
 > :warning:**주의사항**: 파일 시스템을 파티셔닝하고 마운트하는 작업으로 root 권한으로 작업하여야 합니다.
 
-```아오
+```powershell
 sudo -i
 ```
 
 4. 새로 추가된 블록디스크 확인(할당되지 않은 디스크 확인)
 
-```아오
+```powershell
 fdisk -l
 ```
 
 * 미등록 블록디스크 확인(Disk /dev/vdb)
 
-```아오
+```powershell
 Disk /dev/vda: 53.7 GB, 53687091200 bytes, 104857600 sectors
 Units = sectors of 1 * 512 = 512 bytes
 Sector size (logical/physical): 512 bytes / 512 bytes
@@ -141,11 +133,11 @@ Disk identifier: 0x6d594ce7
 
 5. 명령어 실행을 통한 파티셔닝 실행
 
-```아오
+```powershell
 fdisk /dev/vdb
 ```
 
-```아오
+```powershell
 Welcome to fdisk (util-linux 2.23.2).
 
 Changes will remain in memory only, until you decide to write them.
@@ -154,13 +146,13 @@ Be careful before using the write command.
 
 6. 새로운 파티션 추가
 
-```아오
+```powershell
 Command (m for help): n
 ```
 
 7. primary(default p) 선택(주파티션으로 사용)
 
-```아오
+```powershell
 Partition type:
    p   primary (0 primary, 0 extended, 4 free)
    e   extended
@@ -169,13 +161,13 @@ Select (default p): p
 
 8. 파티션 번호 선택
 
-```앙
+```powershell
 Partition number (1-4, default 1): 1
 ```
 
 9. First sector, Last sector default선택을 위해 엔터키로 진행
 
-```아오
+```powershell
 First sector (2048-20971519, default 2048):
 Using default value 2048
 Last sector, +sectors or +size{K,M,G} (2048-20971519, default 20971519):
@@ -185,7 +177,7 @@ Partition 1 of type Linux and of size 10 GiB is set
 
 10. 파티션 설정 저장
 
-```아오
+```powershell
 Command (m for help): w
 The partition table has been altered!
 
@@ -199,13 +191,13 @@ Syncing disks.
 
 1. 파티셔닝된 디스크를 xfs 파일시스템으로 포맷
 
-```아오
+```powershell
 lsblk -f
 ```
 
 * 파티션 생성을 통해 vdb디스크의 1번 논리파티션 생성여부 확인
 
-```아오
+```powershell
 NAME   FSTYPE  LABEL    UUID                                 MOUNTPOINT
 sr0    iso9660 config-2 2023-01-26-13-36-01-00
 vda
@@ -217,13 +209,13 @@ vdb
 
 2. vdb디스크의 1번 논리파티션을 xfs 파일시스템으로 포맷
 
-```아오
+```powershell
 mkfs.xfs /dev/vdb1
 ```
 
 * 파일시스템 포맷
 
-```아오
+```powershell
 meta-data=/dev/vdb1              isize=512    agcount=4, agsize=655296 blks
          =                       sectsz=512   attr=2, projid32bit=1
          =                       crc=1        finobt=0, sparse=0
@@ -237,25 +229,25 @@ realtime =none                   extsz=4096   blocks=0, rtextents=0
 
 3. 디스크를 마운트할 디렉토리 생성
 
-```아오
+```powershell
 mkdir data
 ```
 
 4. 디렉토리에 디스크 마운트
 
-```아오
+```powershell
 mount /dev/vdb1 /data
 ```
 
 5. 마운트 확인
 
-```아오
+```powershell
 df -h
 ```
 
 * /dev/vdb1 10G 정상적 마운트 확인
 
-```dkdh
+```powershell
 Filesystem      Size  Used Avail Use% Mounted on
 devtmpfs        1.9G     0  1.9G   0% /dev
 tmpfs           1.9G     0  1.9G   0% /dev/shm
@@ -274,13 +266,13 @@ tmpfs           379M     0  379M   0% /run/user/901
 
 1. UUID 확인
 
-```아오
+```powershell
 lsblk -f
 ```
 
 * vdb1의 UUID: 2db448d5-fd8d-4ad9-8049-6fd93eefe9b9
 
-```dkdh
+```powershell
 NAME   FSTYPE  LABEL    UUID                                 MOUNTPOINT
 sr0    iso9660 config-2 2023-01-26-13-36-01-00
 vda
@@ -291,7 +283,7 @@ vdb
 
 2. vi 편집기로 /etc/fstab 파일 수정
 
-```아오
+```powershell
 vi /etc/fstab
 ```
 
@@ -299,7 +291,7 @@ vi /etc/fstab
 
 > :bulb:**안내**: vi 편집기 실행 후 **"i"** 키를 눌러 편집을 실행할 수 있습니다. 이후 **"ESC"** , **":wq"** 입력을 통해 편집 내용을 저장할 수 있습니다.
 
-```아오
+```powershell
 #
 # /etc/fstab
 # Created by anaconda on Tue Feb 22 08:04:29 2022
@@ -313,17 +305,17 @@ UUID= 2db448d5-fd8d-4ad9-8049-6fd93eefe9b9 /                       xfs     defau
 3. 자동 마운트 설정내역 테스트
 * /data umount
 
-```아오
+```powershell
 umount /data
 ```
 
 * umount 확인
 
-```아오
+```powershell
 df -h
 ```
 
-```dkdh
+```powershell
 Filesystem      Size  Used Avail Use% Mounted on
 devtmpfs        1.9G     0  1.9G   0% /dev
 tmpfs           1.9G     0  1.9G   0% /dev/shm
@@ -335,17 +327,17 @@ tmpfs           379M     0  379M   0% /run/user/901
 
 * 전체 마운트 명령
 
-```아오
+```powershell
 mount -a
 ```
 
 * 자동 마운트 확인
 
-```아오
+```powershell
 df -h
 ```
 
-```dkdh
+```powershell
 Filesystem      Size  Used Avail Use% Mounted on
 devtmpfs        1.9G     0  1.9G   0% /dev
 tmpfs           1.9G     0  1.9G   0% /dev/shm
