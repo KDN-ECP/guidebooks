@@ -38,7 +38,7 @@ sequenceDiagram
   actor 사용자(KDN직원)
   actor KDN부서장
   사용자(KDN직원) -->> KDN부서장: BS 사용신청 승인요청
-  Note over 사용자(KDN직원), KDN부서장: BS 사용자가 KDN직원일 경우User Console를 통하여소속 부서장이 결재 진행.
+  Note over 사용자(KDN직원), KDN부서장: BS 사용자가 KDN직원일 경우<br/>User Console를 통하여<br/>소속 부서장이 결재 진행.
   KDN부서장 -->>+ K-ECP: [결재완료] BS 사용신청
   K-ECP -->>- 사용자(KDN직원): BS 제공
 ```
@@ -60,7 +60,7 @@ sequenceDiagram
 
 - 시작하기 전에 [K-ECP User Console](https://kecp.kdn.com/mbr/ "인터넷에서 접속 시")에 회원가입이 되어 있어야 합니다.
 
-- 사전에 BS를 신청할 Virtual Machine Server가 생성되어 있어야 합니다.
+- 사전에 BS가 할당될 [Virtual Machine Server](./VirtualMachine_started.md)가 생성되어 있어야 합니다.
 
 > :bulb: **Tip:** KDN 직원의 경우 KDN 내부망에서 [KDN 전용 User Console](http://kdnecp.kdn.com:8585/mbr/ "KDN 내부망에서 접속 시")로도 접속이 가능합니다.
 
