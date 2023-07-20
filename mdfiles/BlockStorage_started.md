@@ -21,7 +21,9 @@ BS는 데이터를 일정한 크기의 덩어리(Block)로 나누어 저장하�
 
 [3단계: Block Storage 마운트](#step3)
 
-[4단계:Block Storage 자동마운트](step#4)
+[4단계:Block Storage 자동마운트](#step4)
+
+[다음단계](#nextstep)
 
 ---
 
