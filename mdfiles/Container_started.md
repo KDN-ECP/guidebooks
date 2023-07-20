@@ -22,11 +22,11 @@ K-ECP의 Container서비스는 `ContainerTerminal`서비스와 함께 사용할 
 
 [전제 조건](#precondition)
 
-[0단계: GitLab 가입하기](#step0)
+[0단계: K-ECP GitLab 가입하기](#step0)
 
-[1단계: GitLab프로젝트 및 리파지토리 생성](#step1)
+[1단계: K-ECP GitLab프로젝트 및 리파지토리 생성](#step1)
 
-[2단계: GitLab에서 소스 업로드](#step2)
+[2단계: K-ECP GitLab에서 소스 업로드](#step2)
 
 [3단계: 컨테이너 신청](#step3)
 
@@ -47,7 +47,7 @@ sequenceDiagram
   actor 사용자(KDN직원)
   actor KDN부서장
   사용자(KDN직원) -->> KDN부서장: Container 사용신청 승인요청
-  Note over 사용자(KDN직원), KDN부서장: Container 사용자가 KDN직원일 경우User Console를 통하여소속 부서장이 결재 진행.
+  Note over 사용자(KDN직원), KDN부서장: Container 사용자가 KDN직원일 경우<br/>User Console를 통하여<br/>소속 부서장이 결재 진행.
   KDN부서장 -->>+ K-ECP: [결재완료] Container 사용신청
   K-ECP -->>- 사용자(KDN직원): Container 제공
 ```
@@ -69,11 +69,10 @@ sequenceDiagram
 
 - [Project 만들기](./Project.md)를 통하여 Container 서비스를 신청할 프로젝트를 생성해야합니다.
 
-- PC에 Git이 설치되어 있어야 합니다.
+- PC에 Git client가 설치되어 있어야 합니다.
 
-> :bulb:**안내**: K-ECP 자료실에서 다운로드 할 수 있습니다.
+> :bulb:**안내**: K-ECP SW자료실에서 다운로드 할 수 있습니다.
 
-- GitLab에 가입되어 있어야 합니다.
 - [K-ECP SW 자료실](./http://10.100.11.114/k-ecp/software)에서 Git 파일 다운로드 후 설치(SSLVPN 접속상태에서 가능합니다.)
 
 ---
