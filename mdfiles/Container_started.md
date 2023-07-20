@@ -137,7 +137,7 @@ sequenceDiagram
 
 ## 2단계: GitLab에서 소스 업로드
 
-1. 로컬 PC에 workplace 폴더 생성 ()
+1. 로컬 PC에 workplace 폴더 생성 (workplace 폴더명은 임의 지정)
 
 2. 생성된 폴더 우클릭 후 `Git Bash Here` 선택
 
@@ -161,10 +161,10 @@ sequenceDiagram
    cd [Project name]
    ```
 
-9. 해당 리파지토리에 유저 정보 등록
+9. 해당 리파지토리에 유저 정보 등록(0. K-ECP Gitlab 가입시 작성한 사번과 Email 등록)
    
    ```powershell
-   git config --global user.name"[사]"
+   git config --global user.name"[사번]"
    ```
    
    ```powershell
@@ -228,6 +228,12 @@ sequenceDiagram
    * 기타사항: *컨테이너 관련 추가 요청사항 작성*
 
 5. `신청`버튼 클릭
+
+---
+<span id ="step4"/>
+## 4단계 : Contanier 확인
+
+1. ㅊ
 
 ---
 
