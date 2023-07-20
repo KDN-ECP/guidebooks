@@ -28,7 +28,9 @@ K-ECP의 Container서비스는 `ContainerTerminal`서비스와 함께 사용할 
 
 [2단계: K-ECP GitLab에서 소스 업로드](#step2)
 
-[3단계: 컨테이너 신청](#step3)
+[3단계: Container 신청](#step3)
+
+[4단계: Container 확인](#step4)
 
 [다음단계](#nextstep)
 
@@ -207,7 +209,7 @@ sequenceDiagram
 
 3. K-ECP User Console에서 `[서비스 신청] 자원 > 컨테이너 신청`으로 이동
    
-   * WAS, HTTP, KDN Python Django 기반 어플리케이션 중 선택하여 돋보기:mag:아이콘 클릭
+   * WAS, HTTP, KDN Python Django 기반 어플리케이션 중 선택하여 돋보기:mag:아이콘 클릭 (가이드의 예시의 경우 tomcat 기반으로 작성되어 있어 WAS 선택)
 
 4. 컨테이너 신청 상세 내역 작성
    
@@ -233,7 +235,15 @@ sequenceDiagram
 <span id ="step4"/>
 ## 4단계 : Contanier 확인
 
-1. ㅊ
+1. K-ECP User Console 접속
+
+2. `서비스 현황 > 컨테이너`으로 이동
+
+3. 컨테이너가 실행중인 프로젝트의 상세:mag:아이콘 클릭
+
+4. 컨테이너의 상세:mag:아이콘 클릭
+
+5. Routes의 Location:[URL] 클릭
 
 ---
 
