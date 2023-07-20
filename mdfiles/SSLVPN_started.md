@@ -77,17 +77,17 @@ K-ECP SSL VPN은 User Console를 통해 신청한 후 최종 승인 시 사용 �
 
 2. SSL VPN 신청 내역 작성
    
-   * 클러스터:*DMZ, Open IaaS, Open PaaS, 사용 IaaS, Naver cloud Platform*중 선택
+   * 클러스터: *DMZ, Open IaaS, Open PaaS, 사용 IaaS, Naver cloud Platform*중 선택
    
    > :bulb:**안내**: 접속해야하는 해당 접속대상서버의 클러스터를 선택
    
    * 프로젝트명: *해당 Project명 검색 후 선택*
 
-3. 추가 요청사항:*접속대상서버의 IP 입력*
+3. 추가 요청사항: *접속대상서버의 IP 입력*
 
 > :bulb:**안내**: 접속대상서버의 IP는 `서비스 현황 > 가상서버`에서 확인 가능합니다.
 
-1. :heavy_check_mark:`신청` 버튼 클릭
+1. :heavy_check_mark: `신청` 버튼 클릭
 
 ---
 
