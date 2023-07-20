@@ -309,7 +309,7 @@ vi /etc/fstab
 # Accessible filesystems, by reference, are maintained under '/dev/disk'
 # See man pages fstab(5), findfs(8), mount(8) and/or blkid(8) for more info
 #
-UUID= 2db448d5-fd8d-4ad9-8049-6fd93eefe9b9 /                       xfs     defaults        0 0
+UUID= 2db448d5-fd8d-4ad9-8049-6fd93eefe9b9 /data                   xfs     defaults        0 0
 ```
 
 3. 자동 마운트 설정내역 테스트
