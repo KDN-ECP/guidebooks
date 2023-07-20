@@ -236,7 +236,7 @@ realtime =none                   extsz=4096   blocks=0, rtextents=0
 3. 디스크를 마운트할 디렉토리 생성
 
 ```powershell
-mkdir data
+mkdir /data
 ```
 
 4. 디렉토리에 디스크 마운트
@@ -295,7 +295,7 @@ vdb
 vi /etc/fstab
 ```
 
-* 자동 마운트 내용 추가(UUID = ...)
+* 자동 마운트 내용 추가(UUID = ...) (1.에서 확인한 UUID 입력)
 
 > :bulb:**안내**: vi 편집기 실행 후 **"i"** 키를 눌러 편집을 실행할 수 있습니다. 이후 **"ESC"** , **":wq"** 입력을 통해 편집 내용을 저장할 수 있습니다.
 
@@ -357,3 +357,10 @@ tmpfs           379M     0  379M   0% /run/user/901
 ```
 
 ---
+
+<span id="nextstep"/>
+
+## 다음단계
+
+* Block Storage 삭제하기를 통해서 VM에 할당된 Block Storage를 삭제할 수 있습니다.
+
