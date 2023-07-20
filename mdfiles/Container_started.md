@@ -81,7 +81,7 @@ sequenceDiagram
 
 <span id= "step0"/>
 
-# 0단계: GitLab가입하기
+## 0단계: GitLab가입하기
 
 1. SSL-VPN 접속
 
