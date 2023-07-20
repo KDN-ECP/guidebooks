@@ -94,9 +94,9 @@ sequenceDiagram
 
 2. 신청한 디스크명을 확인후 *연결상태* : **미연결(연결하기)** 를 클릭하여 **연결됨** 으로 변경
 
-3. SSL VPN 연결 후 SSH 접속 툴 또는 커맨드을 통해 BS를 신청한 VM서버로 접속
+3. SSL VPN 연결 후 SSH 접속 툴 또는 커맨드을 통해 BS를 신청한 VM서버로 접속(SSH client를 통해 접속해야 합니다.)
 
-**Windows에서 SSH로 접속하는 Command**
+**본 가이드 예제의 경우 Windows 명령 프롬프트로 진행**
 
 ```powershell
 ssh -p [ssh Port] kecpuser@[VM IP Address]
@@ -114,7 +114,7 @@ sudo -i
 fdisk -l
 ```
 
-* 미등록 블록디스크 확인(Disk /dev/vdb)
+* 미등록 블록디스크 확인(Disk /dev/vdb) (/dev/vdb  는 device path로 새로운 device 추가시 변경될 수 있습니다. ex. dev/vdc , dev/vdd)
 
 ```powershell
 Disk /dev/vda: 53.7 GB, 53687091200 bytes, 104857600 sectors
@@ -148,13 +148,13 @@ Changes will remain in memory only, until you decide to write them.
 Be careful before using the write command.
 ```
 
-6. 새로운 파티션 추가
+6. 새로운 파티션 추가 (n)
 
 ```powershell
 Command (m for help): n
 ```
 
-7. primary(default p) 선택(주파티션으로 사용)
+7. primary(default p) 선택(주파티션으로 사용) (p)
 
 ```powershell
 Partition type:
@@ -163,13 +163,13 @@ Partition type:
 Select (default p): p
 ```
 
-8. 파티션 번호 선택
+8. 파티션 번호 선택 (1)
 
 ```powershell
 Partition number (1-4, default 1): 1
 ```
 
-9. First sector, Last sector default선택을 위해 엔터키로 진행
+9. First sector, Last sector default선택을 위해 엔터키로 진행 (enter)
 
 ```powershell
 First sector (2048-20971519, default 2048):
@@ -179,7 +179,7 @@ Using default value 20971519
 Partition 1 of type Linux and of size 10 GiB is set
 ```
 
-10. 파티션 설정 저장
+10. 파티션 설정 저장 (w)
 
 ```powershell
 Command (m for help): w
