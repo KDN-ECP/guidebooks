@@ -3,7 +3,7 @@
 
 # VM Server 시작하기
 
-이 안내서를 사용하여 **K-ECP Virtual Machine Server(이하. VM)** 서비스를 시작 하십시오. VM의 서비스 신청서를 작성하고 시작하는 방법을 안내합니다. 
+이 안내서를 사용하여 **K-ECP Virtual Machine Server(이하. VM)** 서비스를 시작 하십시오. VM 서비스 신청서를 작성하고 시작하는 방법을 안내합니다. 
 
 VM은 K-ECP에서 서버를 생성하여 컴퓨팅 인프라를 가상화하여 제공하는 서비스 입니다. 필요한 시점에 필요한 만큼 자유롭게 리소스를 할당 받아 사용할 수 있습니다. 사용한 만큼 요금을 지불하여 원하는 하드웨어 사양을 합리적인 가격으로 이용할 수 있습니다.
 
@@ -100,7 +100,7 @@ VM 신청 시 서버 운영 목적에 따라 다음과 같은 다양한 이미�
    
    * DISK: *50GB 기본 설정* (변경 불가)
    
-   > :bulb:**Tip**: 추가 DISK를 원할 경우 [스토리지 신청](./BlockStorage_started.md)을 통해 서버에 추가 할당 할 수 있습니다.
+   > :bulb:**Tip**: 추가 DISK를 원할 경우 [Block Storage 시작하기](./BlockStorage_started.md)를 통해 서버에 추가 할당 할 수 있습니다.
    
    * 서버사양: 소형서버, 중형서버, 대형서버, CPU-Intensive, Memory-Intensive 중 선택 후 서버 스펙 선택
    
