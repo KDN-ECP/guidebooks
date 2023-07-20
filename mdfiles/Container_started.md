@@ -100,6 +100,8 @@ sequenceDiagram
 4. GitLab 가입 이후 해당 정보로 로그인
    
    * 원하는 역할(Role) 선택
+  
+     * Software Developer, Development Team Lead, Devops Engineer, Systems Administrator, Security Analyst, Data Analyst, Product Manager, Product Desinger, Other
    
    * `Get started!`버튼 클릭
 
