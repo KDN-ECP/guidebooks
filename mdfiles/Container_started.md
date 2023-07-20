@@ -93,9 +93,9 @@ sequenceDiagram
    
    * Username: 사번 입력
    
-   * Email: 사용자 이메일 정보 입력
+   * Email: 사용자 이메일 정보 입력 (config 등록시 필요)
    
-   * Password: 사용자 패스워드 입력
+   * Password: 사용자 패스워드 입력 (config 등록시 필요)
 
 4. GitLab 가입 이후 해당 정보로 로그인
    
@@ -117,11 +117,13 @@ sequenceDiagram
    
    * Project name: *프로젝트 이름 입력*
    
-   * Project slug: *프로젝트 slug 임의 입력*
+   * Project slug: *Project name 입력 시 자동입력 (URL의 구체적인 내용)*
    
    * Visibility Level : *`Public` 선택*
    
    > :warning:**주의**: 반드시 **Public**으로 선택해야 합니다.
+
+   * initialize repository with a README : *체크를 통해 이후 README 파일 생성을 확인할 수 있음*
 
 4. `Create Project`버튼 클릭
 
@@ -135,9 +137,9 @@ sequenceDiagram
 
 ## 2단계: GitLab에서 소스 업로드
 
-1. 로컬 PC workplace 폴더 생성
+1. 로컬 PC에 workplace 폴더 생성 ()
 
-2. 폴더 공간에서 우클릭 후 `Git Bash Here` 선택
+2. 생성된 폴더 우클릭 후 `Git Bash Here` 선택
 
 3. 1단계에서 복사한 URL주소를 입력하여 Clone 실행
    
@@ -153,7 +155,7 @@ sequenceDiagram
 
 7. 배포하려는 파일명을 `ROOT.war`로 수정
 
-8. 실행중인 cmd 창에서 생성된 폴더로 이동
+8. 실행중인 Git Bash 창에서 생성된 폴더로 이동
    
    ```powershell
    cd [Project name]
