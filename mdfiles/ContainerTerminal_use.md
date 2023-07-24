@@ -1,4 +1,4 @@
-[문서 최종 수정일자 : 2023-05-19]: # 
+[문서 최종 수정일자 : 2023-07-19]: # 
 [문서 최종 수정자 : 신승규]: #
 
 # Container Terminal Use
@@ -14,10 +14,12 @@
 
 [1. podman 컨테이너 실행](#step1)
 [2. podman 컨테이너 접속](#step2)
-[3. podman 컨테이너 삭제](step3)
+[3. podman 컨테이너 삭제](#step3)
 [4. oc 명령어](#step4)
 
 ---
+
+<span id="step1"/>
 
 ## 1. podman 컨테이너 실행
 
@@ -42,33 +44,33 @@ REPOSITORY  TAG         IMAGE ID    CREATED     SIZE
 ```
 
 * docker image를 압축한 tar파일이 있는 위치로 이동
-  
-  ```아오
-  ls
-  nginx.tar
-  ```아오
-  ```
+
+```아오
+ls
+nginx.tar
+```
 
 * 이후 podman 명령어를 통해 tar파일을 다시 docker image로 변환
-  
-  ```아오
-  podman load -i nginx.tar
-  ```
-  
-  ```아오
-  Getting image source signatures
-  Copying blob 434c6a715c30 done
-  Copying blob 9fdfd12bc85b done
-  Copying blob b821d93f6666 done
-  Copying blob 24839d45ca45 done
-  Copying blob f36897eea34d done
-  Copying blob 1998c5cd2230 done
-  Copying blob 3c9d04c9ebd5 done
-  Copying config 021283c8eb done
-  Writing manifest to image destination
-  Storing signatures
-  Loaded image(s): localhost/nginx:latest
-  ```
+
+```아오
+podman load -i nginx.tar
+```
+
+```아오
+Getting image source signatures
+Copying blob 434c6a715c30 done
+Copying blob 9fdfd12bc85b done
+Copying blob b821d93f6666 done
+Copying blob 24839d45ca45 done
+Copying blob f36897eea34d done
+Copying blob 1998c5cd2230 done
+Copying blob 3c9d04c9ebd5 done
+Copying config 021283c8eb done
+Writing manifest to image destination
+Storing signatures
+Loaded image(s): localhost/nginx:latest
+```
+
 3. 등록된 이미지 확인
 
 ```아오
@@ -82,16 +84,17 @@ localhost/nginx  latest      021283c8eb95  2 weeks ago  191 MB
 
 4. 컨테이너 이미지 생성
 * localhost/nginx 이미지를 기반으로 my-nginx라는 새 컨테이너를 생성하고 호스트 시스템에서 포트 8000을 노출시킵니다.
-  
-  ```아오
-  podman run -d -p 8000:80 --name my-nginx localhost/nginx:latest
-  ```
+
+```아오
+podman run -d -p 8000:80 --name my-nginx localhost/nginx:latest
+```
 
 * 컨테이너 정보 확인
-  
-  ```dkdh
-  8709140107b42a40470205a451e3f1859549e274ecef87f53f71470889bb8d0a
-  ```
+
+```dkdh
+8709140107b42a40470205a451e3f1859549e274ecef87f53f71470889bb8d0a
+```
+
 5. 컨테이너 실행 확인
    
    ```아오
@@ -99,33 +102,36 @@ localhost/nginx  latest      021283c8eb95  2 weeks ago  191 MB
    ```
    
    ```아오
-   CONTAINER ID  IMAGE                   COMMAND               CREATED        STATUS            PORTS                 NAMES
+   CONTAINER ID  IMAGE                   COMMAND               CREATED        STATUS          PORTS                 NAMES
    8709140107b4  localhost/nginx:latest  nginx -g daemon o...  6 minutes ago  Up 6 minutes ago  0.0.0.0:8000->80/tcp  my-nginx
    ```
 
 6. 컨테이너 중지
-   
-   ```아오
-   podman stop my-nginx
-   ```
-   
-   ```dkdh
-   my-nginx
-   ```
+
+```아오
+podman stop my-nginx
+```
+
+```dkdh
+my-nginx
+```
+
 * 컨테이너 중지 확인
-  
-  ```아오
-  podman ps -a
-  ```
+
+```아오
+podman ps -a
+```
 
 * STATUS 가 Exited
-  
-  ```dkdh
-  CONTAINER ID  IMAGE                   COMMAND               CREATED        STATUS                         PORTS                 NAMES
+
+```dkdh
+CONTAINER ID  IMAGE                   COMMAND               CREATED        STATUS                         PORTS                 NAMES
   8709140107b4  localhost/nginx:latest  nginx -g daemon o...  8 minutes ago  Exited (0) About a minute ago  0.0.0.0:8000->80/tcp  my-nginx
-  ```
+```
 
 ---
+
+<span id="step2"/>
 
 ## 2.podman 컨테이너 접속
 
@@ -167,6 +173,8 @@ localhost/nginx  latest      021283c8eb95  2 weeks ago  191 MB
 
 ---
 
+<span id="step3"/>
+
 ## 3. 컨테이너 삭제
 
 1. 컨테이너 중지
@@ -202,6 +210,10 @@ localhost/nginx  latest      021283c8eb95  2 weeks ago  191 MB
    ```dkdh
    REPOSITORY  TAG         IMAGE ID    CREATED     SIZE
    ```
+
+---
+
+<span id="step4"/>
 
 ##### 애플리케이션 삭제
 
