@@ -24,7 +24,7 @@ VM은 K-ECP에서 서버를 생성하여 컴퓨팅 인프라를 가상화하여 
 
 [2단계: VM Server 접속](#step2)
 
-[3단계: VM Server 사용](#step3)
+[3단계: VM Server 기동 및 정지](#step3)
 
 [다음 단계](#nextstep)
 
@@ -37,21 +37,23 @@ VM은 K-ECP에서 서버를 생성하여 컴퓨팅 인프라를 가상화하여 
 K-ECP VM 서비스를 사용하기 위해서는 아래와 같은 프로세스로 진행되며, **KDN의 직원일 경우 User Console에서 소속 부서장의 결재**가 필요합니다.
 
 * KDN 직원인 경우
+  
 ```mermaid
 sequenceDiagram
-  actor 사용자(KDN직원)
-  actor KDN부서장
-  사용자(KDN직원) -->> KDN부서장: VM 사용신청 승인요청?
-  Note over 사용자(KDN직원), KDN부서장: VM 사용자가 KDN직원일 경우<br/>User Console를 통하여<br/>소속 부서장이 결재 진행.
-  KDN부서장 -->>+ K-ECP: [결재완료] VM 사용신청
-  K-ECP -->>- 사용자(KDN직원): VM 제공
+actor 사용자(KDN직원)
+actor KDN부서장
+사용자(KDN직원) -->> KDN부서장: VM 사용신청 승인요청?
+Note over 사용자(KDN직원), KDN부서장: VM 사용자가 KDN직원일 경우<br/>User Console를 통하여<br/>소속 부서장이 결재 진행.
+KDN부서장 -->>+ K-ECP: [결재완료] VM 사용신청
+K-ECP -->>- 사용자(KDN직원): VM 제공
 ```
 * 일반 사용자인 경우
+  
 ```mermaid
 sequenceDiagram
-  actor 사용자(일반)
-  사용자(일반) ->>+ K-ECP: VM 사용신청
-  K-ECP ->>- 사용자(일반): VM 제공
+actor 사용자(일반)
+사용자(일반) ->>+ K-ECP: VM 사용신청
+K-ECP ->>- 사용자(일반): VM 제공
 ```
 
 K-ECP VM은 User Console를 통해 신청한 후 최종 승인 시 사용 가능합니다. 아래 개념도와 같이 **SSL-VPN 또는 전용선(Direct Connect 서비스 사용시)을 이용하여 접속**하실 수 있습니다. 접속 가능 영역으로는 공공 인터넷 영역(DMZ)와 공공 업무망 영역이 있습니다.
@@ -128,15 +130,17 @@ VM 신청 시 서버 운영 목적에 따라 다음과 같은 다양한 이미�
 
 4. [보안그룹 시작하기](./SecurityGroup_started.md)를 통해 vpn으로 부터 서버접근 허용 작업 수행
 
-5. K-ECP 운영팀으로 부터 VM서버의 초기 ID/PW을 전달 받은 후 SSH 프로토콜을 통해 서버 접속(SSH 프로토콜 클라이언트에서 실행)
-   **해당 가이드의 예시의 경우 윈도우 명령 프롬프트에서 실행**
+5. K-ECP 운영팀으로 부터 VM서버의 초기 ID/PW을 전달 받은 후 SSH 클라이언트(Putty, Windows 터미널 등)을 통해 서버 접속
+   
+   * 본 가이드에서는 윈도우 명령 프롬프트(터미널)을 이용한 SSH 접속
+   
    ```powershell
    ssh -p [ssh Port] kecpuser@[VM_IP_address]
    ```
 
 6. 초기 비밀번호 입력 후 로그인
    
-   ```powershell
+   ```console
    kecpuser@[VM]'s password:
    Last login: Wed May 31 13:41:07 2023 from 10.100.8.50
    #################################################################
@@ -159,13 +163,13 @@ VM 신청 시 서버 운영 목적에 따라 다음과 같은 다양한 이미�
    Last login: Wed May 31 13:41:07 2023 from [IP]
    ```
 
-> :bell: **안내:** 접속 후 초기 비밀번호의 변경이 필요합니다.
+> :bell: **안내:** 최초 접속 시 반드시 비밀번호의 변경이 필요합니다.
 
 ---
 
 <span id="step3"/>
 
-## 3단계: VM Server 사용
+## 3단계: VM Server 기동 및 정지
 
 > :bell:**안내**: K-ECP User Console에서 가상서버 기동 및 상태를 확인할 수 있습니다.
 
