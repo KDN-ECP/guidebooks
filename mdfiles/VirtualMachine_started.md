@@ -126,52 +126,50 @@ VM 신청 시 서버 운영 목적에 따라 다음과 같은 다양한 이미�
 
 3. K-ECP 운영팀으로 부터 보안작업 완료 통보를 받은 후 인터넷 가능환경에서 브라우저를 통해 [K-ECP SSL VPN](https://kecp-vpn.kdn.com/) 접속 
 
-> :bell: **안내:** SSL VPN 접속방법 및 사용법은 [SSL VPN 시작하기](./SSLVPN_started.md)가이드 문서를 참고 바랍니다.
+   > :bell: **안내:** SSL VPN 접속방법 및 사용법은 [SSL VPN 시작하기](./SSLVPN_started.md)가이드 문서를 참고 바랍니다.
 
 4. [보안그룹 시작하기](./SecurityGroup_started.md)를 통해 vpn으로 부터 서버접근 허용 작업 수행
 
 5. K-ECP 운영팀으로 부터 VM서버의 초기 ID/PW을 전달 받은 후 SSH 클라이언트(Putty, Windows 터미널 등)을 통해 서버 접속
    
- * 본 가이드에서는 윈도우 명령 프롬프트(터미널)을 이용한 SSH 접속
+   * 본 가이드에서는 윈도우 명령 프롬프트(터미널)을 이용한 SSH 접속
    
- ```powershell
- ssh -p [ssh Port] kecpuser@[VM_IP_address]
- ```
+   ```powershell #
+   ssh -p [ssh Port] kecpuser@[VM_IP_address]
+   ```
 
 6. 초기 비밀번호 입력 후 로그인
    
- ````
- kecpuser@[VM]'s password:
- Last login: Wed May 31 13:41:07 2023 from 10.100.8.50
- #################################################################
- #                   _    _           _   _                      #
- #                  / \  | | ___ _ __| |_| |                     #
- #                 / _ \ | |/ _ \ '__| __| |                     #
- #                / ___ \| |  __/ |  | |_|_|                     #
- #               /_/   \_\_|\___|_|   \__(_)                     #
- #                                                               #
- #           You are entering into a secured area!               #
- #                                                               #
- #                      This service                             #
- #                   is restricted  to                           #
- #           Cloud Department Administrator only.                #
- #                                                               #
- #          All activities on this system are logged.            #
- #  Unauthorized access will be fully investigated and reported  #
- #        to the appropriate law enforcement agencies.           #
- #################################################################
- Last login: Wed May 31 13:41:07 2023 from [IP]
- ````
+   ``` 
+   kecpuser@[VM]'s password:
+   Last login: Wed May 31 13:41:07 2023 from 10.100.8.50
+   #################################################################
+   #                   _    _           _   _                      #
+   #                  / \  | | ___ _ __| |_| |                     #
+   #                 / _ \ | |/ _ \ '__| __| |                     #
+   #                / ___ \| |  __/ |  | |_|_|                     #
+   #               /_/   \_\_|\___|_|   \__(_)                     #
+   #                                                               #
+   #           You are entering into a secured area!               #
+   #                                                               #
+   #                      This service                             #
+   #                   is restricted  to                           #
+   #           Cloud Department Administrator only.                #
+   #                                                               #
+   #          All activities on this system are logged.            #
+   #  Unauthorized access will be fully investigated and reported  #
+   #        to the appropriate law enforcement agencies.           #
+   #################################################################
+   Last login: Wed May 31 13:41:07 2023 from [IP]
+   ```
 
-> :bell: **안내:** 최초 접속 시 반드시 비밀번호의 변경이 필요합니다.
+   > :bell: **안내:** 최초 접속 시 반드시 비밀번호의 변경이 필요합니다.
 
 ---
 
 <span id="step3"/>
 
 ## 3단계: VM Server 기동 및 정지
-
-> :bell:**안내**: K-ECP User Console에서 가상서버 기동 및 상태를 확인할 수 있습니다.
 
 1. K-ECP User Console에서`서비스현황 > 가상서버`이동 후 해당 VM이 속한 프로젝트의 돋보기 아이콘:mag: 클릭
    
@@ -186,6 +184,8 @@ VM 신청 시 서버 운영 목적에 따라 다음과 같은 다양한 이미�
    * 보안그룹 :mag:: [보안그룹 시작하기](./SecurityGroup_started.md)를 통해 서버 접근을 설정할 수 있습니다.
    
    * 상세 :mag:: 상세 페이지를 통해서 해당 가상서버의 상세 사항 확인 및 `서버명` 수정, VM 변경 및 해지하기를 사용할 수 있습니다.
+
+> :bell:**안내**: K-ECP User Console에서 가상서버의 기동/정지 및 상태를 확인할 수 있습니다.
 
 ---
 
