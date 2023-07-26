@@ -132,15 +132,15 @@ VM 신청 시 서버 운영 목적에 따라 다음과 같은 다양한 이미�
 
 5. K-ECP 운영팀으로 부터 VM서버의 초기 ID/PW을 전달 받은 후 SSH 클라이언트(Putty, Windows 터미널 등)을 통해 서버 접속
    
-   * 본 가이드에서는 윈도우 명령 프롬프트(터미널)을 이용한 SSH 접속
+ * 본 가이드에서는 윈도우 명령 프롬프트(터미널)을 이용한 SSH 접속
    
-   ```powershell
-   ssh -p [ssh Port] kecpuser@[VM_IP_address]
-   ```
+```powershell
+ssh -p [ssh Port] kecpuser@[VM_IP_address]
+```
 
 6. 초기 비밀번호 입력 후 로그인
    
-   ```console
+   ````
    kecpuser@[VM]'s password:
    Last login: Wed May 31 13:41:07 2023 from 10.100.8.50
    #################################################################
@@ -161,7 +161,7 @@ VM 신청 시 서버 운영 목적에 따라 다음과 같은 다양한 이미�
    #        to the appropriate law enforcement agencies.           #
    #################################################################
    Last login: Wed May 31 13:41:07 2023 from [IP]
-   ```
+   ````
 
 > :bell: **안내:** 최초 접속 시 반드시 비밀번호의 변경이 필요합니다.
 
