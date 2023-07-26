@@ -5,6 +5,7 @@
 #### 공통
 
 1. K-ECP 시작하기
+
 2. [Project 만들기](./mdfiles/Project.md) : Project.md
 
 #### Computing
@@ -16,6 +17,10 @@
 #### Storage
 
 1. [Block Storage 시작하기](./mdfiles/BlockStorage_started.md): BlockStorage_started.md
+
+2. [File Storage 시작하기](./mdfiles/FileStorage_started.md): FileStorage_started.md
+
+3. PV(Persistent Volume, Container용) 시작하기
 
 #### Container
 
@@ -83,5 +88,3 @@
   #### Management
 =======
 ```
-
-> > > > > > > 7bcda49544c9a2ac5d4d66fcdba66eedb01d13f1

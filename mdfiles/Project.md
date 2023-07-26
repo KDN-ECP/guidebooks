@@ -2,7 +2,10 @@
 
 이 안내서를 사용하여 K-ECP의 **Project**를 시작 하십시오. Project 신청서를 작성하고 시작하는 방법을 안내합니다.
 
-Project는 K-ECP에서 업무 시스템을 의미하며, 프로젝트 신청 이후 다양한 서비스(자원, 기술지원, 시스템SW)를 사용할 수 있습니다. 프로젝트별 설정된 쿼터(Quota)에서만 서비스(자원, 기술지원, 시스템SW)을 생성할 수 있으며 생성된 서비스(자원, 기술지원, 시스템SW)은 논리적으로 완벽히 분리되어 운영됩니다. 
+Project는 K-ECP에서 업무 시스템을 의미하며, 프로젝트 신청 이후 다양한 서비스(자원, 기술지원, 시스템SW)를 사용할 수 있습니다. 프로젝트별 설정된 쿼터(Quota)에서만 서비스(자원, 기술지원, 시스템SW)을 생성할 수 있으며 생성된 서비스(자원, 기술지원, 시스템SW)은 논리적으로 완벽히 분리되어 운영됩니다.
+아래의 그림과 같이 Project안에서 서비스를 구성하여 K-ECP 서비스를 사용할 수 있습니다.
+
+![concpet_project.PNG](./../resource/concept_project.PNG)
 
 ### 관련 안내서
 
@@ -30,19 +33,19 @@ Project는 K-ECP에서 업무 시스템을 의미하며, 프로젝트 신청 이
 
 K-ECP Project 서비스를 사용하기 위해서는 아래와 같은 프로세스로 진행되며, **KDN의 직원일 경우 User Console에서 소속 부서장의 결재**가 필요합니다.
 
-* KDN 직원이 사용할 경우
+* KDN 직원인 경우
 
 ```mermaid
 sequenceDiagram
   actor 사용자(KDN직원)
   actor KDN부서장
   사용자(KDN직원) -->> KDN부서장: Project 사용신청 승인요청?
-  Note over 사용자(KDN직원), KDN부서장: Project 사용자가 KDN직원일 경우User Console를 통하여소속 부서장이 결재 진행.
+  Note over 사용자(KDN직원), KDN부서장: Project 사용자가 KDN직원일 경우<br/>User Console를 통하여<br/>소속 부서장이 결재 진행.
   KDN부서장 -->>+ K-ECP: [결재완료] Project 사용신청
   K-ECP -->>- 사용자(KDN직원): Project 제공
 ```
 
-* 일반 사용자
+* 일반 사용자인 경우
 
 ```mermaid
 sequenceDiagram
@@ -51,9 +54,7 @@ sequenceDiagram
   K-ECP -->>- 사용자(일반): Project 제공
 ```
 
-K-ECP Project는 User Console를 통해 신청한 후 최종 승인 시 사용 가능합니다.  Project안에서 서비스를 구성하여 K-ECP 서비스를 사용할 수 있습니다.
-
-![concpet_project.png](./../resource/concpet_project.png)
+위 그림의 진행방식과 같이 K-ECP Project는 User Console를 통해 신청한 후 최종 승인 시 사용 가능합니다.
 
 ---
 
@@ -113,6 +114,6 @@ K-ECP Project는 User Console를 통해 신청한 후 최종 승인 시 사용 �
 
 ## 다음 단계
 
-- [VM Server 시작하기](./mdfiles/VM_started.md)를 통해 Project에서 `VM`서비스를 시작할 수 있습니다.
+- [VM Server 시작하기](./VirtualMachine_started.md)를 통해 Project에서 `VM`서비스를 시작할 수 있습니다.
 
-- [Container 시작하기](./mdfiles/Container_started.md)를 통해 Project에서 `Container`서비스를 시작할 수 있습니다.
+- [Container 시작하기](./Container_started.md)를 통해 Project에서 `Container`서비스를 시작할 수 있습니다.
