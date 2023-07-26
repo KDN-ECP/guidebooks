@@ -134,34 +134,34 @@ VM 신청 시 서버 운영 목적에 따라 다음과 같은 다양한 이미�
    
  * 본 가이드에서는 윈도우 명령 프롬프트(터미널)을 이용한 SSH 접속
    
-```powershell
-ssh -p [ssh Port] kecpuser@[VM_IP_address]
-```
+ ```powershell
+ ssh -p [ssh Port] kecpuser@[VM_IP_address]
+ ```
 
 6. 초기 비밀번호 입력 후 로그인
    
-   ````
-   kecpuser@[VM]'s password:
-   Last login: Wed May 31 13:41:07 2023 from 10.100.8.50
-   #################################################################
-   #                   _    _           _   _                      #
-   #                  / \  | | ___ _ __| |_| |                     #
-   #                 / _ \ | |/ _ \ '__| __| |                     #
-   #                / ___ \| |  __/ |  | |_|_|                     #
-   #               /_/   \_\_|\___|_|   \__(_)                     #
-   #                                                               #
-   #           You are entering into a secured area!               #
-   #                                                               #
-   #                      This service                             #
-   #                   is restricted  to                           #
-   #           Cloud Department Administrator only.                #
-   #                                                               #
-   #          All activities on this system are logged.            #
-   #  Unauthorized access will be fully investigated and reported  #
-   #        to the appropriate law enforcement agencies.           #
-   #################################################################
-   Last login: Wed May 31 13:41:07 2023 from [IP]
-   ````
+ ````
+ kecpuser@[VM]'s password:
+ Last login: Wed May 31 13:41:07 2023 from 10.100.8.50
+ #################################################################
+ #                   _    _           _   _                      #
+ #                  / \  | | ___ _ __| |_| |                     #
+ #                 / _ \ | |/ _ \ '__| __| |                     #
+ #                / ___ \| |  __/ |  | |_|_|                     #
+ #               /_/   \_\_|\___|_|   \__(_)                     #
+ #                                                               #
+ #           You are entering into a secured area!               #
+ #                                                               #
+ #                      This service                             #
+ #                   is restricted  to                           #
+ #           Cloud Department Administrator only.                #
+ #                                                               #
+ #          All activities on this system are logged.            #
+ #  Unauthorized access will be fully investigated and reported  #
+ #        to the appropriate law enforcement agencies.           #
+ #################################################################
+ Last login: Wed May 31 13:41:07 2023 from [IP]
+ ````
 
 > :bell: **안내:** 최초 접속 시 반드시 비밀번호의 변경이 필요합니다.
 
