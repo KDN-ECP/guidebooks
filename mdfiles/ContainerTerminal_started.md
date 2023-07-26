@@ -85,11 +85,11 @@ CT 접속 후 CLI 명령어인 `oc`를 통해 Container Project를 위한 다음
 
 ## 1단계: Container Terminal 서비스 신청
 
+> :bell: **안내:** CT는 VM Server 형태로 제공되며, 프로젝트 당 1개를 초과할 수 없습니다.   
+
 1. K-ECP User Console에서 `[서비스 신청] 자원 > 컨테이너 신청 > Container Terminal 신청`의 돋보기 아이콘:mag: 클릭
 
 2. 서비스 신청서 내역 작성 
-   
-   > :bell: **안내:** CT는 VM Server 형태로 제공되며, 프로젝트 당 1개를 초과할 수 없습니다.
    
    * 프로젝트명: *CT가 포함되어야 될 기 생성완료된 프로젝트 선택*
    
@@ -112,16 +112,16 @@ CT 접속 후 CLI 명령어인 `oc`를 통해 Container Project를 위한 다음
 2. 선택된 프로젝트내에 VM Server형태로 생성된 CT의 **IP 주소 확인**
 
 3. SSL VPN 연결 후 SSH 접속 툴 또는 커맨드을 통해 CT의 IP로 접속 (계정명: kecpuser, 초기 비밀번호: K-ECP 운영팀에게 문의)
+   
+   * **Windows에서 SSH로 접속하는 Command**
+   
+   ```powershell
+   ssh -p [SSH Port] kecpuser@[CT IP Address]
+   ```
+   
+   > :bell: **안내:** 최초 접속 시 비밀번호를 변경하셔야 정상접속 됩니다.
 
-**Windows에서 SSH로 접속하는 Command**
-
-```powershell
-ssh -p [SSH Port] kecpuser@[CT IP Address]
-```
-
-> :bell: **안내:** 최초 접속 시 비밀번호를 변경하셔야 정상접속 됩니다.
-
-7. 비밀번호 입력 후 로그인
+4. 비밀번호 입력 후 로그인
    
    ```powershell
    kecpuser@[CT_IP] password:
@@ -147,11 +147,11 @@ ssh -p [SSH Port] kecpuser@[CT IP Address]
 
 2. 접속한 CT서버에서 OpenShift 로그인
 
-```powershell
+```bash
 oc login -u [ID] https://api.ocp4.kdnecp.com:6443
 ```
 
-```powershell
+```
 Username: [ID]
 Password:
 Login successful.
@@ -159,11 +159,11 @@ Login successful.
 
 3. Openshift 접속 확인
 
-```powershell
+```bash
 oc status  
 ```
 
-```powershell
+```
 In project SSG-TEST (ssg-test-del) on server https://api.ocp4.kdnecp.com:6443
 
 http://ssgtest-ssg-test-del.apps.ocp4.kdnecp.com (svc/ssgtest)
