@@ -1,4 +1,5 @@
-[문서 최종 수정일자 : 2023-05-16]: # 
+[문서 최종 수정일자 : 2023-07-27]: # 
+
 [문서 최종 수정자 : 신승규]: # 
 
 # VM Server 시작하기
@@ -36,22 +37,8 @@ VM은 K-ECP에서 서버를 생성하여 컴퓨팅 인프라를 가상화하여 
 
 K-ECP VM 서비스를 사용하기 위해서는 아래와 같은 프로세스로 진행되며, **KDN의 직원일 경우 User Console에서 소속 부서장의 결재**가 필요합니다.
 
-<<<<<<< HEAD
-* KDN직원의 경우
-```mermaid
-sequenceDiagram
-  actor 사용자(KDN직원)
-  actor KDN부서장
-  사용자(KDN직원) -->> KDN부서장: VM 사용신청 승인요청?
-  Note over 사용자(KDN직원), KDN부서장: VM 사용자가 KDN직원일 경우<br/>User Console를 통하여<br/>소속 부서장이 결재 진행.
-  KDN부서장 -->>+ K-ECP: [결재완료] VM 사용신청
-  K-ECP -->>- 사용자(KDN직원): VM 제공
-```
-
-=======
 * KDN 직원인 경우
-  
->>>>>>> 464ff5f8c2fc10df2accda25a3afe95dd278eb63
+
 ```mermaid
 sequenceDiagram
 actor 사용자(KDN직원)
@@ -61,8 +48,9 @@ Note over 사용자(KDN직원), KDN부서장: VM 사용자가 KDN직원일 경�
 KDN부서장 -->>+ K-ECP: [결재완료] VM 사용신청
 K-ECP -->>- 사용자(KDN직원): VM 제공
 ```
+
 * 일반 사용자인 경우
-  
+
 ```mermaid
 sequenceDiagram
 actor 사용자(일반)
@@ -139,7 +127,7 @@ VM 신청 시 서버 운영 목적에 따라 다음과 같은 다양한 이미�
 2. 선택된 프로젝트내에 VM의 **IP 주소 확인**
 
 3. K-ECP 운영팀으로 부터 보안작업 완료 통보를 받은 후 인터넷 가능환경에서 브라우저를 통해 [K-ECP SSL VPN](https://kecp-vpn.kdn.com/) 접속 
-
+   
    > :bell: **안내:** SSL VPN 접속방법 및 사용법은 [SSL VPN 시작하기](./SSLVPN_started.md)가이드 문서를 참고 바랍니다.
 
 4. [보안그룹 시작하기](./SecurityGroup_started.md)를 통해 vpn으로 부터 서버접근 허용 작업 수행
@@ -148,13 +136,13 @@ VM 신청 시 서버 운영 목적에 따라 다음과 같은 다양한 이미�
    
    * 본 가이드에서는 윈도우 명령 프롬프트(터미널)을 이용한 SSH 접속
    
-   ```powershell #
+   ```bash
    ssh -p [ssh Port] kecpuser@[VM_IP_address]
    ```
 
 6. 초기 비밀번호 입력 후 로그인
    
-   ``` 
+   ```
    kecpuser@[VM]'s password:
    Last login: Wed May 31 13:41:07 2023 from 10.100.8.50
    #################################################################
@@ -176,7 +164,7 @@ VM 신청 시 서버 운영 목적에 따라 다음과 같은 다양한 이미�
    #################################################################
    Last login: Wed May 31 13:41:07 2023 from [IP]
    ```
-
+   
    > :bell: **안내:** 최초 접속 시 반드시 비밀번호의 변경이 필요합니다.
 
 ---

@@ -1,4 +1,4 @@
-[문서 최종 수정일자 : 2023-05-19]: # 
+[문서 최종 수정일자 : 2023-07-27]: # 
 
 [문서 최종 수정자 : 신승규]: # 
 
@@ -115,7 +115,7 @@ CT 접속 후 CLI 명령어인 `oc`를 통해 Container Project를 위한 다음
    
    * **Windows에서 SSH로 접속하는 Command**
    
-   ```powershell
+   ```bash
    ssh -p [SSH Port] kecpuser@[CT IP Address]
    ```
    
@@ -123,7 +123,7 @@ CT 접속 후 CLI 명령어인 `oc`를 통해 Container Project를 위한 다음
 
 4. 비밀번호 입력 후 로그인
    
-   ```powershell
+   ```
    kecpuser@[CT_IP] password:
    Activate the web console with: systemctl enable --now cockpit.socket
    

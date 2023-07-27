@@ -1,18 +1,17 @@
-[문서 최종 수정일자 : 2023-07-26]: # 
+[문서 최종 수정일자 : 2023-07-27]: # 
 
 [문서 최종 수정자 : 신승규]: # 
 
 # File Storage 시작하기
 
-이 안내서를 사용하여 **K-ECP File Storage(이하. FS)** 서비스를 시작 하십시오. FS 서비스 신청서를 작성하고 연결하는 방법을 안내합니다. 
+이 안내서를 사용하여 **K-ECP File Storage(이하. FS)** 서비스를 시작 하십시오. FS 서비스 신청서를 작성하고 연결하는 방법을 안내합니다.
 
 FS는 파일과 폴더의 계층구조로 저장됩니다. FS에서는 데이터가 폴더 안에 단일 정보로 저장됩니다. 해당 데이터를 찾기 위해 경로를 알아야 합니다.
 
 ### 관련 안내서
 
 * [Project 만들기](./Project.md)
-* [SSL VPN 시작하기](./SSLVPN_started.md)
-* [Container 시작하기](./Container_started.md)
+* [VM Server 시작하기](./SSLVPN_started.md)
 
 ### 목차
 
@@ -20,11 +19,11 @@ FS는 파일과 폴더의 계층구조로 저장됩니다. FS에서는 데이터
 
 [전제 조건](#precondition)
 
-[1단계: Container Terminal 서비스 신청](#step1)
+[1단계: File Storage 서비스 신청](#step1)
 
-[2단계: Container Terminal 접속](#step2)
+[2단계: File Storage 마운트](#step2)
 
-[3단계: OpenShift 로그인 및 CLI 사용](#step3)
+[3단계: File Storage 자동 마운트](#step3)
 
 [다음 단계](#nextstep)
 
@@ -59,23 +58,13 @@ sequenceDiagram
 
 K-ECP CT는 User Console를 통해 신청한 후 최종 승인 시 가상서버 형태로 제공 되며, 아래 개념도와 같이 **SSL-VPN 또는 전용선(Direct Connect 서비스 사용시)을 이용하여 접속**하실 수 있습니다.
 
-  ![개념도](./../resource/concept_ct.png "서비스 개념도")
-
-CT 접속 후 CLI 명령어인 `oc`를 통해 Container Project를 위한 다음과 같은 다양한 작업을 수행할 수 있습니다.
-
-* 프로젝트 소스 코드로 직접 작업
-* K-ECP Container Platform 작업 스크립팅
-* 애플리케이션 빌드, 배포 및 관리
-
----
+<img src="file:///D:/kdn_cloud/Git-workplace/guidebooks/resource/concept_fs.PNG" title="" alt="concept_fs.PNG" width="485">
 
 <span id="precondition"/>
 
 ## 전제 조건
 
-* 시작하기 전에 [K-ECP User Console](https://kecp.kdn.com/mbr/ "인터넷에서 접속 시")에 회원가입이 되어 있어야 합니다. 
-
-* 사전에 CT를 신청할 프로젝트가 생성되어 있어야 합니다. 
+* 사전에 FS를 할당받을 VM서비스가 신청되어 있어야 합니다. 
 
 > :bulb: **Tip:** KDN 직원의 경우  KDN 내부망에서 [KDN 전용 User Console](http://kdnecp.kdn.com:8585/mbr/ "KDN 내부망에서 접속 시")로도 접속이 가능합니다.
 
@@ -83,96 +72,146 @@ CT 접속 후 CLI 명령어인 `oc`를 통해 Container Project를 위한 다음
 
 <span id="step1"/>
 
-## 1단계: Container Terminal 서비스 신청
+## 1단계: File Storage 서비스 신청
 
-> :bell: **안내:** CT는 VM Server 형태로 제공되며, 프로젝트 당 1개를 초과할 수 없습니다.   
-
-1. K-ECP User Console에서 `[서비스 신청] 자원 > 컨테이너 신청 > Container Terminal 신청`의 돋보기 아이콘:mag: 클릭
+1. K-ECP User Console에서 `[서비스 신청] 자원 > 스토리지 신청 > 파일 스토리지`의 돋보기 아이콘:mag: 클릭
 
 2. 서비스 신청서 내역 작성 
    
-   * 프로젝트명: *CT가 포함되어야 될 기 생성완료된 프로젝트 선택*
+   * 클라우드: *FS서비스를 할당받을 가상서버가 있는 클라우드 선택*
    
-   * 서버대역: *CT에 할당될 IP Subnet 대역 선택* 
+   * 프로젝트명: *FS가 포함되어야 될 기 생성완료된 프로젝트 선택*
+   
+   * 가상서버: *FS가 할당될 VM Server 선택* 
+   
+   * 스토리지명: *사용자가 식별할 수 있는 스토리지명 작성*
+   
+   * 디스크 크기: *(최소 10GB)원하는 디스크 크기 설정*
+   
+   * 스토리지ID: *서버에서 마운트 시킬 스토리지경로명 작성*
+   
+   * 기타사항: *(선택) 기타 요구사항 작성* 
 
-3. `신청` 버튼을 클릭 하여 CT 서비스 신청 (단, KDN 직원일 경우 소속 부서장으로 결재자 지정 후 서비스 신청)
+3. `신청` 버튼을 클릭 하여 FS 서비스 신청 (단, KDN 직원일 경우 소속 부서장으로 결재자 지정 후 서비스 신청)
 
 ---
 
 <span id="step2"/>
 
-## 2단계: Container Terminal 접속
+## 2단계: File Storage 마운트
 
-> :warning: **주의사항:** K-ECP SSL VPN이 사전에 신청되어 있어야 합니다.
-> 
-> :bulb:**안내**: [보안그룹 설정하기](./SecurityGroup_started.md)를 통해 vpn으로 부터 서버접 근이 허용되야 합니다.
+> :warning: **주의사항:** VM 서비스가 사전에 신청되어 있어야 합니다.
 
-1. CT 서비스 신청 승인이 완료 된 경우 K-ECP User Console에서 `서비스 현황 > 가상서버`로 이동하여 해당 프로젝트 선택
+1. FS 서비스 신청 승인이 완료 된 경우 K-ECP User Console에서 `서비스 현황 > 스토리지`로 이동
 
-2. 선택된 프로젝트내에 VM Server형태로 생성된 CT의 **IP 주소 확인**
+2. 해당 FS 서비스를 신청한 프로젝트 상세의 돋보기 아이콘:mag: 클릭
 
-3. SSL VPN 연결 후 SSH 접속 툴 또는 커맨드을 통해 CT의 IP로 접속 (계정명: kecpuser, 초기 비밀번호: K-ECP 운영팀에게 문의)
-   
-   * **Windows에서 SSH로 접속하는 Command**
-   
-   ```powershell
-   ssh -p [SSH Port] kecpuser@[CT IP Address]
-   ```
-   
-   > :bell: **안내:** 최초 접속 시 비밀번호를 변경하셔야 정상접속 됩니다.
+3. 파일스토리지 목록에서 신청한 스토리지ID와 스토리지명을 확인
 
-4. 비밀번호 입력 후 로그인
-   
-   ```powershell
-   kecpuser@[CT_IP] password:
-   Activate the web console with: systemctl enable --now cockpit.socket
-   
-   This system is not registered to Red Hat Insights. See https://cloud.redhat.com/
-   To register this system, run: insights-client --register
-   
-   Last login: Thu May 18 17:34:52 2023 from [IP]
-   ```
+4. 해당 FS의 파일경로 확인
 
-> :bell: **안내:** 접속 후 초기 비밀번호 변경이 필요합니다.
+5. FS를 신청한 VM Server로 접속, SSH 클라이언트(Putty, Windows 터미널 등)을 통해 서버 접속
+   
+   - 본 가이드에서는 윈도우 명령 프롬프트(터미널)을 이용한 SSH 접속
+
+```bash
+ssh -p [ssh Port] kecpuser@[VM_IP_address]
+```
+
+6. 현재 디스크 상태 확인
+
+```bash
+df -h
+```
+
+* 기본 OS 디스크만 마운트 되어 있는 것을 확인
+
+```
+Filesystem      Size  Used Avail Use% Mounted on
+devtmpfs        1.8G     0  1.8G   0% /dev
+tmpfs           1.9G     0  1.9G   0% /dev/shm
+tmpfs           1.9G   25M  1.8G   2% /run
+tmpfs           1.9G     0  1.9G   0% /sys/fs/cgroup
+/dev/vda3        50G  7.5G   43G  15% /
+/dev/vda2       100M  5.8M   95M   6% /boot/efi
+tmpfs           374M     0  374M   0% /run/user/1001
+```
+
+> :warning:**주의사항**: 파일 시스템을 파티셔닝하고 마운트하는 작업으로 root 권한으로 작업하여야 합니다.
+
+```bash
+sudo -i
+```
+
+8. FS를 마운트할 디렉토리 생성
+
+```bash
+mkdir /FS_data
+```
+
+8. 4.에서 확인한 파일경로를 통해 FS마운트
+
+```bash
+mount -t nfs [FS_IP]:/[스토리지ID] /FS_data
+```
+
+> :bulb:**안내**: FS_IP의 경우 운영팀에 문의해야 합니다.
+
+9. 마운트가 잘 되었는지 확인
+
+```bash
+df -h
+```
+
+```
+Filesystem                 Size  Used Avail Use% Mounted on
+devtmpfs                   1.8G     0  1.8G   0% /dev
+tmpfs                      1.9G     0  1.9G   0% /dev/shm
+tmpfs                      1.9G   25M  1.8G   2% /run
+tmpfs                      1.9G     0  1.9G   0% /sys/fs/cgroup
+/dev/vda3                   50G  7.5G   43G  15% /
+/dev/vda2                  100M  5.8M   95M   6% /boot/efi
+tmpfs                      374M     0  374M   0% /run/user/1001
+[FS_IP]:/[스토리지ID]        10G     0   10G   0% /FS_data
+```
 
 ---
 
 <span id="step3"/>
 
-## 3단계: OpenShift 로그인 및 CLI 사용
+## 3단계: File Storage 자동 마운트
 
-1. K-ECP 운영팀에게 OpenShift의 원하는 비밀번호 전달
+> :bulb:**안내**: 자동 마운트를 설정하지 않으면, 부팅할 때마다 디스크를 마운트 해야하기 때문에 자동마운트 설정을 실행합니다.
 
-> :bell:**안내**:원하는 비밀번호가 없는 경우 K-ECP 운영팀에서 임의로 설정합니다.
-
-2. 접속한 CT서버에서 OpenShift 로그인
+> :warning:**주의사항**: hosts, fstab 파일 수정하는 작업은 root권한으로 실행해야 합니다.
 
 ```bash
-oc login -u [ID] https://api.ocp4.kdnecp.com:6443
+sudo -i
 ```
 
-```
-Username: [ID]
-Password:
-Login successful.
-```
-
-3. Openshift 접속 확인
-
-```bash
-oc status  
-```
-
-```
-In project SSG-TEST (ssg-test-del) on server https://api.ocp4.kdnecp.com:6443
-
-http://ssgtest-ssg-test-del.apps.ocp4.kdnecp.com (svc/ssgtest)
-  dc/ssgtest deploys istag/ssgtest:latest <-
-    bc/ssgtest source builds http://[gitlab_URL]
-    deployment #4 deployed 7 days ago - 1 pod
-    deployment #3 deployed 7 days ago
-    deployment #2 deployed 7 days ago
-```
+1. hosts파일 수정을 통한 FS_IP 를 논리 주소로 변경
+   
+   ```bash
+   vi /etc/hosts
+   ```
+* [FS_IP]를 filestorage라는 논리주소로 설정
+  
+  ```
+  127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
+  ::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
+  [FS_IP]  filestorage
+  ```
+1. vi 편집기로 fstab파일 수정
+   
+   ```bash
+   vi /etc/fstab
+   ```
+   
+   ```
+   UUID=d47ead13-ec24-428e-9175-46aefa764b26       /       xfs     defaults        0       0
+   UUID=7B77-95E7  /boot/efi       vfat    defaults,uid=0,gid=0,umask=077,shortname=winnt  0       2
+   filestorage:/[스토리지ID] /FS_data                  nfs     nosuid,rw,sync,hard,intr        0 0
+   ```
 
 ---
 

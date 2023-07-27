@@ -1,4 +1,4 @@
-[문서 최종 수정일자]:#23.06.01
+[문서 최종 수정일자]:#23.7.27
 
 [문서 최종 수정자]:#신승규
 
@@ -102,7 +102,7 @@ sequenceDiagram
 4. GitLab 가입 이후 해당 정보로 로그인
    
    * 원하는 역할(Role) 선택
-  
+     
      * Software Developer, Development Team Lead, Devops Engineer, Systems Administrator, Security Analyst, Data Analyst, Product Manager, Product Desinger, Other
    
    * `Get started!`버튼 클릭
@@ -124,7 +124,7 @@ sequenceDiagram
    * Visibility Level : *`Public` 선택*
    
    > :warning:**주의**: 반드시 **Public**으로 선택해야 합니다.
-
+   
    * initialize repository with a README : *체크를 통해 이후 README 파일 생성을 확인할 수 있음*
 
 4. `Create Project`버튼 클릭
@@ -145,7 +145,7 @@ sequenceDiagram
 
 3. 1단계에서 복사한 URL주소를 입력하여 Clone 실행
    
-   ```powershell
+   ```bash
    git clone [Clone with Http]
    ```
 
@@ -159,23 +159,23 @@ sequenceDiagram
 
 8. 실행중인 Git Bash 창에서 생성된 폴더로 이동
    
-   ```powershell
+   ```bash
    cd [Project name]
    ```
 
 9. 해당 리파지토리에 유저 정보 등록(0. K-ECP Gitlab 가입시 작성한 사번과 Email 등록)
    
-   ```powershell
+   ```bash
    git config --global user.name"[사번]"
    ```
    
-   ```powershell
+   ```bash
    git config --global user.email"[User Email]"
    ```
 
 10. 등록된 정보 확인
     
-    ```powershell
+    ```bash
     git config --list | grep user.
     ```
 
@@ -183,19 +183,19 @@ sequenceDiagram
     
     * 현재 디렉토리의 모든 소스를 로컬 디렉토리에 추가
       
-      ```powershell
+      ```bash
       git add .
       ```
     
     * GitLab으로 commit
       
-      ```powershell
+      ```bash
       git commit -m "commit 메시지"
       ```
     
     * 로컬 소스를 Git(Main Branch로)에 업로드
       
-      ```powershell
+      ```bash
       git push -u origin main
       ```
 
@@ -232,6 +232,7 @@ sequenceDiagram
 5. `신청`버튼 클릭
 
 ---
+
 <span id ="step4"/>
 
 ## 4단계 : Contanier 확인
