@@ -243,7 +243,7 @@ sequenceDiagram
 
 4. 컨테이너의 상세:mag:아이콘 클릭
 
-5. Routes의 Location:[URL] 클릭
+5. Routes의 Location: [URL] 클릭
 
 ---
 
