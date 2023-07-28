@@ -113,11 +113,11 @@ CT 접속 후 CLI 명령어인 `oc`를 통해 Container Project를 위한 다음
 
 3. SSL VPN 연결 후 SSH 접속 툴 또는 커맨드을 통해 CT의 IP로 접속 (계정명: kecpuser, 초기 비밀번호: K-ECP 운영팀에게 문의)
    
-   * **Windows에서 SSH로 접속하는 Command**
+   * Windows에서 SSH로 접속하는 Command
    
-   ```bash
-   ssh -p [SSH Port] kecpuser@[CT IP Address]
-   ```
+      ```bash
+      ssh -p [SSH Port] kecpuser@[CT IP Address]
+      ```
    
    > :bell: **안내:** 최초 접속 시 비밀번호를 변경하셔야 정상접속 됩니다.
 
