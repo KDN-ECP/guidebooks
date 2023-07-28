@@ -104,7 +104,7 @@ CT 접속 후 CLI 명령어인 `oc`를 통해 Container Project를 위한 다음
 ## 2단계: Container Terminal 접속
 
 > :warning: **주의사항:** K-ECP SSL VPN이 사전에 신청되어 있어야 합니다.
-> 
+ 
 > :bulb:**안내**: [보안그룹 설정하기](./SecurityGroup_started.md)를 통해 vpn으로 부터 서버접 근이 허용되야 합니다.
 
 1. CT 서비스 신청 승인이 완료 된 경우 K-ECP User Console에서 `서비스 현황 > 가상서버`로 이동하여 해당 프로젝트 선택
