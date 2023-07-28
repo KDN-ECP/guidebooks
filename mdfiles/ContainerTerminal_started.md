@@ -147,32 +147,32 @@ CT 접속 후 CLI 명령어인 `oc`를 통해 Container Project를 위한 다음
 
 2. 접속한 CT서버에서 OpenShift 로그인
 
-```bash
-oc login -u [ID] https://api.ocp4.kdnecp.com:6443
-```
+   ```bash
+   oc login -u [ID] https://api.ocp4.kdnecp.com:6443
+   ```
 
-```
-Username: [ID]
-Password:
-Login successful.
-```
+   ```
+   Username: [ID]
+   Password:
+   Login successful.
+   ```
 
 3. Openshift 접속 확인
 
-```bash
-oc status  
-```
+   ```bash
+   oc status  
+   ```
 
-```
-In project SSG-TEST (ssg-test-del) on server https://api.ocp4.kdnecp.com:6443
+   ```
+   In project SSG-TEST (ssg-test-del) on server https://api.ocp4.kdnecp.com:6443
 
-http://ssgtest-ssg-test-del.apps.ocp4.kdnecp.com (svc/ssgtest)
-  dc/ssgtest deploys istag/ssgtest:latest <-
-    bc/ssgtest source builds http://[gitlab_URL]
-    deployment #4 deployed 7 days ago - 1 pod
-    deployment #3 deployed 7 days ago
-    deployment #2 deployed 7 days ago
-```
+   http://ssgtest-ssg-test-del.apps.ocp4.kdnecp.com (svc/ssgtest)
+     dc/ssgtest deploys istag/ssgtest:latest <-
+       bc/ssgtest source builds http://[gitlab_URL]
+       deployment #4 deployed 7 days ago - 1 pod
+       deployment #3 deployed 7 days ago
+       deployment #2 deployed 7 days ago
+   ```
 
 ---
 
