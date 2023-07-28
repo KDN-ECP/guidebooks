@@ -1,4 +1,4 @@
-[문서 최종 수정일자 : 2023-07-27]: # 
+[문서 최종 수정일자 : 2023-07-28]: # 
 
 [문서 최종 수정자 : 신승규]: # 
 
@@ -12,7 +12,8 @@ VM은 K-ECP에서 서버를 생성하여 컴퓨팅 인프라를 가상화하여 
 
 * [Project 만들기](./Project.md)
 * [SSL VPN 시작하기](./SSLVPN_started.md)
-* [Storage 시작하기](./Storage_started)
+* [Block Storage 시작하기](./BlockStorage.md)
+* [File Storage 시작하기](./FileStorage_started.md)
 * VM Backup 시작하기
 
 ### 목차
@@ -76,8 +77,6 @@ VM 신청 시 서버 운영 목적에 따라 다음과 같은 다양한 이미�
 
 ## 전제 조건
 
-* 시작하기 전에 [K-ECP User Console](https://kecp.kdn.com/mbr/ "인터넷에서 접속 시")에 회원가입이 되어 있어야 합니다. 
-
 * 사전에 VM을 신청할 프로젝트가 생성되어 있어야 합니다. 
 
 > :bulb: **Tip:** KDN 직원의 경우  KDN 내부망에서 [KDN 전용 User Console](http://kdnecp.kdn.com:8585/mbr/ "KDN 내부망에서 접속 시")로도 접속이 가능합니다.
@@ -94,11 +93,13 @@ VM 신청 시 서버 운영 목적에 따라 다음과 같은 다양한 이미�
    
    * 프로젝트명: *VM이 포함되어야 될 기 생성완료된 프로젝트 선택*
    
-   * 서버대역: *VM에 할당될 IP Subnet 대역 선택* 
+   * 서버대역: *VM이 할당될 클러스터 선택* 
    
    * 네트워크: *VM에 할당될 네트워크 대역 선택*
    
-   * 운영체제: *선택한 이미지 자동 설정*
+   * 운영체제: *선택한 서버 이미지 자동 설정*
+   
+   > :bell:**안내**: RHEL 기본 OS 위에 1. 에서 선택한 이미지가 설치된 상태로 서버가 제공됩니다.
    
    * 서버명: *운영목적에 맞게 서버명 작성*
    
@@ -106,11 +107,13 @@ VM 신청 시 서버 운영 목적에 따라 다음과 같은 다양한 이미�
    
    > :bulb:**Tip**: 추가 DISK를 원할 경우 [Block Storage 시작하기](./BlockStorage_started.md)를 통해 서버에 추가 할당 할 수 있습니다.
    
-   * 서버사양: 소형서버, 중형서버, 대형서버, CPU-Intensive, Memory-Intensive 중 선택 후 서버 스펙 선택
+   * 서버사양: *소형서버, 중형서버, 대형서버, CPU-Intensive, Memory-Intensive 중 선택 후 서버 스펙 선택*
    
    > :bulb:**Tip**: 상세 사양 및 요금은 K-ECP요금표에서 확인 가능합니다.
    
-   * 백업네트워크: 포함 선택시 `Backup IP`추가 할당
+   * 백업네트워크: *포함 선택시 `Backup IP`추가 할당*
+   
+   > :bell:**안내**: Backup Ip 추가 할당 후 사용자가 직접 Backup서버에 Backup 클라이언트를 설치 후 할당 받은 IP로 Backup 작업을 실행해야 합니다.
 
 3. `신청` 버튼을 클릭 하여 VM 서비스 신청 (단, KDN 직원일 경우 소속 부서장으로 결재자 지정 후 서비스 신청)
 
@@ -127,18 +130,18 @@ VM 신청 시 서버 운영 목적에 따라 다음과 같은 다양한 이미�
 2. 선택된 프로젝트내에 VM의 **IP 주소 확인**
 
 3. K-ECP 운영팀으로 부터 보안작업 완료 통보를 받은 후 인터넷 가능환경에서 브라우저를 통해 [K-ECP SSL VPN](https://kecp-vpn.kdn.com/) 접속 
-   
-   > :bell: **안내:** SSL VPN 접속방법 및 사용법은 [SSL VPN 시작하기](./SSLVPN_started.md)가이드 문서를 참고 바랍니다.
 
-4. [보안그룹 시작하기](./SecurityGroup_started.md)를 통해 vpn으로 부터 서버접근 허용 작업 수행
+>  :bell: **안내:** SSL VPN 접속방법 및 사용법은 [SSL VPN 시작하기](./SSLVPN_started.md)가이드 문서를 참고 바랍니다.
+
+4. [보안그룹 시작하기](./SecurityGroup_started.md)를 통해 SSH 프로토콜 포트를 허용하는 보안작업 시행
 
 5. K-ECP 운영팀으로 부터 VM서버의 초기 ID/PW을 전달 받은 후 SSH 클라이언트(Putty, Windows 터미널 등)을 통해 서버 접속
    
    * 본 가이드에서는 윈도우 명령 프롬프트(터미널)을 이용한 SSH 접속
-   
-   ```bash
-   ssh -p [ssh Port] kecpuser@[VM_IP_address]
-   ```
+     
+     ```powershell
+     ssh -p [ssh Port] kecpuser@[VM_IP_address]
+     ```
 
 6. 초기 비밀번호 입력 후 로그인
    
@@ -175,17 +178,17 @@ VM 신청 시 서버 운영 목적에 따라 다음과 같은 다양한 이미�
 
 1. K-ECP User Console에서`서비스현황 > 가상서버`이동 후 해당 VM이 속한 프로젝트의 돋보기 아이콘:mag: 클릭
    
-   * 운전상태: ACTIVE / SHUTDOWN 등 현재 서버의 상태를 확인할 수 있습니다.
+   * 운전상태: *ACTIVE / SHUTDOWN 등 현재 서버의 상태를 확인할 수 있습니다.*
    
-   * 정지 :white_square_button::  ACTICE 상태의 서버를 중지할 수 있습니다.
+   * 정지 :white_square_button::  *ACTICE 상태의 서버를 중지할 수 있습니다.*
    
-   * 시작 :arrow_forward:: SHUTDOWN 상태의 서버를 기동시킬 수 있습니다.
+   * 시작 :arrow_forward:: *SHUTDOWN 상태의 서버를 기동시킬 수 있습니다.*
    
-   * 재시작 :arrows_counterclockwise:: 해당 서버를 재기동 할 수 있습니다.
+   * 재시작 :arrows_counterclockwise:: *해당 서버를 재기동 할 수 있습니다.*
    
-   * 보안그룹 :mag:: [보안그룹 시작하기](./SecurityGroup_started.md)를 통해 서버 접근을 설정할 수 있습니다.
+   * 보안그룹 :mag:: *[보안그룹 시작하기](./SecurityGroup_started.md)를 통해 서버 접근을 설정할 수 있습니다.*
    
-   * 상세 :mag:: 상세 페이지를 통해서 해당 가상서버의 상세 사항 확인 및 `서버명` 수정, VM 변경 및 해지하기를 사용할 수 있습니다.
+   * 상세 :mag:: *상세 페이지를 통해서 해당 가상서버의 상세 사항 확인 및 `서버명` 수정, VM 변경 및 해지하기를 사용할 수 있습니다.*
 
 > :bell:**안내**: K-ECP User Console에서 가상서버의 기동/정지 및 상태를 확인할 수 있습니다.
 
@@ -195,6 +198,6 @@ VM 신청 시 서버 운영 목적에 따라 다음과 같은 다양한 이미�
 
 ## 다음 단계
 
-* [Block Storage시작하기](./BlockStorage_started.md)를 통해 `VM`의 Storage를 추가할 수 있습니다.
+* [Block Storage 시작하기](./BlockStorage_started.md) 또는 [File Storage 시작하기](./FileStorage_storage_started.md) 를 통해 VM에 Storage를 추가할 수 있습니다.
 
-* VM 변경 및 해지하기를 통해 사용중인 `VM`서비스를 반납할 수 있습니다.(향후 제공 예정)
+* VM 변경 및 해지하기를 통해 사용중인 VM서비스를 반납할 수 있습니다. (향후 제공 예정)

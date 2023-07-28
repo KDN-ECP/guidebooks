@@ -10,9 +10,9 @@ CT는 K-ECP에서 컨테이너를 관리하고 오케스트레이션 할 수 있
 
 ### 관련 안내서
 
-* [Project 만들기](./Project.md)
 * [SSL VPN 시작하기](./SSLVPN_started.md)
 * [Container 시작하기](./Container_started.md)
+* [Container Terminal 활용하기](./ContainerTerminal_use.md)
 
 ### 목차
 

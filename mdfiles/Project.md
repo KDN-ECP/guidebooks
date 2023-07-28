@@ -1,5 +1,6 @@
-[문서 최종 수정일자 : 2023-07-27]: # 
-[문서 최종 수정자 : 신승규]: #
+[문서 최종 수정일자 : 2023-07-28]: # 
+
+[문서 최종 수정자 : 신승규]: # 
 
 # Project 만들기
 
@@ -13,7 +14,7 @@ Project는 K-ECP에서 업무 시스템을 의미하며, 프로젝트 신청 이
 ### 관련 안내서
 
 - [VM Server 시작하기](./VirutalMachine_started.md)
-- [Container Service 시작하기](./Container_started.md)
+- [Container 시작하기](./Container_started.md)
 - [SSL VPN 시작하기](./SSLVPN_started.md)
 
 ### 목차
@@ -54,6 +55,8 @@ sequenceDiagram
 - 시작하기 전에 [K-ECP User Console](https://kecp.kdn.com/mbr/ "인터넷에서 접속 시")에 회원가입이 되어 있어야 합니다.
 
 > :bulb: **Tip:** KDN 직원의 경우 KDN 내부망에서 [KDN 전용 User Console](http://kdnecp.kdn.com:8585/mbr/ "KDN 내부망에서 접속 시")로도 접속이 가능합니다.
+
+* 일반 사용자의 경우 사전에 K-ECP 운영팀에 문의하여 고객사명과 코드를 등록하여야 합니다.
 
 ---
 

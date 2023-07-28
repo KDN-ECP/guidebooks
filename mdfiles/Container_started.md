@@ -1,6 +1,6 @@
-[문서 최종 수정일자]:#23.7.27
+[문서 최종 수정일자 : 2023-07-28]: # 
 
-[문서 최종 수정자]:#신승규
+[문서 최종 수정자 : 신승규]: #
 
 # Container 시작하기
 
@@ -73,9 +73,9 @@ sequenceDiagram
 
 - PC에 Git client가 설치되어 있어야 합니다.
 
-> :bulb:**안내**: K-ECP SW자료실에서 다운로드 할 수 있습니다.
+> :bulb:**안내**: Git client는 K-ECP SW자료실에서 다운로드 할 수 있습니다.
 
-- [K-ECP SW 자료실](./http://10.100.11.114/k-ecp/software)에서 Git 파일 다운로드 후 설치(SSLVPN 접속상태에서 가능합니다.)
+- [K-ECP SW 자료실](./http://10.100.11.114/k-ecp/software)에서 Git 파일 다운로드 후 설치(SSL VPN 접속상태에서 가능합니다.)
 
 ---
 

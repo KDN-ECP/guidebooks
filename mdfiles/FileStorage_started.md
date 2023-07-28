@@ -1,6 +1,6 @@
-[문서 최종 수정일자 : 2023-07-27]: # 
+[문서 최종 수정일자 : 2023-07-28]: # 
 
-[문서 최종 수정자 : 신승규]: # 
+[문서 최종 수정자 : 신승규]: #  
 
 # File Storage 시작하기
 
@@ -41,10 +41,10 @@ K-ECP FS 서비스를 사용하기 위해서는 아래와 같은 프로세스로
 sequenceDiagram
   actor 사용자(KDN직원)
   actor KDN부서장
-  사용자(KDN직원) -->> KDN부서장: CT 사용신청 승인요청
-  Note over 사용자(KDN직원), KDN부서장: CT 사용자가 KDN직원일 경우User Console를 통하여소속 부서장이 결재 진행.
-  KDN부서장 -->>+ K-ECP: [결재완료] CT 사용신청
-  K-ECP -->>- 사용자(KDN직원): CT 제공
+  사용자(KDN직원) -->> KDN부서장: FS 사용신청 승인요청
+  Note over 사용자(KDN직원), KDN부서장: FS 사용자가 KDN직원일 경우<br/>User Console를 통하여<br/>소속 부서장이 결재 진행.
+  KDN부서장 -->>+ K-ECP: [결재완료] FS 사용신청
+  K-ECP -->>- 사용자(KDN직원): FS 제공
 ```
 
 * 일반 사용자
@@ -52,8 +52,8 @@ sequenceDiagram
 ```mermaid
 sequenceDiagram
   actor 사용자(일반)
-  사용자(일반) -->>+ K-ECP: CT 사용신청 승인요청
-  K-ECP -->>- 사용자(일반): CT 제공
+  사용자(일반) -->>+ K-ECP: FS 사용신청 승인요청
+  K-ECP -->>- 사용자(일반): FS 제공
 ```
 
 K-ECP FS는 User Console를 통해 신청한 후 최종 승인 시 제공 되며, 아래 개념도와 같이 VM Server에서 마운트하여 접속하실 수 있습니다. 또한 2대 이상의 VM Server가 1개의 FS를 공유하여 사용할 수 있습니다.
@@ -78,7 +78,7 @@ K-ECP FS는 User Console를 통해 신청한 후 최종 승인 시 제공 되며
 
 2. 서비스 신청서 내역 작성 
    
-   * 클라우드: *FS서비스를 할당받을 가상서버가 있는 클라우드 선택*
+   * 클라우드: *FS 서비스를 할당받을 가상서버가 있는 클라우드 선택*
    
    * 프로젝트명: *FS가 포함되어야 될 기 생성완료된 프로젝트 선택*
    
@@ -86,11 +86,9 @@ K-ECP FS는 User Console를 통해 신청한 후 최종 승인 시 제공 되며
    
    * 스토리지명: *사용자가 식별할 수 있는 스토리지명 작성*
    
-   * 디스크 크기: *(최소 10GB)원하는 디스크 크기 설정*
+   * 디스크 크기: *(최소 10GB, 최대 500GB)원하는 디스크 크기 설정*
    
    * 스토리지ID: *서버에서 마운트 시킬 스토리지경로명 작성*
-   
-   * 기타사항: *(선택) 기타 요구사항 작성* 
 
 3. `신청` 버튼을 클릭 하여 FS 서비스 신청 (단, KDN 직원일 경우 소속 부서장으로 결재자 지정 후 서비스 신청)
 
@@ -130,32 +128,32 @@ K-ECP FS는 User Console를 통해 신청한 후 최종 승인 시 제공 되며
      Filesystem      Size  Used Avail Use% Mounted on
      devtmpfs        1.8G     0  1.8G   0% /dev
      tmpfs           1.9G     0  1.9G   0% /dev/shm
-           tmpfs           1.9G   25M  1.8G   2% /run
+     tmpfs           1.9G   25M  1.8G   2% /run
      tmpfs           1.9G     0  1.9G   0% /sys/fs/cgroup
      /dev/vda3        50G  7.5G   43G  15% /
      /dev/vda2       100M  5.8M   95M   6% /boot/efi
      tmpfs           374M     0  374M   0% /run/user/1001
      ```
 
-> :warning:**주의사항**: 파일 시스템을 파티셔닝하고 마운트하는 작업으로 root 권한으로 작업하여야 합니다.
+7. 파일 시스템을 파티셔닝하고 마운트하는 작업으로 root 권한으로 작업하여야 합니다.
+   
+   ```bash
+   sudo -i
+   ```
 
-```bash
-sudo -i
-```
-
-7. FS를 마운트할 디렉토리 생성
+8. FS를 마운트할 디렉토리 생성(본 가이드에서는 디렉토리명을 `/FS_data` 로 진행, 사용자가 원하는 디렉토리명으로 변경하여 사용)
    
    ```bash
    mkdir /FS_data
    ```
 
-8. 4.에서 확인한 파일경로를 통해 FS마운트
+9. 3., 4. 에서 확인한 파일경로를 통해 FS 마운트
    
    ```bash
    mount -t nfs [FS_IP]:/[스토리지ID] /FS_data
    ```
 
-> :bulb:**안내**: FS_IP의 경우 운영팀에 문의해야 합니다.
+> :bulb:**안내**: FS_IP의 경우 K-ECP 운영팀에 문의해야 합니다.
 
 9. 마운트가 잘 되었는지 확인
    
@@ -183,13 +181,13 @@ sudo -i
 
 > :bulb:**안내**: 자동 마운트를 설정하지 않으면, 부팅할 때마다 디스크를 마운트 해야하기 때문에 자동마운트 설정을 실행합니다.
 
-> :warning:**주의사항**: hosts, fstab 파일 수정하는 작업은 root권한으로 실행해야 합니다.
+> :warning:**주의사항**: hosts, fstab 파일 수정하는 작업은 root 권한으로 실행해야 합니다.
 
 ```bash
 sudo -i
 ```
 
-1. hosts파일 수정을 통한 FS_IP 를 논리 주소로 변경
+1. hosts 파일 수정을 통한 FS_IP 를 논리 주소로 변경
    
    ```bash
    vi /etc/hosts
@@ -203,7 +201,7 @@ sudo -i
      [FS_IP]  filestorage
      ```
 
-2. vi 편집기로 fstab파일 수정
+2. vi 편집기로 fstab 파일 수정
    
    ```bash
    vi /etc/fstab
@@ -275,4 +273,4 @@ sudo -i
 
 ## 다음 단계
 
-* [File Storage 삭제하기]를 통해서 VM에 할당된 FS를 삭제할 수 있습니다.
+* File Storage 삭제하기를 통해서 VM에 할당된 FS를 삭제할 수 있습니다.
