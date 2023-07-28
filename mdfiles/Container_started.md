@@ -75,8 +75,6 @@ sequenceDiagram
 
 > :bulb:**안내**: Git client는 K-ECP SW자료실에서 다운로드 할 수 있습니다.
 
-- [K-ECP SW 자료실](./http://10.100.11.114/k-ecp/software)에서 Git 파일 다운로드 후 설치(SSL VPN 접속상태에서 가능합니다.)
-
 ---
 
 <span id= "step0"/>
