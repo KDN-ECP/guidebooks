@@ -58,7 +58,7 @@ sequenceDiagram
 
 K-ECP FS는 User Console를 통해 신청한 후 최종 승인 시 제공 되며, 아래 개념도와 같이 VM Server에서 마운트하여 접속하실 수 있습니다. 또한 2대 이상의 VM Server가 1개의 FS를 공유하여 사용할 수 있습니다.
 
-<img src="file:///D:/kdn_cloud/Git-workplace/guidebooks/resource/concept_fs.PNG" title="" alt="concept_fs.PNG" width="485">
+![concept_fs.PNG](./../resource/concept_fs.PNG)
 
 <span id="precondition"/>
 
