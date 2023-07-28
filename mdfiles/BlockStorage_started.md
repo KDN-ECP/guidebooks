@@ -319,10 +319,10 @@ sudo -i
 3. 자동 마운트 설정내역 테스트
    
    * /data umount
-     
-     ```bash
-     umount /data
-     ```
+   
+   ```bash
+   umount /data
+   ```
    
    * umount 확인
      
@@ -341,10 +341,10 @@ sudo -i
      ```
    
    * 전체 마운트 명령
-     
-     ```bash
-     mount -a
-     ```
+   
+   ```bash
+   mount -a
+   ```
    
    * 자동 마운트 확인
      
@@ -369,4 +369,4 @@ sudo -i
 
 ## 다음단계
 
-* Block Storage 삭제하기를 통해서 VM에 할당된 Block Storage를 삭제할 수 있습니다.
+* Block Storage 삭제하기를 통해서 VM에 할당된 BS를 삭제할 수 있습니다.

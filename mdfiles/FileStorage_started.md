@@ -33,7 +33,7 @@ FS는 파일과 폴더의 계층구조로 저장됩니다. FS에서는 데이터
 
 ## 개요
 
-K-ECP CT 서비스를 사용하기 위해서는 아래와 같은 프로세스로 진행되며, **KDN의 직원일 경우 User Console에서 소속 부서장의 결재**가 필요합니다.
+K-ECP FS 서비스를 사용하기 위해서는 아래와 같은 프로세스로 진행되며, **KDN의 직원일 경우 User Console에서 소속 부서장의 결재**가 필요합니다.
 
 * KDN 직원이 사용할 경우
 
@@ -56,7 +56,7 @@ sequenceDiagram
   K-ECP -->>- 사용자(일반): CT 제공
 ```
 
-K-ECP CT는 User Console를 통해 신청한 후 최종 승인 시 가상서버 형태로 제공 되며, 아래 개념도와 같이 **SSL-VPN 또는 전용선(Direct Connect 서비스 사용시)을 이용하여 접속**하실 수 있습니다.
+K-ECP FS는 User Console를 통해 신청한 후 최종 승인 시 제공 되며, 아래 개념도와 같이 VM Server에서 마운트하여 접속하실 수 있습니다. 또한 2대 이상의 VM Server가 1개의 FS를 공유하여 사용할 수 있습니다.
 
 <img src="file:///D:/kdn_cloud/Git-workplace/guidebooks/resource/concept_fs.PNG" title="" alt="concept_fs.PNG" width="485">
 
@@ -113,29 +113,29 @@ K-ECP CT는 User Console를 통해 신청한 후 최종 승인 시 가상서버 
 5. FS를 신청한 VM Server로 접속, SSH 클라이언트(Putty, Windows 터미널 등)을 통해 서버 접속
    
    - 본 가이드에서는 윈도우 명령 프롬프트(터미널)을 이용한 SSH 접속
-
-```bash
-ssh -p [ssh Port] kecpuser@[VM_IP_address]
-```
+     
+     ```powershell
+     ssh -p [ssh Port] kecpuser@[VM_IP_address]
+     ```
 
 6. 현재 디스크 상태 확인
-
-```bash
-df -h
-```
-
-* 기본 OS 디스크만 마운트 되어 있는 것을 확인
-
-```
-Filesystem      Size  Used Avail Use% Mounted on
-devtmpfs        1.8G     0  1.8G   0% /dev
-tmpfs           1.9G     0  1.9G   0% /dev/shm
-tmpfs           1.9G   25M  1.8G   2% /run
-tmpfs           1.9G     0  1.9G   0% /sys/fs/cgroup
-/dev/vda3        50G  7.5G   43G  15% /
-/dev/vda2       100M  5.8M   95M   6% /boot/efi
-tmpfs           374M     0  374M   0% /run/user/1001
-```
+   
+   ```bash
+   df -h
+   ```
+   
+   * 기본 OS 디스크만 마운트 되어 있는 것을 확인
+     
+     ```
+     Filesystem      Size  Used Avail Use% Mounted on
+     devtmpfs        1.8G     0  1.8G   0% /dev
+     tmpfs           1.9G     0  1.9G   0% /dev/shm
+           tmpfs           1.9G   25M  1.8G   2% /run
+     tmpfs           1.9G     0  1.9G   0% /sys/fs/cgroup
+     /dev/vda3        50G  7.5G   43G  15% /
+     /dev/vda2       100M  5.8M   95M   6% /boot/efi
+     tmpfs           374M     0  374M   0% /run/user/1001
+     ```
 
 > :warning:**주의사항**: 파일 시스템을 파티셔닝하고 마운트하는 작업으로 root 권한으로 작업하여야 합니다.
 
@@ -143,37 +143,37 @@ tmpfs           374M     0  374M   0% /run/user/1001
 sudo -i
 ```
 
-8. FS를 마운트할 디렉토리 생성
-
-```bash
-mkdir /FS_data
-```
+7. FS를 마운트할 디렉토리 생성
+   
+   ```bash
+   mkdir /FS_data
+   ```
 
 8. 4.에서 확인한 파일경로를 통해 FS마운트
-
-```bash
-mount -t nfs [FS_IP]:/[스토리지ID] /FS_data
-```
+   
+   ```bash
+   mount -t nfs [FS_IP]:/[스토리지ID] /FS_data
+   ```
 
 > :bulb:**안내**: FS_IP의 경우 운영팀에 문의해야 합니다.
 
 9. 마운트가 잘 되었는지 확인
-
-```bash
-df -h
-```
-
-```
-Filesystem                 Size  Used Avail Use% Mounted on
-devtmpfs                   1.8G     0  1.8G   0% /dev
-tmpfs                      1.9G     0  1.9G   0% /dev/shm
-tmpfs                      1.9G   25M  1.8G   2% /run
-tmpfs                      1.9G     0  1.9G   0% /sys/fs/cgroup
-/dev/vda3                   50G  7.5G   43G  15% /
-/dev/vda2                  100M  5.8M   95M   6% /boot/efi
-tmpfs                      374M     0  374M   0% /run/user/1001
-[FS_IP]:/[스토리지ID]        10G     0   10G   0% /FS_data
-```
+   
+   ```bash
+   df -h
+   ```
+   
+   ```
+   Filesystem                 Size  Used Avail Use% Mounted on
+   devtmpfs                   1.8G     0  1.8G   0% /dev
+   tmpfs                      1.9G     0  1.9G   0% /dev/shm
+   tmpfs                      1.9G   25M  1.8G   2% /run
+   tmpfs                      1.9G     0  1.9G   0% /sys/fs/cgroup
+   /dev/vda3                   50G  7.5G   43G  15% /
+   /dev/vda2                  100M  5.8M   95M   6% /boot/efi
+   tmpfs                      374M     0  374M   0% /run/user/1001
+   [FS_IP]:/[스토리지ID]        10G     0   10G   0% /FS_data
+   ```
 
 ---
 
@@ -194,24 +194,78 @@ sudo -i
    ```bash
    vi /etc/hosts
    ```
-* [FS_IP]를 filestorage라는 논리주소로 설정
-  
-  ```
-  127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
-  ::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
-  [FS_IP]  filestorage
-  ```
-1. vi 편집기로 fstab파일 수정
+   
+   * [FS_IP]를 filestorage라는 논리주소로 설정
+     
+     ```
+     127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
+     ::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
+     [FS_IP]  filestorage
+     ```
+
+2. vi 편집기로 fstab파일 수정
    
    ```bash
    vi /etc/fstab
    ```
    
-   ```
-   UUID=d47ead13-ec24-428e-9175-46aefa764b26       /       xfs     defaults        0       0
-   UUID=7B77-95E7  /boot/efi       vfat    defaults,uid=0,gid=0,umask=077,shortname=winnt  0       2
-   filestorage:/[스토리지ID] /FS_data                  nfs     nosuid,rw,sync,hard,intr        0 0
-   ```
+   * 자동 마운트 내용 추가(UUID = ...) (1.에서 확인한 UUID 입력)
+     
+     > :bulb:**안내**: vi 편집기 실행 후 **"i"** 키를 눌러 편집을 실행할 수 있습니다. 이후 **"ESC"** , **":wq"** 입력을 통해 편집 내용을 저장할 수 있습니다.
+     
+     ```
+     UUID=d47ead13-ec24-428e-9175-46aefa764b26       /       xfs     defaults        0       0
+     UUID=7B77-95E7  /boot/efi       vfat          defaults,uid=0,gid=0,umask=077,shortname=winnt  0       2
+     filestorage:/[스토리지ID] /FS_data                  nfs           nosuid,rw,sync,hard,intr        0 0
+     ```
+
+3. 자동 마운트 설정내역 테스트
+   
+   * /data umount
+     
+     ```bash
+     umount /FS_data
+     ```
+   
+   * umount 확인
+     
+     ```bash
+     df -h
+     ```
+     
+     ```
+     devtmpfs        1.8G     0  1.8G   0% /dev
+     tmpfs           1.9G   84K  1.9G   1% /dev/shm
+     mpfs           1.9G   25M  1.8G   2% /run
+     tmpfs           1.9G     0  1.9G   0% /sys/fs/cgroup
+     /dev/vda3        50G  7.5G   43G  15% /
+     /dev/vda2       100M  5.8M   95M   6% /boot/efi
+     tmpfs           374M  8.0K  374M   1% /run/user/1001
+     ```
+   
+   * 전체 마운트 명령
+     
+     ```bash
+     mount -a
+     ```
+   
+   * 자동 마운트 확인
+     
+     ```bash
+     df -h
+     ```
+     
+     ```
+     Filesystem               Size  Used Avail Use% Mounted on
+     devtmpfs                 1.8G     0  1.8G   0% /dev
+     tmpfs                    1.9G   84K  1.9G   1% /dev/shm
+     tmpfs                    1.9G   25M  1.8G   2% /run
+     tmpfs                    1.9G     0  1.9G   0% /sys/fs/cgroup
+     /dev/vda3                 50G  7.5G   43G  15% /
+     /dev/vda2                100M  5.8M   95M   6% /boot/efi
+     tmpfs                    374M  8.0K  374M   1% /run/user/1001
+     filestorage:/[스토리지ID]  10G     0   10G   0% /FS_data
+     ```
 
 ---
 
@@ -221,4 +275,4 @@ sudo -i
 
 ## 다음 단계
 
-* [Container Terminal 활용하기](./ContainerTerminal_use.md)를 통해서 `CT`서비스를 활용할 수 있습니다.(향후 제공 예정)
+* [File Storage 삭제하기]를 통해서 VM에 할당된 FS를 삭제할 수 있습니다.
