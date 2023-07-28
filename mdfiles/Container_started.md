@@ -73,7 +73,7 @@ sequenceDiagram
 
 - PC에 Git client가 설치되어 있어야 합니다.
 
-> :bulb:**안내**: Git client는 K-ECP SW자료실에서 다운로드 할 수 있습니다.
+> :bulb:**안내**: Git client는 K-ECP [SW자료실](http://gitlab.ocp4.kdnecp.com/k-ecp/software)에서 다운로드 할 수 있습니다.
 
 ---
 
