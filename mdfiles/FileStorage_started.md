@@ -64,7 +64,9 @@ K-ECP FS는 User Console를 통해 신청한 후 최종 승인 시 제공 되며
 
 ## 전제 조건
 
-* 사전에 FS를 할당받을 VM서비스가 신청되어 있어야 합니다. 
+* 사전에 FS를 할당받을 VM서비스가 신청되어 있어야 합니다.
+  
+* 사전에 [SSL VPN시작하기](./SSLVPN_started.md) 를 통해서 SSL VPN이 신청되어 있어야 합니다.
 
 > :bulb: **Tip:** KDN 직원의 경우  KDN 내부망에서 [KDN 전용 User Console](http://kdnecp.kdn.com:8585/mbr/ "KDN 내부망에서 접속 시")로도 접속이 가능합니다.
 
