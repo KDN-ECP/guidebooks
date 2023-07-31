@@ -119,7 +119,7 @@ CT 접속 후 CLI 명령어인 `oc`를 통해 Container Project를 위한 다음
    
    * 본 가이드 예제의 경우 Windows 명령 프롬프트로 진행
    
-      ```bash
+      ```powershell
       ssh -p [SSH Port] kecpuser@[CT IP Address]
       ```
    
