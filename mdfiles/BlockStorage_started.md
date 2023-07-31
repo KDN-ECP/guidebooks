@@ -57,6 +57,9 @@ sequenceDiagram
   사용자(일반) -->>+ K-ECP: BS 사용신청 승인요청
   K-ECP -->>- 사용자(일반): BS 제공
 ```
+BS는 아래의 그림과 같이 가상서버에서 원하는 크기 만큼의 disk를 할당받아 해당 가상서버에 마운트하여 사용하실 수 있습니다.
+
+![concept_bs.PNG](./../resource/concept_bs.PNG)
 
 ---
 
