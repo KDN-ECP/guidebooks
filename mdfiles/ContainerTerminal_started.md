@@ -104,7 +104,7 @@ CT 접속 후 CLI 명령어인 `oc`를 통해 Container Project를 위한 다음
 ## 2단계: Container Terminal 접속
 
 > :warning: **주의사항:** K-ECP SSL VPN이 사전에 신청되어 있어야 합니다.
- 
+
 > :bulb:**안내**: [보안그룹 설정하기](./SecurityGroup_started.md)를 통해 vpn으로 부터 서버접 근이 허용되야 합니다.
 
 1. CT 서비스 신청 승인이 완료 된 경우 K-ECP User Console에서 `서비스 현황 > 가상서버`로 이동하여 해당 프로젝트 선택
@@ -114,10 +114,10 @@ CT 접속 후 CLI 명령어인 `oc`를 통해 Container Project를 위한 다음
 3. SSL VPN 연결 후 SSH 접속 툴 또는 커맨드을 통해 CT의 IP로 접속 (계정명: kecpuser, 초기 비밀번호: K-ECP 운영팀에게 문의)
    
    * Windows에서 SSH로 접속하는 Command
-   
-      ```bash
-      ssh -p [SSH Port] kecpuser@[CT IP Address]
-      ```
+     
+     ```bash
+     ssh -p [SSH Port] kecpuser@[CT IP Address]
+     ```
    
    > :bell: **안내:** 최초 접속 시 비밀번호를 변경하셔야 정상접속 됩니다.
 
@@ -146,11 +146,11 @@ CT 접속 후 CLI 명령어인 `oc`를 통해 Container Project를 위한 다음
 > :bell:**안내**:원하는 비밀번호가 없는 경우 K-ECP 운영팀에서 임의로 설정합니다.
 
 2. 접속한 CT서버에서 OpenShift 로그인
-
+   
    ```bash
    oc login -u [ID] https://api.ocp4.kdnecp.com:6443
    ```
-
+   
    ```
    Username: [ID]
    Password:
@@ -158,14 +158,14 @@ CT 접속 후 CLI 명령어인 `oc`를 통해 Container Project를 위한 다음
    ```
 
 3. Openshift 접속 확인
-
+   
    ```bash
    oc status  
    ```
-
+   
    ```
    In project SSG-TEST (ssg-test-del) on server https://api.ocp4.kdnecp.com:6443
-
+   
    http://ssgtest-ssg-test-del.apps.ocp4.kdnecp.com (svc/ssgtest)
      dc/ssgtest deploys istag/ssgtest:latest <-
        bc/ssgtest source builds http://[gitlab_URL]
