@@ -12,7 +12,8 @@ VM은 K-ECP에서 서버를 생성하여 컴퓨팅 인프라를 가상화하여 
 
 * [Project 만들기](./Project.md)
 * [SSL VPN 시작하기](./SSLVPN_started.md)
-* [Block Storage 시작하기](./BlockStorage.md)
+* [Security Group 시작하기](./SecurityGroup_started.md)
+* [Block Storage 시작하기](./BlockStorage_started.md)
 * [File Storage 시작하기](./FileStorage_started.md)
 * VM Backup 시작하기
 
@@ -106,12 +107,17 @@ VM 신청 시 서버 운영 목적에 따라 다음과 같은 다양한 이미�
    * DISK: *50GB 기본 설정* (변경 불가)
    
    > :bulb:**Tip**: 추가 DISK를 원할 경우 [Block Storage 시작하기](./BlockStorage_started.md)를 통해 서버에 추가 할당 할 수 있습니다.
+
    
    * 서버사양: *소형서버, 중형서버, 대형서버, CPU-Intensive, Memory-Intensive 중 선택 후 서버 스펙 선택*
+
+   <br/>
    
    > :bulb:**Tip**: 상세 사양 및 요금은 K-ECP요금표에서 확인 가능합니다.
    
    * 백업네트워크: *포함 선택시 `Backup IP`추가 할당*
+
+   <br/>
    
    > :bell:**안내**: Backup Ip 추가 할당 후 사용자가 직접 Backup서버에 Backup 클라이언트를 설치 후 할당 받은 IP로 Backup 작업을 실행해야 합니다.
 
@@ -139,36 +145,36 @@ VM 신청 시 서버 운영 목적에 따라 다음과 같은 다양한 이미�
    
    * 본 가이드에서는 윈도우 명령 프롬프트(터미널)을 이용한 SSH 접속
      
-     ```powershell
-     ssh -p [ssh Port] kecpuser@[VM_IP_address]
-     ```
+   ```powershell
+   ssh -p [ssh Port] kecpuser@[VM_IP_address]
+   ```
 
 6. 초기 비밀번호 입력 후 로그인
    
-   ```
-   kecpuser@[VM]'s password:
-   Last login: Wed May 31 13:41:07 2023 from 10.100.8.50
-   #################################################################
-   #                   _    _           _   _                      #
-   #                  / \  | | ___ _ __| |_| |                     #
-   #                 / _ \ | |/ _ \ '__| __| |                     #
-   #                / ___ \| |  __/ |  | |_|_|                     #
-   #               /_/   \_\_|\___|_|   \__(_)                     #
-   #                                                               #
-   #           You are entering into a secured area!               #
-   #                                                               #
-   #                      This service                             #
-   #                   is restricted  to                           #
-   #           Cloud Department Administrator only.                #
-   #                                                               #
-   #          All activities on this system are logged.            #
-   #  Unauthorized access will be fully investigated and reported  #
-   #        to the appropriate law enforcement agencies.           #
-   #################################################################
-   Last login: Wed May 31 13:41:07 2023 from [IP]
-   ```
+```
+kecpuser@[VM]'s password:
+Last login: Wed May 31 13:41:07 2023 from [IP]
+#################################################################
+#                   _    _           _   _                      #
+#                  / \  | | ___ _ __| |_| |                     #
+#                 / _ \ | |/ _ \ '__| __| |                     #
+#                / ___ \| |  __/ |  | |_|_|                     #
+#               /_/   \_\_|\___|_|   \__(_)                     #
+#                                                               #
+#           You are entering into a secured area!               #
+#                                                               #
+#                      This service                             #
+#                   is restricted  to                           #
+#           Cloud Department Administrator only.                #
+#                                                               #
+#          All activities on this system are logged.            #
+#  Unauthorized access will be fully investigated and reported  #
+#        to the appropriate law enforcement agencies.           #
+#################################################################
+Last login: Wed May 31 13:41:07 2023 from [IP]
+```
    
-   > :bell: **안내:** 최초 접속 시 반드시 비밀번호의 변경이 필요합니다.
+> :bell: **안내:** 최초 접속 시 반드시 비밀번호의 변경이 필요합니다.
 
 ---
 
@@ -198,6 +204,6 @@ VM 신청 시 서버 운영 목적에 따라 다음과 같은 다양한 이미�
 
 ## 다음 단계
 
-* [Block Storage 시작하기](./BlockStorage_started.md) 또는 [File Storage 시작하기](./FileStorage_storage_started.md) 를 통해 VM에 Storage를 추가할 수 있습니다.
+* [Block Storage 시작하기](./BlockStorage_started.md) 또는 [File Storage 시작하기](./FileStorage_started.md) 를 통해 VM에 Storage를 추가할 수 있습니다.
 
 * VM 변경 및 해지하기를 통해 사용중인 VM서비스를 반납할 수 있습니다. (향후 제공 예정)

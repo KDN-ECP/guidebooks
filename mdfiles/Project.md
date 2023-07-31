@@ -1,4 +1,4 @@
-[문서 최종 수정일자 : 2023-07-28]: # 
+[문서 최종 수정일자 : 2023-07-31]: # 
 
 [문서 최종 수정자 : 신승규]: # 
 
@@ -96,7 +96,7 @@ sequenceDiagram
 
 1. Project 신청 승인이 완료 된 경우 K-ECP User Console에서 `신청 현황 > 프로젝트`에서 부서에서 신청하거나 했던 Project 목록이 표시됩니다.
 
-2. Project를 선택하면 해당 Project에 대한 승인 프로세스 정보와Project 신청 시 입력한 Project 신청 정보를 확인할 수 있습니다.
+2. Project를 선택하면 해당 Project에 대한 승인 프로세스 정보와 Project 신청 시 입력한 Project 신청 정보를 확인할 수 있습니다.
 
 3. 이후 `[서비스 신청]`시 Project선택 항목에서 사용자가 원하는 Project를 선택하여 해당 Project에서 서비스를 구성하여 사용할 수 있습니다.
 

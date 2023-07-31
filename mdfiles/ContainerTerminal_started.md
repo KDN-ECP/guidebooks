@@ -93,7 +93,11 @@ CT 접속 후 CLI 명령어인 `oc`를 통해 Container Project를 위한 다음
    
    * 프로젝트명: *CT가 포함되어야 될 기 생성완료된 프로젝트 선택*
    
-   * 서버대역: *CT에 할당될 IP Subnet 대역 선택* 
+   * 서버대역: *CT가 할당될 클러스터 대역 선택*
+  
+   * 네트워크: *CT가 할당될 IP Subnet 대역 선택*
+  
+   * 서버명: *사용자가 식별할 수 있는 서버명 작성*
 
 3. `신청` 버튼을 클릭 하여 CT 서비스 신청 (단, KDN 직원일 경우 소속 부서장으로 결재자 지정 후 서비스 신청)
 
@@ -111,13 +115,21 @@ CT 접속 후 CLI 명령어인 `oc`를 통해 Container Project를 위한 다음
 
 2. 선택된 프로젝트내에 VM Server형태로 생성된 CT의 **IP 주소 확인**
 
-3. SSL VPN 연결 후 SSH 접속 툴 또는 커맨드을 통해 CT의 IP로 접속 (계정명: kecpuser, 초기 비밀번호: K-ECP 운영팀에게 문의)
+3. SSL VPN 연결 후 SSH 접속 툴 또는 커맨드을 통해 BS를 신청한 VM서버로 접속(SSH client를 통해 접속해야 합니다.)
    
+<<<<<<< HEAD
    * Windows에서 SSH로 접속하는 Command
      
      ```bash
      ssh -p [SSH Port] kecpuser@[CT IP Address]
      ```
+=======
+   * 본 가이드 예제의 경우 Windows 명령 프롬프트로 진행
+   
+      ```powershell
+      ssh -p [SSH Port] kecpuser@[CT IP Address]
+      ```
+>>>>>>> c9a974989a575e48de81470e5b322a36ef80e04c
    
    > :bell: **안내:** 최초 접속 시 비밀번호를 변경하셔야 정상접속 됩니다.
 
