@@ -115,9 +115,9 @@ CT 접속 후 CLI 명령어인 `oc`를 통해 Container Project를 위한 다음
 
 2. 선택된 프로젝트내에 VM Server형태로 생성된 CT의 **IP 주소 확인**
 
-3. SSL VPN 연결 후 SSH 접속 툴 또는 커맨드을 통해 CT의 IP로 접속 (계정명: kecpuser, 초기 비밀번호: K-ECP 운영팀에게 문의)
+3. SSL VPN 연결 후 SSH 접속 툴 또는 커맨드을 통해 BS를 신청한 VM서버로 접속(SSH client를 통해 접속해야 합니다.)
    
-   * Windows에서 SSH로 접속하는 Command
+   * 본 가이드 예제의 경우 Windows 명령 프롬프트로 진행
    
       ```bash
       ssh -p [SSH Port] kecpuser@[CT IP Address]
