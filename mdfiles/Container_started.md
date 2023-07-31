@@ -42,20 +42,6 @@ K-ECP의 Container서비스는 `ContainerTerminal`서비스와 함께 사용할 
 
 K-ECP Container서비스를 사용하기 위해서는 아래와 같은 프로세스로 진행됩니다.
 
-* KDN 직원인 경우
-
-```mermaid
-sequenceDiagram
-  actor 사용자(KDN직원)
-  actor KDN부서장
-  사용자(KDN직원) -->> KDN부서장: Container 사용신청 승인요청
-  Note over 사용자(KDN직원), KDN부서장: Container 사용자가 KDN직원일 경우<br/>User Console를 통하여<br/>소속 부서장이 결재 진행.
-  KDN부서장 -->>+ K-ECP: [결재완료] Container 사용신청
-  K-ECP -->>- 사용자(KDN직원): Container 제공
-```
-
-* 일반 사용자인 경우
-
 ```mermaid
 sequenceDiagram
   actor 사용자(일반)
