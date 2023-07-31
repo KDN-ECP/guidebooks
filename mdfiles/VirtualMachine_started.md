@@ -203,6 +203,6 @@ VM 신청 시 서버 운영 목적에 따라 다음과 같은 다양한 이미�
 
 ## 다음 단계
 
-* [Block Storage 시작하기](./BlockStorage_started.md) 또는 [File Storage 시작하기](./FileStorage_storage_started.md) 를 통해 VM에 Storage를 추가할 수 있습니다.
+* [Block Storage 시작하기](./BlockStorage_started.md) 또는 [File Storage 시작하기](./FileStorage_started.md) 를 통해 VM에 Storage를 추가할 수 있습니다.
 
 * VM 변경 및 해지하기를 통해 사용중인 VM서비스를 반납할 수 있습니다. (향후 제공 예정)
