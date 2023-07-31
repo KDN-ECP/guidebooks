@@ -106,11 +106,13 @@ VM 신청 시 서버 운영 목적에 따라 다음과 같은 다양한 이미�
    * DISK: *50GB 기본 설정* (변경 불가)
    
    > :bulb:**Tip**: 추가 DISK를 원할 경우 [Block Storage 시작하기](./BlockStorage_started.md)를 통해 서버에 추가 할당 할 수 있습니다.
+
    
    * 서버사양: *소형서버, 중형서버, 대형서버, CPU-Intensive, Memory-Intensive 중 선택 후 서버 스펙 선택*
 
    
    > :bulb:**Tip**: 상세 사양 및 요금은 K-ECP요금표에서 확인 가능합니다.
+
    
    * 백업네트워크: *포함 선택시 `Backup IP`추가 할당*
 
