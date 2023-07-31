@@ -133,13 +133,13 @@ sequenceDiagram
 
 3. 1단계에서 복사한 URL주소를 입력하여 Clone 실행
    
-   ```bash
-   git clone [Clone with Http]
-   ```
+```bash
+git clone [Clone with Http]
+```
 
 4. 이후 디렉토리에 프로젝트명(`Project name`)의 폴더가 생성되었는지 확인 후 해당 폴더로 이동
 
-5. README.md 파일 확인
+5. README.md 파일의 존재 확인
 
 6. 배포하려는 파일을 생성된 폴더(`Project name`)로 이동
 
@@ -147,45 +147,45 @@ sequenceDiagram
 
 8. 실행중인 Git Bash 창에서 생성된 폴더로 이동
    
-   ```bash
-   cd [Project name]
-   ```
+```bash
+cd [Project name]
+```
 
 9. 해당 리파지토리에 유저 정보 등록(0. K-ECP Gitlab 가입시 작성한 사번과 Email 등록)
    
-   ```bash
-   git config --global user.name"[사번]"
-   ```
+```bash
+git config --global user.name"[사번]"
+```
    
-   ```bash
-   git config --global user.email"[User Email]"
-   ```
+```bash
+git config --global user.email"[User Email]"
+```
 
 10. 등록된 정보 확인
     
-    ```bash
-    git config --list | grep user.
-    ```
+```bash
+git config --list | grep "user."
+```
 
 11. GitLab에 소스 업로드
     
     * 현재 디렉토리의 모든 소스를 로컬 디렉토리에 추가
       
-      ```bash
-      git add .
-      ```
+    ```bash
+    git add .
+    ```
     
     * GitLab으로 commit
       
-      ```bash
-      git commit -m "commit 메시지"
-      ```
+    ```bash
+    git commit -m "commit 메시지"
+    ```
     
     * 로컬 소스를 Git(Main Branch로)에 업로드
       
-      ```bash
-      git push -u origin main
-      ```
+    ```bash
+    git push -u origin main
+    ```
 
 ---
 
