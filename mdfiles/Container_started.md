@@ -93,6 +93,8 @@ sequenceDiagram
 
 ---
 
+<span id= "step1"/>
+
 ## 1단계: GitLab 프로젝트 및 리파지토리 생성
 
 1. 오른쪽 상단 배너에서 :heavy_plus_sign: > `New project/repository`클릭
@@ -120,6 +122,8 @@ sequenceDiagram
 > :bulb:**안내**: URL 주소는 복사 후 별도 저장이 필요합니다.
 
 ---
+
+<span id= "step2"/>
 
 ## 2단계: GitLab에서 소스 업로드
 
@@ -184,6 +188,8 @@ sequenceDiagram
       ```
 
 ---
+
+<span id= "step3"/>
 
 ## 3단계: 컨테이너 신청
 
