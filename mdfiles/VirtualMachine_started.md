@@ -12,7 +12,8 @@ VM은 K-ECP에서 서버를 생성하여 컴퓨팅 인프라를 가상화하여 
 
 * [Project 만들기](./Project.md)
 * [SSL VPN 시작하기](./SSLVPN_started.md)
-* [Block Storage 시작하기](./BlockStorage.md)
+* [Security Group 시작하기](./SecurityGroup_started.md)
+* [Block Storage 시작하기](./BlockStorage_started.md)
 * [File Storage 시작하기](./FileStorage_started.md)
 * VM Backup 시작하기
 
