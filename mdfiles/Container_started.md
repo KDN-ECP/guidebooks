@@ -14,7 +14,7 @@ K-ECP의 Container서비스는 `ContainerTerminal`서비스와 함께 사용할 
 
 - [Container Terminal 시작하기](./ContainerTerminal_started.md)
 
-- [Container Terminal 활용하기](./ContainerTerminal_use.md)
+- [CT 활용하기#1](./CT_use#1.md)
 
 ### 목차
 
@@ -134,7 +134,7 @@ sequenceDiagram
 2. 생성된 폴더 우클릭 후 `Git Bash Here` 선택
 
 3. 1단계에서 복사한 URL주소를 입력하여 Clone 실행
-   
+
 ```bash
 git clone [Clone with Http]
 ```
@@ -148,23 +148,23 @@ git clone [Clone with Http]
 7. 배포하려는 파일명을 `ROOT.war`로 수정
 
 8. 실행중인 Git Bash 창에서 생성된 폴더로 이동
-   
+
 ```bash
 cd [Project name]
 ```
 
 9. 해당 리파지토리에 유저 정보 등록(0. K-ECP GitLab 가입시 작성한 사번과 Email 등록)
-   
+
 ```bash
 git config --global user.name"[사번]"
 ```
-   
+
 ```bash
 git config --global user.email"[User Email]"
 ```
 
 10. 등록된 정보 확인
-    
+
 ```bash
 git config --list | grep "user."
 ```
@@ -172,19 +172,19 @@ git config --list | grep "user."
 11. GitLab에 소스 업로드
     
     * 현재 디렉토리의 모든 소스를 로컬 디렉토리에 추가
-      
+    
     ```bash
     git add .
     ```
     
     * GitLab으로 commit
-      
+    
     ```bash
     git commit -m "commit 메시지"
     ```
     
     * 로컬 소스를 Git(Main Branch로)에 업로드
-      
+    
     ```bash
     git push -u origin main
     ```
@@ -244,6 +244,7 @@ git config --list | grep "user."
 <span id="step5"/>
 
 ## 5단계 : Container 재배포
+
 > :bell:**안내**: GitLab 프로젝트에 올린 소스코드(ROOT.war)가 변경될 시에 Container를 재배포 합니다.
 
 1. **2단계: GitLab에서 소스 업로드1-10**를 통해서 새로운 소스코드(ROOT.war)로 변경 후 GitLab에 소스 업로드
@@ -253,7 +254,8 @@ git config --list | grep "user."
 3. 재배포하려는 Container의 상세 돋보기 아이콘:mag: 클릭
 
 4. `Builds`목록의 `StartBuild`버튼 클릭
-> :bell:**안내**: 버튼 클릭으로 소스코드를 새로 빌드하여 배포합니다.
+   
+   > :bell:**안내**: 버튼 클릭으로 소스코드를 새로 빌드하여 배포합니다.
 
 5. `Builds`목록에서 해당 bulid가 Complete(완료)되고 `Pods`목록에서 해당 pod가 `Running`상태임을 확인
 
