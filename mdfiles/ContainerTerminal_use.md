@@ -10,8 +10,8 @@
 
 ### 관련 안내서
 
-- [Container 시작하기](./mdfiles/Container_started.md)
-- [Container Terminal 시작하기](./mdfiles/Container%20Terminal_started.md)
+- [Container 시작하기](./Container_started.md)
+- [Container Terminal 시작하기](./ContainerTerminal_started.md)
 
 ### 목차
 
