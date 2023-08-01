@@ -4,7 +4,7 @@
 
 # CT 활용하기 #1
 
-###### #1 Docker Image를 K-ECP의 Container Platform에 등록시키기
+###### #1 docker Image를 K-ECP의 Container Platform에 등록시키기
 
 본 가이드에서는 사용자의 로컬 PC에서 docker파일을 생성하고 해당 파일을 build하여 docker image를 생성시키고 K-ECP의 Container Platform에 등록시키는 과정을 안내합니다.
 
