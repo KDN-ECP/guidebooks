@@ -2,9 +2,11 @@
 
 [문서 최종 수정자 : 신승규]: #
 
-# Container Terminal 활용하기
+# CT 활용하기 #1
 
-`CT`서비스 시작한 후 다음과 같은 명령어를 통해 컨테이너를 관리할 수 있습니다.
+###### #1 Docker Image를 K-ECP의 Container Platform에 등록시키기
+
+본 가이드에서는 사용자의 로컬 PC에서 docker파일을 생성하고 해당 파일을 build하여 docker image를 생성시키고 K-ECP의 Container Platform에 등록시키는 과정을 안내합니다.
 
 ### 관련 안내서
 
@@ -13,372 +15,347 @@
 
 ### 목차
 
-[1단계: podman 컨테이너 실행](#step1)
+[전제 조건](#preconditon)
 
-[2단계: podman 컨테이너 접속](#step2)
+[1단계: docker 개발환경 구축](#step1)
 
-[3단계: podman 컨테이너 삭제](#step3)
+[2단계: docker image K-ECP에 배포](#step2)
+
+[3단계: K-ECP Container실행](#step3)
 
 [4단계: oc 명령어](#step4)
 
-[다음단계](./#nextstep)
+[다음단계](#nextstep)
+
+---
+
+<span id= "precondition"/>
+
+## 전제 조건
+
+* 사용자의 로컬 PC에 docker가 설치되어 있어야 합니다.
+  [URL: https://www.docker.com/products/docker-desktop/]
 
 ---
 
 <span id="step1"/>
 
-## 1. podman 컨테이너 실행
+## 1단계: docker 개발환경 구축
 
-> :bulb:**안내**: 도커이미지가 CT 서버에 준비되어 있어야 합니다.
+> :bell:**안내**: 본 가이드에서는 Nginx를 사용하여 HTML기반 Website기동을 시행합니다.
 
-1. ssh 명령어를 통한 CT 서버 접속
+1. docker 파일을 구성할 디렉토리 생성(본 가이드에서는 디렉토리명을 d2ocp로 설정)
 
-```아오
-ssh -p 10040 [CT_IP]
+2. docker 파일을 구성할 HTML 페이지와 dockerfile 생성
+
+> :bell:**안내**: 1. 에서 생성한 디렉토리 안에 2개의 파일 생성
+
+* index.html
+
+```html
+<html>
+<head>
+  <title>Docker Image to K-ECP Container</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+
+<body>
+  <h1>DI2OCP Application</h1>
+  <h2>Docker Image(DI)로 K-ECP 컨테이너 실행하기</h1>
+</body>
+</html>
 ```
 
-2. podman 명렁어를 통한 image 등록
+* Dockerfile
 
-```아오
-podman images
+```dockerfile
+FROM nginx:latest
+COPY index.html /usr/share/nginx/html
 ```
 
-* images에 비어 있음을 확인  
+2. 내부 Repository에 Docker Image 빌드
 
-```아오
-REPOSITORY  TAG         IMAGE ID    CREATED     SIZE
+> :bell:**안내**: `[DockerImage_name]`은 사용자가 원하는 도커이미지의 이름을 작성하면 됩니다. `[tag]`는 해당 도커 이미지의 버전관리를 위해 사용됩니다.
+
+```powershell
+docker build -t [DockerImage_name]:[tag] .
 ```
 
-* docker image를 압축한 tar파일이 있는 위치로 이동
-
-```아오
-ls
-nginx.tar
+```
+[+] Building 0.1s (7/7) FINISHED                                                                                                                  docker:default
+ => [internal] load build definition from dockerfile                                                                                                        0.0s
+ => => transferring dockerfile: 152B                                                                                                                        0.0s
+ => [internal] load .dockerignore                                                                                                                           0.0s
+ => => transferring context: 2B                                                                                                                             0.0s
+ => [internal] load metadata for docker.io/library/nginx:latest                                                                                             0.0s
+ => [internal] load build context                                                                                                                           0.0s
+ => => transferring context: 91B                                                                                                                            0.0s
+ => [1/2] FROM docker.io/library/nginx:latest                                                                                                               0.0s
+ => CACHED [2/2] COPY index.html /usr/share/nginx/html                                                                                                      0.0s
+ => exporting to image                                                                                                                                      0.0s
+ => => exporting layers                                                                                                                                     0.0s
+ => => writing image sha256:db9f6ac1f6e0a92b584ba5121dacf0df1b59520a0403ac5f2b1ef99ce14bef2e                                                                0.0s
+ => => naming to docker.io/library/d2ocp                                                                                                                    0.0s
 ```
 
-* 이후 podman 명령어를 통해 tar파일을 다시 docker image로 변환
+3. 내부 docker Repository에서 이미지 확인
 
-```아오
-podman load -i nginx.tar
+```powershell
+docker images
 ```
 
-```아오
-Getting image source signatures
-Copying blob 434c6a715c30 done
-Copying blob 9fdfd12bc85b done
-Copying blob b821d93f6666 done
-Copying blob 24839d45ca45 done
-Copying blob f36897eea34d done
-Copying blob 1998c5cd2230 done
-Copying blob 3c9d04c9ebd5 done
-Copying config 021283c8eb done
-Writing manifest to image destination
-Storing signatures
-Loaded image(s): localhost/nginx:latest
+```
+REPOSITORY              TAG       IMAGE ID       CREATED          SIZE
+[DockerImage_name]     [tag]    db9f6ac1f6e0   10 seconds ago    187MB
 ```
 
-3. 등록된 이미지 확인
+4. 로컬에서 docker image로 컨테이너가 실행되는지 확인
 
-```아오
-podman images
+```powershell
+docker run --rm -p 7878:80 [DockerImage_name]:[tag]
 ```
 
-```dkdh
-REPOSITORY       TAG         IMAGE ID      CREATED      SIZE
-localhost/nginx  latest      021283c8eb95  2 weeks ago  191 MB
+* 로컬 브라우저(http://localhost:7878) 혹은 터미널 curl 명령어를 통해 기동 확인
+
+```powershell
+curl http://localhost:7878
 ```
 
-4. 컨테이너 이미지 생성
-* localhost/nginx 이미지를 기반으로 my-nginx라는 새 컨테이너를 생성하고 호스트 시스템에서 포트 8000을 노출시킵니다.
+```
+<html>
+<head>
+    <title>Docker Image to K-ECP Container</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
 
-```아오
-podman run -d -p 8000:80 --name my-nginx localhost/nginx:latest
+<body>
+    <h1>DI2OCP Application</h1>
+    <h2>Docker Image(DI)�� K-ECP �����̳� �����ϱ�</h1>
+</body>
+</html>
 ```
 
-* 컨테이너 정보 확인
+5. 해당 docker image를 파일로 저장
 
-```dkdh
-8709140107b42a40470205a451e3f1859549e274ecef87f53f71470889bb8d0a
+> :bell:**안내**: `[DockerImage.tar]`는 도커 이미지를 압축할 압축파일명을 작성하면 됩니다.
+
+```powershell
+docker save -o [DockerImage.tar] [DockerImage_name]:[tag]
 ```
 
-5. 컨테이너 실행 확인
-   
-   ```아오
-   podman ps
-   ```
-   
-   ```아오
-   CONTAINER ID  IMAGE                   COMMAND               CREATED        STATUS          PORTS                 NAMES
-   8709140107b4  localhost/nginx:latest  nginx -g daemon o...  6 minutes ago  Up 6 minutes ago  0.0.0.0:8000->80/tcp  my-nginx
-   ```
-
-6. 컨테이너 중지
-
-```아오
-podman stop my-nginx
-```
-
-```dkdh
-my-nginx
-```
-
-* 컨테이너 중지 확인
-
-```아오
-podman ps -a
-```
-
-* STATUS 가 Exited
-
-```dkdh
-CONTAINER ID  IMAGE                   COMMAND               CREATED        STATUS                         PORTS                 NAMES
-  8709140107b4  localhost/nginx:latest  nginx -g daemon o...  8 minutes ago  Exited (0) About a minute ago  0.0.0.0:8000->80/tcp  my-nginx
-```
-
----
-
-<span id="step2"/>
-
-## 2.podman 컨테이너 접속
-
-1. 컨테이너 실행
-   
-   ```아오
-   podman start my-nginx
-   ```
-
-2. my-nginx 접속
-   
-   ```아오
-   podman exec -it my-nginx /bin/bash
-   ```
-   
-   ```아오
-   root@8709140107b4:/#
-   ```
-
-3. nginx 버전 확인
-   
-   ```아오
-   nginx -V
-   ```
-   
-   ```아옹
-   nginx version: nginx/1.25.1
-   built by gcc 12.2.0 (Debian 12.2.0-14)
-   built with OpenSSL 3.0.9 30 May 2023
-   TLS SNI support enabled
-   configure arguments: --prefix=/etc/nginx --sbin-path=/usr/sbin/nginx --modules-path=/usr/lib/nginx/modules --conf-path=/etc/nginx/nginx.conf --error-log-path=/var/log/nginx/error.log --http-log-path=/var/log/nginx/access.log --pid-path=/var/run/nginx.pid --lock-path=/var/run/nginx.lock --http-client-body-temp-path=/var/cache/nginx/client_temp --http-proxy-temp-path=/var/cache/nginx/proxy_temp --http-fastcgi-temp-path=/var/cache/nginx/fastcgi_temp --http-uwsgi-temp-path=/var/cache/nginx/uwsgi_temp --http-scgi-temp-path=/var/cache/nginx/scgi_temp --user=nginx --group=nginx --with-compat --with-file-aio --with-threads --with-http_addition_module --with-http_auth_request_module --with-http_dav_module --with-http_flv_module --with-http_gunzip_module --with-http_gzip_static_module --with-http_mp4_module --with-http_random_index_module --with-http_realip_module --with-http_secure_link_module --with-http_slice_module --with-http_ssl_module --with-http_stub_status_module --with-http_sub_module --with-http_v2_module --with-http_v3_module --with-mail --with-mail_ssl_module --with-stream --with-stream_realip_module --with-stream_ssl_module --with-stream_ssl_preread_module --with-cc-opt='-g -O2 -ffile-prefix-map=/data/builder/debuild/nginx-1.25.1/debian/debuild-base/nginx-1.25.1=. -fstack-protector-strong -Wformat -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -fPIC' --with-ld-opt='-Wl,-z,relro -Wl,-z,now -Wl,--as-needed -pie'
-   ```
-
-4. 컨테이너 로그아웃
-   
-   ```아오
-   exit
-   ```
+* 해당 save 명령어를 실행한 작업공간에 [DockerImage_name.tar]이름의 tar 압축파일이 생성되었는지 확인
 
 ---
 
 <span id="step3"/>
 
-## 3. 컨테이너 삭제
+## 2단계: docker image K-ECP에 배포
 
-1. 컨테이너 중지
-   
-   ```아오
-   podman stop my-nginx
-   ```
+1. [Container Terminal 시작하기](./ContainerTerminal_started.md)를 통해서 CT 접속
 
-2. 컨테이너 제거
-   
-   ```아오
-   podman rm my-nginx
-   ```
-* 제거 확인
-  
-  ```dkdh
-  podman ps -a
-  ```
-  
-  ```아오
-  CONTAINER ID  IMAGE       COMMAND     CREATED     STATUS      PORTS       NAMES
-  ```
-3. 컨테이너 이미지 제거
-   
-   ```아오
-   podman rmi localhost/nginx
-   ```
-   
-   ```dkdh
-   podman images
-   ```
-   
-   ```dkdh
-   REPOSITORY  TAG         IMAGE ID    CREATED     SIZE
-   ```
+> :warning:**주의사항**: nginx 등 os 권한상승이 필요할 경우, oc admin으로 사전에 해당 프로젝트에 아래 권한이 부여되어야 합니다.
 
----
-
-<span id="step4"/>
-
-##### 애플리케이션 삭제
-
-* 쿠버네티스의 실행중인 모든 리소스 목록 확인
-
-```d
-oc get all -o name
+```bash
+oc adm policy add-scc-to-user anyuid system:serviceaccount:[프로젝트명]:default
 ```
 
-다음과 같이 실행중인 모든 리소스를 확인할 수 있습니다.
+2. [DockerImage_name.tar] 압축파일 CT로 전송
+* [DockerImage_name.tar] 파일이 있는 로컬 PC의 디렉토리에서 터미널 명령어 실행(본 가이드에서는 /home/kecpuser 에 파일을 전송)
 
-```ㅇ
-pod/k-ecp-test-delete-1-build
-pod/k-ecp-test-delete-2-build
-pod/k-ecp-test-delete-3-build
-pod/k-ecp-test-delete-66f54d7694-xbgdt
-pod/ssg0412-2-build
-pod/ssg0412-3-build
-pod/ssg123-1-build
-pod/ssg123-585867bcb7-br5gp
-...
+```powershell
+scp -P 10040 [DockerImage_name.tar] kecpuser@[CT_IP]:/hoem/kecpuser
 ```
 
-* route 이름이 지정된 리소스의 세부정보 확인
+> :bulb:**tip**: `/home/kecpuser`의 경우 사용자가 원하는 경로를 작성하여 해당 경로에 압축파일을 전송할 수 있습니다.
 
-```ㅇ
-oc describe route/[app_name]
+3. CT에서 [DockerImage_name.tar] 파일확인
+* [DockerImage_name.tar]가 있는 경로로 이동
+
+```bash
+cd /home/kecpuser
 ```
 
-다음과 같이 해당 리소스 **[app_name]** 의 세부정보를 확인할 수 있습니다.
+* 해당 경로에 압축파일이 있는지 확인
 
-```ㅇ
-Name:                   ssssg
-Namespace:              ssg-test-del
-Created:                2 hours ago
-Labels:                 app=ssssg
-                        app.kubernetes.io/component=ssssg
-                        app.kubernetes.io/instance=ssssg
-Annotations:            openshift.io/host.generated=true
-Requested Host:         ssssg-ssg-test-del.apps.ocp4.kdnecp.com
-                           exposed on router default (host router-default.apps.ocp4.kdnecp.com) 2 hours ago
-Path:                   <none>
-TLS Termination:        <none>
-Insecure Policy:        <none>
-Endpoint Port:          8080-tcp
-
-Service:        ssssg
-Weight:         100 (100%)
-Endpoints:      10.128.9.40:8080
+```bash
+ls
 ```
 
-* key-value 쌍이 있는 모든 리소스를 확인
-
-```ㅇ
-oc get all --selector app=[app_name]
+```
+[DockerImage_name.tar]
 ```
 
-다음과 같이 key-value 쌍이 있는 리소스를 확인할 수 있습니다.
+4. CT에 docker image 파일 업로드
 
-```ㅇ
-NAME                        TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)                      AGE
-service/k-ecp-test-delete   ClusterIP   172.30.13.51   <none>        8080/TCP,8443/TCP,8778/TCP   144m
-
-NAME                                READY   UP-TO-DATE   AVAILABLE   AGE
-deployment.apps/k-ecp-test-delete   1/1     1            1           144m
-
-NAME                                               TYPE     FROM   LATEST
-buildconfig.build.openshift.io/k-ecp-test-delete   Source   Git    3
-
-NAME                                           TYPE     FROM          STATUS     STARTED       DURATION
-build.build.openshift.io/k-ecp-test-delete-1   Source   Git@5da0df7   Complete   2 hours ago   1m8s
-build.build.openshift.io/k-ecp-test-delete-2   Source   Git@5da0df7   Complete   2 hours ago   1m6s
-build.build.openshift.io/k-ecp-test-delete-3   Source   Git@5da0df7   Complete   2 hours ago   1m6s
-
-NAME                                               IMAGE REPOSITORY                                                                             TAGS     UPDATED
-imagestream.image.openshift.io/k-ecp-test-delete   default-route-openshift-image-registry.apps.ocp4.kdnecp.com/ssg-test-del/k-ecp-test-delete   latest   2 hours ago
-
-NAME                                         HOST/PORT                                             PATH   SERVICES            PORT       TERMINATION   WILDCARD
-route.route.openshift.io/k-ecp-test-delete   k-ecp-test-delete-ssg-test-del.apps.ocp4.kdnecp.com          k-ecp-test-delete   8080-tcp                 None
+```bash
+podman load -i [DockerImage_name.tar]
 ```
 
-* 리소스 삭제 명령어
-
-```ㅇ
-oc delete all --selector app=[app_name]
+```
+Getting image source signatures
+Copying blob 1998c5cd2230 done
+Copying blob 434c6a715c30 done
+Copying blob 24839d45ca45 done
+Copying blob f36897eea34d done
+Copying blob b821d93f6666 done
+Copying blob 9fdfd12bc85b done
+Copying blob 3c9d04c9ebd5 done
+Copying blob 9099fc4eae86 done
+Copying config af59c66793 done
+Writing manifest to image destination
+Storing signatures
+Loaded image(s): localhost/[DockerImage_name]:[tag]
 ```
 
-다음과 같이 리소스가 삭제된것을 확인할 수 있습니다.
+5. CT에 docker image 업로드 확인
 
-```ㅇ
-service "ssg123" deleted
-deployment.apps "ssg123" deleted
-buildconfig.build.openshift.io "ssg123" deleted
-imagestream.image.openshift.io "ssg123" deleted
+```bash
+podman images
+```
+
+```
+REPOSITORY                    TAG         IMAGE ID      CREATED      SIZE
+localhost/[DockerImage_name]  [tag]      af59c6679339  4 hours ago  191 MB
+```
+
+6. CT에서 podman을 통해 K-ECP의 OSP 레지스트리 로그인
+
+> :bell:**안내**: [CT_USER_ID]의 경우 CT서비스에서 생성한 USER ID 입니다.
+
+```bash
+podman login -u [CT_USER_ID] -p $(oc whoami -t) default-route-openshift-image-registry.apps.ocp4.kdnecp.com --tls-verify=false
+```
+
+7. 현재 podman image에 등록된 docker image의 tag 수정
+
+```bash
+podman tag [DockerImage_name]:[tag] default-route-openshift-image-registry.apps.ocp4.kdnecp.com/[project명]/[DockerImage_name]:[tag]
+```
+
+* podman image에 tag가 수정되었는지 확인
+
+```bash
+podman images
+```
+
+```
+REPOSITORY                                                                                   TAG         IMAGE ID      CREATED      SIZE
+localhost/[DockerImage_name]                                                                 [tag]      af59c6679339  4 hours ago  191 MB
+default-route-openshift-image-registry.apps.ocp4.kdnecp.com/ssg-test-del/[DockerImage_name]  [tag]      af59c6679339  4 hours ago  191 MB
+```
+
+8. K-ECP의 OSP 레지스트리에 tag가 수정된 docker image push
+
+```bash
+podman push default-route-openshift-image-registry.apps.ocp4.kdnecp.com/[project명]/[DockerImage_name]:[tag] --tls-verify=false
+```
+
+```
+Getting image source signatures
+Copying blob 434c6a715c30 skipped: already exists
+Copying blob f36897eea34d skipped: already exists
+Copying blob 1998c5cd2230 skipped: already exists
+Copying blob 9fdfd12bc85b skipped: already exists
+Copying blob b821d93f6666 skipped: already exists
+Copying blob 24839d45ca45 skipped: already exists
+Copying blob 9099fc4eae86 skipped: already exists
+Copying blob 3c9d04c9ebd5 [--------------------------------------] 0.0b / 0.0b
+Copying config af59c66793 [======================================] 7.1KiB / 7.1KiB
+Writing manifest to image destination
+Storing signatures
+```
+
+> :warning:**주의사항**: podman push 명령어 실행시 오류 발생시 같은 명령어를 재실행 해주시기 바랍니다.
+
+9. 해당 project의 image stream에 docker image가 등록되었는지 확인
+
+```bash
+oc get is
+```
+
+```
+NAME                        IMAGE REPOSITORY                                                                                     TAGS     UPDATED
+[DockerImage_name]          default-route-openshift-image-registry.apps.ocp4.kdnecp.com/ssg-test-del/[DockerImage_name]          [tag]   2 minutes ago
 ```
 
 ---
 
-##### 애플리케이션 배포
+<span id ="step3"/>
 
-* 애플리케이션 CLI 배포
-  
-  ```ㅇ
-  oc new-app [image] --name [app_name]
-  ```
+## 3단계: K-ECP OSP에서 Container 실행
 
-> :bulb:**안내**: [image]는 gitlab의 저장된 코드의 URL를 통해서 업로드 가능합니다.
+> :bell:**안내**: 이전 단계에서 K-ECP OSP에 등록한 docker image를 기반으로 Conatiner를 실행합니다.
 
----
+1. 이미지 기반으로 Conatiner 실행
 
-```ㅇ
-oc status: 서비스, 배포, 빌드 구성 등 현재 프로젝트에 대한 정보 확인
+```bash
+oc new-app [DockerImage_name] --name=[App명 (Container 명)]
 ```
 
-oc status
-
 ```
-```주절
-In project SSG-TEST (ssg-test-del) on server https://api.ocp4.kdnecp.com:6443
+--> Found image af59c66 (5 hours old) in image stream "ssg-test-del/[DockerImage_name]" under tag "[tag]" for "[DockerImage_name]"
 
-http://ssgtest-ssg-test-del.apps.ocp4.kdnecp.com (svc/ssgtest)
-  dc/ssgtest deploys istag/ssgtest:latest <-
-    bc/ssgtest source builds http:[gitlab_URL]
-    deployment #4 deployed 3 days ago - 1 pod
-    deployment #3 deployed 3 days ago
-    deployment #2 deployed 3 days ago
-```
 
-- `$oc projects`: 내 프로젝트
-
-- `$oc project [project_name]`: 프로젝트[project_name] 선택
-
-```주절이
-oc projects
-Using Project "[project_name]" on server "https://api.ocp4.kdnecp.com:6443"
+--> Creating resources ...
+    deployment.apps "[App명 (Container 명)]" created
+    service "[App명 (Container 명)]" created
+--> Success
+    Application is not exposed. You can expose services to the outside world by executing one or more of the commands below:
+     'oc expose service/[App명 (Container 명)]'
+    Run 'oc status' to view your app.
 ```
 
-* 
-- `oc get pod`: Pod 정보 확인
+2. 생성된 pod 및 service 확인
 
-```주절이
+```bash
 oc get pod
-NAME               READY   STATUS      RESTARTS   AGE
-ssg0412-2-build    0/1     Completed   0          32d
-ssg0412-3-build    0/1     Completed   0          32d
-ssgtest-1-build    0/1     Completed   0          20d
-ssgtest-1-deploy   0/1     Completed   0          20d
-ssgtest-2-build    0/1     Completed   0          3d20h
-ssgtest-2-deploy   0/1     Completed   0          3d20h
-ssgtest-3-build    0/1     Completed   0          3d20h
-ssgtest-3-deploy   0/1     Completed   0          3d20h
-ssgtest-4-465g4    1/1     Running     0          3d6h
-ssgtest-4-build    0/1     Completed   0          3d6h
-ssgtest-4-deploy   0/1     Completed   0          3d6h
 ```
 
-- `oc rsh [pod_name]`:컨테이너 내의 [pod_name]로 접속
-
-```주절이
-$oc rsh [pod_name]
-oc rsh [pod_name]>
 ```
+NAME                                     READY   STATUS    RESTARTS   AGE
+[App명 (Container 명)]-6476b476d6-s6sqx   1/1     Running   0          2m38s
+```
+
+```bash
+oc get service
+```
+
+```
+NAME                    TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)   AGE
+[App명 (Container 명)]   ClusterIP   172.30.235.243   <none>        80/TCP    3m15s
+```
+
+3. 생성된 service 외부 노출
+
+```bash
+oc expose service/[App명 (Container 명)]
+```
+
+```
+route.route.openshift.io/[App명 (Container 명)] exposed
+```
+
+4. service 외부 노출 확인
+
+```bash
+oc get route
+```
+
+```
+NAME                     HOST/PORT                                  PATH   SERVICES                  PORT     TERMINATION   WILDCARD
+[App명 (Container 명)]   di2ocp-ssg-test-del.apps.ocp4.kdnecp.com          [App명 (Container 명)]     80-tcp                 None
+```
+
+5. HOST/PORT에 표시된 URL을 통해 브라우저에서 HTML기반 Website 기동 확인
+
+```url
+http://di2ocp-app-ssg-test-del.apps.ocp4.kdnecp.com/
+```
+
+---
+
+<span id ="nextstep"/>
+
+## 다음단계
+
+* CT 활용하기 #2 를 통해 실행중인 Container를 관리할 수 있습니다.
