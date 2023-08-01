@@ -23,13 +23,11 @@
 
 [3단계: K-ECP Container실행](#step3)
 
-[4단계: oc 명령어](#step4)
-
 [다음단계](#nextstep)
 
 ---
 
-<span id= "precondition"/>
+<span id="precondition"/>
 
 ## 전제 조건
 
