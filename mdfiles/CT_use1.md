@@ -153,9 +153,9 @@ docker save -o [DockerImage.tar] [DockerImage_name]:[tag]
 
 ## 2단계: docker image K-ECP에 배포
 
-1. [Container Terminal 시작하기](./ContainerTerminal_started.md)를 통해서 CT 접속
-
 > :warning:**주의사항**: nginx 등 os 권한상승이 필요할 경우 사전에 K-ECP 운영팀에 문의해 주시기 바랍니다.
+
+1. [Container Terminal 시작하기](./ContainerTerminal_started.md)를 통해서 CT 접속
 
 2. [DockerImage_name.tar] 압축파일 CT로 전송
 * [DockerImage_name.tar] 파일이 있는 로컬 PC의 디렉토리에서 터미널 명령어 실행(본 가이드에서는 /home/kecpuser 에 파일을 전송)
