@@ -147,7 +147,7 @@ docker save -o [DockerImage.tar] [DockerImage_name]:[tag]
 
 ---
 
-<span id="step3"/>
+<span id="step2"/>
 
 ## 2단계: docker image K-ECP에 배포
 
