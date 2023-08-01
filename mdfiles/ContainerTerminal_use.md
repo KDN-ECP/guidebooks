@@ -70,9 +70,11 @@
 FROM nginx:latest
 COPY index.html /usr/share/nginx/html
 ```
+3. 디렉토리 안에 `index.html`과 `dockerfile`이 있는지 확인
 
 2. 내부 Repository에 Docker Image 빌드
 
+> :bell:**안내**: 도커파일을 구성할 파일들이 있는 디렉토리에서 명령어를 실행해야 합니다. (본 가이드의 경우 디렉토리명은 d2ocp입니다.)
 > :bell:**안내**: `[DockerImage_name]`은 사용자가 원하는 도커이미지의 이름을 작성하면 됩니다. `[tag]`는 해당 도커 이미지의 버전관리를 위해 사용됩니다.
 
 ```powershell
@@ -154,7 +156,7 @@ docker save -o [DockerImage.tar] [DockerImage_name]:[tag]
 > :warning:**주의사항**: nginx 등 os 권한상승이 필요할 경우, oc admin으로 사전에 해당 프로젝트에 아래 권한이 부여되어야 합니다.
 
 ```bash
-oc adm policy add-scc-to-user anyuid system:serviceaccount:[프로젝트명]:default
+oc adm policy add-scc-to-user anyuid system:serviceaccount:[project명]:default
 ```
 
 2. [DockerImage_name.tar] 압축파일 CT로 전송
