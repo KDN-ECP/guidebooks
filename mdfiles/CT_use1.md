@@ -2,7 +2,7 @@
 
 [문서 최종 수정자 : 신승규]: #
 
-# CT 활용하기 #1
+# CT 활용하기#1
 
 ###### #1 docker Image를 K-ECP의 Container Platform에 등록시키기
 
@@ -70,11 +70,13 @@
 FROM nginx:latest
 COPY index.html /usr/share/nginx/html
 ```
+
 3. 디렉토리 안에 `index.html`과 `dockerfile`이 있는지 확인
 
-2. 내부 Repository에 Docker Image 빌드
+4. 내부 Repository에 Docker Image 빌드
 
 > :bell:**안내**: 도커파일을 구성할 파일들이 있는 디렉토리에서 명령어를 실행해야 합니다. (본 가이드의 경우 디렉토리명은 d2ocp입니다.)
+
 > :bell:**안내**: `[DockerImage_name]`은 사용자가 원하는 도커이미지의 이름을 작성하면 됩니다. `[tag]`는 해당 도커 이미지의 버전관리를 위해 사용됩니다.
 
 ```powershell
@@ -153,11 +155,7 @@ docker save -o [DockerImage.tar] [DockerImage_name]:[tag]
 
 1. [Container Terminal 시작하기](./ContainerTerminal_started.md)를 통해서 CT 접속
 
-> :warning:**주의사항**: nginx 등 os 권한상승이 필요할 경우, oc admin으로 사전에 해당 프로젝트에 아래 권한이 부여되어야 합니다.
-
-```bash
-oc adm policy add-scc-to-user anyuid system:serviceaccount:[project명]:default
-```
+> :warning:**주의사항**: nginx 등 os 권한상승이 필요할 경우 사전에 K-ECP 운영팀에 문의해 주시기 바랍니다.
 
 2. [DockerImage_name.tar] 압축파일 CT로 전송
 * [DockerImage_name.tar] 파일이 있는 로컬 PC의 디렉토리에서 터미널 명령어 실행(본 가이드에서는 /home/kecpuser 에 파일을 전송)
