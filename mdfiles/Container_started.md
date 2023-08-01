@@ -14,7 +14,7 @@ K-ECP의 Container서비스는 `ContainerTerminal`서비스와 함께 사용할 
 
 - [Container Terminal 시작하기](./ContainerTerminal_started.md)
 
-- [CT 활용하기#1](./CT_use#1.md)
+- [CT 활용하기#1](./CT_use1.md)
 
 ### 목차
 

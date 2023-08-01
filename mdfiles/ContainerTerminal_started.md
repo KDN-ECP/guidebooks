@@ -12,7 +12,7 @@ CT는 K-ECP에서 컨테이너를 관리하고 오케스트레이션 할 수 있
 
 * [SSL VPN 시작하기](./SSLVPN_started.md)
 * [Container 시작하기](./Container_started.md)
-* [CT 활용하기#1](./CT_use#1.md)
+* [CT 활용하기#1](./CT_use1.md)
 
 ### 목차
 
@@ -190,4 +190,4 @@ http://ssgtest-ssg-test-del.apps.ocp4.kdnecp.com (svc/ssgtest)
 
 ## 다음 단계
 
-* [CT 활용하기#1](./CT_use#1.md)를 통해서 `CT`서비스를 활용할 수 있습니다.(향후 제공 예정)
+* [CT 활용하기#1](./CT_use1.md)를 통해서 `CT`서비스를 활용할 수 있습니다.(향후 제공 예정)

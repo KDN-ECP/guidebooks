@@ -28,7 +28,7 @@
 
 2. [Container Terminal 시작하기](./mdfiles/ContainerTerminal_started.md) : ContainerTerminal_started.md
 
-3. [CT 활용하기#1](./mdfiles/CT_use#1.md) : CT_use#1.md
+3. [CT 활용하기#1](./mdfiles/CT_use1.md) : CT_use1.md
 
 #### Database
 
