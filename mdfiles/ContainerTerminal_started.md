@@ -59,8 +59,6 @@ sequenceDiagram
 
 K-ECP CT는 User Console를 통해 신청한 후 최종 승인 시 가상서버 형태로 제공 되며, 아래 개념도와 같이 **SSL-VPN 또는 전용선(Direct Connect 서비스 사용시)을 이용하여 접속**하실 수 있습니다.
 
-  ![개념도](./../resource/concept_ct.png "서비스 개념도")
-
 CT 접속 후 CLI 명령어인 `oc`를 통해 Container Project를 위한 다음과 같은 다양한 작업을 수행할 수 있습니다.
 
 * 프로젝트 소스 코드로 직접 작업
