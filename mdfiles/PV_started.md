@@ -8,7 +8,7 @@
 
 PV는 아래의 그림과 같이 PV와 PVC로 구성되어 Pod에 스토리지를 제공합니다.
 
-![concept_pv.PNG](./../resource/concept_pv.PNG)
+<img src="./../resource/concept_pv.PNG" title="" alt="concept_pv.PNG" width="505">
 
 ### 관련안내서
 
@@ -22,15 +22,11 @@ PV는 아래의 그림과 같이 PV와 PVC로 구성되어 Pod에 스토리지�
 
 [전제 조건](#precondition)
 
-[1단계: K-ECP GitLab프로젝트 및 리파지토리 생성](#step1)
+[1단계: K-ECP PV신청하기](#step1)
 
 [2단계: K-ECP GitLab에서 소스 업로드](#step2)
 
 [3단계: Container 신청](#step3)
-
-[4단계: Container 확인](#step4)
-
-[5단계: Container 재배포](#step5)
 
 [다음단계](#nextstep)
 
@@ -65,7 +61,7 @@ sequenceDiagram
 
 PV와 PVC는 다음과 같은 생명주기가 있습니다.
 
-![PV_pv.PNG](./../resource/PV_pv.PNG)
+<img src="./../resource/PV_pv.PNG" title="" alt="PV_pv.PNG" width="328">
 
 1. Provisioning(프로비저닝): PV를 만드는 단계를 프로비저닝(Provisioning)이라고 합니다. 
 
