@@ -75,15 +75,15 @@ sequenceDiagram
 
 3. GitLab 화면에서 `Register Now`버튼 클릭
    
-   * First name: 한글 성 입력
+   * First name: *한글 성 입력*
    
-   * Last name: 한글 이름 입력
+   * Last name: *한글 이름 입력*
    
-   * Username: 사번 입력 (config 등록시 필요)
+   * Username: *사번 입력 (config 등록시 필요)*
    
-   * Email: 사용자 이메일 정보 입력 (config 등록시 필요)
+   * Email: *사용자 이메일 정보 입력 (config 등록시 필요)*
    
-   * Password: 사용자 패스워드 입력
+   * Password: *사용자 패스워드 입력*
 
 4. GitLab 가입 이후 해당 정보로 로그인
    
