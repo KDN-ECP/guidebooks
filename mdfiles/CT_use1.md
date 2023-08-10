@@ -1,4 +1,4 @@
-[문서 최종 수정일자 : 2023-08-01]: # 
+[문서 최종 수정일자 : 2023-08-10]: # 
 
 [문서 최종 수정자 : 신승규]: #
 
@@ -64,7 +64,7 @@
 </html>
 ```
 
-* Dockerfile
+* dockerfile
 
 ```dockerfile
 FROM nginx:latest
@@ -161,7 +161,7 @@ docker save -o [DockerImage.tar] [DockerImage_name]:[tag]
 * [DockerImage_name.tar] 파일이 있는 로컬 PC의 디렉토리에서 터미널 명령어 실행(본 가이드에서는 /home/kecpuser 에 파일을 전송)
 
 ```powershell
-scp -P 10040 [DockerImage_name.tar] kecpuser@[CT_IP]:/hoem/kecpuser
+scp -P 10040 [DockerImage_name.tar] kecpuser@[CT_IP]:/home/kecpuser
 ```
 
 > :bulb:**tip**: `/home/kecpuser`의 경우 사용자가 원하는 경로를 작성하여 해당 경로에 압축파일을 전송할 수 있습니다.
@@ -205,7 +205,7 @@ Storing signatures
 Loaded image(s): localhost/[DockerImage_name]:[tag]
 ```
 
-5. CT에 docker image 업로드 확인
+5. CT에 docker image 업로드 확인(docker build 명령어를 통해 생성된 도커이미지[DockerImage_name]가 REPOSITORY에 등록된것을 확인 할 수 있습니다. )
 
 ```bash
 podman images

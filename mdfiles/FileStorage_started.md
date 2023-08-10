@@ -1,4 +1,4 @@
-[문서 최종 수정일자 : 2023-07-28]: # 
+[문서 최종 수정일자 : 2023-08-10]: # 
 
 [문서 최종 수정자 : 신승규]: #  
 
@@ -65,7 +65,7 @@ K-ECP FS는 User Console를 통해 신청한 후 최종 승인 시 제공 되며
 ## 전제 조건
 
 * 사전에 FS를 할당 받을 VM서비스가 신청되어 있어야 합니다.
-  
+
 * 사전에 [SSL VPN시작하기](./SSLVPN_started.md)를 통해서 SSL VPN이 신청되어 있어야 합니다.
 
 > :bulb: **Tip:** KDN 직원의 경우  KDN 내부망에서 [KDN 전용 User Console](http://kdnecp.kdn.com:8585/mbr/ "KDN 내부망에서 접속 시")로도 접속이 가능합니다.
@@ -113,56 +113,70 @@ K-ECP FS는 User Console를 통해 신청한 후 최종 승인 시 제공 되며
 5. FS를 신청한 VM Server로 접속, SSH 클라이언트(Putty, Windows 터미널 등)을 통해 서버 접속
    
    - 본 가이드에서는 윈도우 명령 프롬프트(터미널)을 이용한 SSH 접속
-     
+   
    ```powershell
    ssh -p [ssh Port] kecpuser@[VM_IP_address]
    ```
 
-6. 현재 디스크 상태 확인
-   
-```bash
-df -h
-```
-   
-   * 기본 OS 디스크만 마운트 되어 있는 것을 확인
-     
-   ```
-   Filesystem      Size  Used Avail Use% Mounted on
-   devtmpfs        1.8G     0  1.8G   0% /dev
-   tmpfs           1.9G     0  1.9G   0% /dev/shm
-   tmpfs           1.9G   25M  1.8G   2% /run
-   tmpfs           1.9G     0  1.9G   0% /sys/fs/cgroup
-   /dev/vda3        50G  7.5G   43G  15% /
-   /dev/vda2       100M  5.8M   95M   6% /boot/efi
-   tmpfs           374M     0  374M   0% /run/user/1001
-   ```
+> :warning:**주의사항**: hosts 파일을 수정하고, 파일 시스템을 파티셔닝하고 마운트하는 작업으로 root 권한으로 작업하여야 합니다.
 
-7. 파일 시스템을 파티셔닝하고 마운트하는 작업으로 root 권한으로 작업하여야 합니다.
-   
 ```bash
 sudo -i
 ```
 
+6. hosts 파일 수정을 통한 FS_IP 를 논리 주소로 변경
+
+```bash
+vi /etc/hosts
+```
+
+* [FS_IP]를 filestorage라는 논리주소로 설정
+
+```
+127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
+::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
+[FS_IP]  filestorage
+```
+
+7. 현재 디스크 상태 확인
+
+```bash
+df -h
+```
+
+* 기본 OS 디스크만 마운트 되어 있는 것을 확인
+
+```
+Filesystem      Size  Used Avail Use% Mounted on
+devtmpfs        1.8G     0  1.8G   0% /dev
+tmpfs           1.9G     0  1.9G   0% /dev/shm
+tmpfs           1.9G   25M  1.8G   2% /run
+tmpfs           1.9G     0  1.9G   0% /sys/fs/cgroup
+/dev/vda3        50G  7.5G   43G  15% /
+/dev/vda2       100M  5.8M   95M   6% /boot/efi
+tmpfs           374M     0  374M   0% /run/user/1001
+```
+
 8. FS를 마운트할 디렉토리 생성(본 가이드에서는 디렉토리명을 `/FS_data` 로 진행, 사용자가 원하는 디렉토리명으로 변경하여 사용)
-   
+
 ```bash
 mkdir /FS_data
 ```
 
 9. 3., 4. 에서 확인한 파일경로를 통해 FS 마운트
-   
+
 ```bash
-mount -t nfs [FS_IP]:/[스토리지ID] /FS_data
+mount -t nfs filestorage:/[스토리지ID] /FS_data
 ```
 
 > :bulb:**안내**: FS_IP의 경우 K-ECP 운영팀에 문의해야 합니다.
 
 9. 마운트가 잘 되었는지 확인
-   
+
 ```bash
 df -h
 ```
-   
+
 ```
 Filesystem                 Size  Used Avail Use% Mounted on
 devtmpfs                   1.8G     0  1.8G   0% /dev
@@ -172,7 +186,7 @@ tmpfs                      1.9G     0  1.9G   0% /sys/fs/cgroup
 /dev/vda3                   50G  7.5G   43G  15% /
 /dev/vda2                  100M  5.8M   95M   6% /boot/efi
 tmpfs                      374M     0  374M   0% /run/user/1001
-[FS_IP]:/[스토리지ID]        10G     0   10G   0% /FS_data
+filestorage:/[스토리지ID]        10G     0   10G   0% /FS_data
 ```
 
 ---
@@ -183,55 +197,41 @@ tmpfs                      374M     0  374M   0% /run/user/1001
 
 > :bulb:**안내**: 자동 마운트를 설정하지 않으면, 부팅할 때마다 디스크를 마운트 해야하기 때문에 자동마운트 설정을 실행합니다.
 
-> :warning:**주의사항**: hosts, fstab 파일 수정하는 작업은 root 권한으로 실행해야 합니다.
+> :warning:**주의사항**: fstab 파일 수정하는 작업은 root 권한으로 실행해야 합니다.
 
 ```bash
 sudo -i
 ```
 
-1. hosts 파일 수정을 통한 FS_IP 를 논리 주소로 변경
-   
-```bash
-vi /etc/hosts
-```
-   
-   * [FS_IP]를 filestorage라는 논리주소로 설정
-     
-   ```
-   127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
-   ::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
-   [FS_IP]  filestorage
-   ```
 2. vi 편집기로 fstab 파일 수정
-   
+
 ```bash
 vi /etc/fstab
 ```
-   
-   * 자동 마운트 내용 추가(UUID = ...) (1.에서 확인한 UUID 입력)
-     
-     > :bulb:**안내**: vi 편집기 실행 후 **"i"** 키를 눌러 편집을 실행할 수 있습니다. 이후 **"ESC"** , **":wq"** 입력을 통해 편집 내용을 저장할 수 있습니다.
-     
-   ```
-   UUID=d47ead13-ec24-428e-9175-46aefa764b26       /       xfs     defaults        0       0
-   UUID=7B77-95E7  /boot/efi       vfat          defaults,uid=0,gid=0,umask=077,shortname=winnt  0       2
-   filestorage:/[스토리지ID] /FS_data                  nfs           nosuid,rw,sync,hard,intr        0 0
-   ```
 
+* 자동 마운트 내용 추가(UUID = ...) (1.에서 확인한 UUID 입력)
+  
+  > :bulb:**안내**: vi 편집기 실행 후 **"i"** 키를 눌러 편집을 실행할 수 있습니다. 이후 **"ESC"** , **":wq"** 입력을 통해 편집 내용을 저장할 수 있습니다.
+  
+  ```
+  UUID=d47ead13-ec24-428e-9175-46aefa764b26       /       xfs     defaults        0       0
+  UUID=7B77-95E7  /boot/efi       vfat          defaults,uid=0,gid=0,umask=077,shortname=winnt  0       2
+  filestorage:/[스토리지ID] /FS_data                  nfs           nosuid,rw,sync,hard,intr        0 0
+  ```
 3. 자동 마운트 설정내역 테스트
    
    * /data umount
-     
+   
    ```bash
    umount /FS_data
    ```
    
    * umount 확인
-     
+   
    ```bash
    df -h
    ```
-     
+   
    ```
    devtmpfs        1.8G     0  1.8G   0% /dev
    tmpfs           1.9G   84K  1.9G   1% /dev/shm
@@ -243,17 +243,17 @@ vi /etc/fstab
    ```
    
    * 전체 마운트 명령
-     
+   
    ```bash
    mount -a
    ```
    
    * 자동 마운트 확인
-     
+   
    ```bash
    df -h
    ```
-     
+   
    ```
    Filesystem               Size  Used Avail Use% Mounted on
    devtmpfs                 1.8G     0  1.8G   0% /dev
