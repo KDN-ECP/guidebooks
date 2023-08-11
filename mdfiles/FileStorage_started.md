@@ -270,7 +270,7 @@ filestorage:/[스토리지ID]  10G     0   10G   0% /FS_data
 
 ---
 
-<span id ="next step"/>
+<span id ="nextstep"/>
 
 </span>
 
