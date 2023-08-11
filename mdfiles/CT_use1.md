@@ -161,7 +161,7 @@ docker save -o [tarFile].tar [dockerImage_name]:[tag]
 * [tarFile].tar 파일이 있는 로컬 PC의 디렉토리에서 터미널 명령어 실행(본 가이드에서는 /home/kecpuser 에 파일을 전송)
 
 ```powershell
-scp -P 10040 [tarFile].tar kecpuser@[CT_IP]:/home/kecpuser
+scp -P [ssh_port] [tarFile].tar kecpuser@[CT_IP]:/home/kecpuser
 ```
 
 > :bulb:**tip**: `/home/kecpuser`의 경우 사용자가 원하는 경로를 작성하여 해당 경로에 압축파일을 전송할 수 있습니다.
