@@ -11,7 +11,7 @@ FS는 파일과 폴더의 계층구조로 저장됩니다. FS에서는 데이터
 ### 관련 안내서
 
 * [Project 만들기](./Project.md)
-* [VM Server 시작하기](./SSLVPN_started.md)
+* [VM Server 시작하기](./VirtualMachine_started.md)
 
 ### 목차
 
