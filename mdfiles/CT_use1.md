@@ -218,7 +218,7 @@ localhost/[DockerImage_name]  [tag]      af59c6679339  4 hours ago  191 MB
 
 6. CT에서 podman을 통해 K-ECP의 OSP 이미지 레지스트리 로그인
 
-> :bell:**안내**: [CT_USER_ID]의 경우 CT서비스에서 생성한 USER ID 입니다.
+> :bell:**안내**: [CT_USER_ID]의 경우 CT서비스에서 생성한 USER ID 입니다. 해당 User ID와 User ID의 토큰 값을 통해 OSP 이미지 레지스트리로 접근합니다.
 
 ```bash
 podman login -u [CT_USER_ID] -p $(oc whoami -t) default-route-openshift-image-registry.apps.ocp4.kdnecp.com --tls-verify=false
