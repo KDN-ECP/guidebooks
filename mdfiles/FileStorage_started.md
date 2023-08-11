@@ -1,4 +1,4 @@
-[문서 최종 수정일자 : 2023-08-10]: # 
+[문서 최종 수정일자 : 2023-08-11]: # 
 
 [문서 최종 수정자 : 신승규]: #  
 
@@ -90,7 +90,7 @@ K-ECP FS는 User Console를 통해 신청한 후 최종 승인 시 제공 되며
    
    * 디스크 크기: *(최소 10GB, 최대 500GB)원하는 디스크 크기 설정*
    
-   * 스토리지ID: *서버에서 마운트 시킬 스토리지경로명 작성*
+   * 스토리지ID: **[중요]** *서버에서 마운트 시킬 스토리지ID 작성 (향후 /[Project명]/[스토리지ID]로 파일경로로 사용)*
 
 3. `신청` 버튼을 클릭 하여 FS 서비스 신청 (단, KDN 직원일 경우 소속 부서장으로 결재자 지정 후 서비스 신청)
 
@@ -107,8 +107,6 @@ K-ECP FS는 User Console를 통해 신청한 후 최종 승인 시 제공 되며
 2. 해당 FS 서비스를 신청한 프로젝트 상세의 돋보기 아이콘:mag: 클릭
 
 3. 파일스토리지 목록에서 신청한 스토리지ID와 스토리지명을 확인
-
-> :warning: **주의사항**: 1단계에서 작성한 스토리지ID와 다릅니다. (/[Project명]/[1단계에서 작성한 스토리지ID] 의 형태로 표현됩니다.)
 
 4. 해당 FS의 파일경로 확인
 
@@ -132,13 +130,13 @@ sudo -i
 vi /etc/hosts
 ```
 
-* [FS_IP]를 filestorage라는 논리주소로 설정
+* [FS_IP]를 filestorage라는 논리주소 추가
 
 ```
-127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
-::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
 [FS_IP]  filestorage
 ```
+
+> :bulb:**안내**: FS_IP의 경우 K-ECP 운영팀에 문의해야 합니다.
 
 7. 현재 디스크 상태 확인
 
@@ -168,12 +166,10 @@ mkdir /FS_data
 9. 3., 4. 에서 확인한 파일경로를 통해 FS 마운트
 
 ```bash
-mount -t nfs filestorage:/[스토리지ID] /FS_data
+mount -t nfs filestorage:/[파일경로] /FS_data
 ```
 
-> :bulb:**안내**: FS_IP의 경우 K-ECP 운영팀에 문의해야 합니다.
-
-9. 마운트가 잘 되었는지 확인
+10. 마운트가 잘 되었는지 확인
 
 ```bash
 df -h
@@ -211,24 +207,24 @@ sudo -i
 vi /etc/fstab
 ```
 
-* 자동 마운트 내용 추가(UUID = ...) (1.에서 확인한 UUID 입력)
+* "filestorage:/[파일경로] /FS_data                  nfs           nosuid,rw,sync,hard,intr        0 0" 내용 추가
 
 > :bulb:**안내**: vi 편집기 실행 후 **"i"** 키를 눌러 편집을 실행할 수 있습니다. 이후 **"ESC"** , **":wq"** 입력을 통해 편집 내용을 저장할 수 있습니다.
 
 ```
 UUID=d47ead13-ec24-428e-9175-46aefa764b26       /       xfs     defaults        0       0
 UUID=7B77-95E7  /boot/efi       vfat          defaults,uid=0,gid=0,umask=077,shortname=winnt  0       2
-filestorage:/[스토리지ID] /FS_data                  nfs           nosuid,rw,sync,hard,intr        0 0
+filestorage:/[파일경로] /FS_data                  nfs           nosuid,rw,sync,hard,intr        0 0
 ```
 
-3. 자동 마운트 설정내역 테스트
-* /data umount
+3. 마운트 설정내역 테스트
+* 마운트 해제
 
 ```bash
 umount /FS_data
 ```
 
-* umount 확인
+* 마운트 해제 확인
 
 ```bash
 df -h
@@ -250,7 +246,7 @@ tmpfs           374M  8.0K  374M   1% /run/user/1001
 mount -a
 ```
 
-* 자동 마운트 확인
+* 마운트 확인
 
 ```bash
 df -h
@@ -276,4 +272,4 @@ filestorage:/[스토리지ID]  10G     0   10G   0% /FS_data
 
 ## 다음 단계
 
-* File Storage 삭제하기를 통해서 VM에 할당된 FS를 삭제할 수 있습니다.
+* File Storage 삭제하기를 통해서 FS를 삭제할 수 있습니다.
