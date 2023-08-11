@@ -1,4 +1,4 @@
-[문서 최종 수정일자 : 2023-08-10]: # 
+[문서 최종 수정일자 : 2023-08-11]: # 
 
 [문서 최종 수정자 : 신승규]: #
 
@@ -40,7 +40,7 @@
 
 ## 1단계: docker 개발환경 구축
 
-> :bell:**안내**: 본 가이드에서는 Nginx를 사용하여 HTML기반 Website기동을 시행합니다.
+> :bell:**안내**: 본 가이드에서는 Nginx를 사용하여 HTML기반 Website기동을 시행합니다. 사용자의 필요에 따라서 기본 이미지 및 파일의 갯수가 달라질 수 있습니다.
 
 1. docker 파일을 구성할 디렉토리 생성(본 가이드에서는 디렉토리명을 d2ocp로 설정)
 
@@ -59,7 +59,7 @@
 
 <body>
   <h1>DI2OCP Application</h1>
-  <h2>Docker Image(DI)로 K-ECP 컨테이너 실행하기</h1>
+  <h2>Docker Image(DI)로 K-ECP 컨테이너 실행하기</h2>
 </body>
 </html>
 ```
@@ -132,20 +132,20 @@ curl http://localhost:7878
 
 <body>
     <h1>DI2OCP Application</h1>
-    <h2>Docker Image(DI)�� K-ECP �����̳� �����ϱ�</h1>
+    <h2>Docker Image(DI)로 K-ECP 컨테이너 실행하기</h2>
 </body>
 </html>
 ```
 
 5. 해당 docker image를 파일로 저장
 
-> :bell:**안내**: `[DockerImage.tar]`는 도커 이미지를 압축할 압축파일명을 작성하면 됩니다.
+> :bell:**안내**: `[tarFile]`는 도커 이미지를 압축할 압축파일명을 작성하면 됩니다.
 
 ```powershell
-docker save -o [DockerImage.tar] [DockerImage_name]:[tag]
+docker save -o [tarFile].tar [dockerImage_name]:[tag]
 ```
 
-* 해당 save 명령어를 실행한 작업공간에 [DockerImage_name.tar]이름의 tar 압축파일이 생성되었는지 확인
+* 해당 save 명령어를 실행한 작업공간에 [tarFile].tar이름의 tar 압축파일이 생성되었는지 확인
 
 ---
 
@@ -157,17 +157,17 @@ docker save -o [DockerImage.tar] [DockerImage_name]:[tag]
 
 1. [Container Terminal 시작하기](./ContainerTerminal_started.md)를 통해서 CT 접속
 
-2. [DockerImage_name.tar] 압축파일 CT로 전송
-* [DockerImage_name.tar] 파일이 있는 로컬 PC의 디렉토리에서 터미널 명령어 실행(본 가이드에서는 /home/kecpuser 에 파일을 전송)
+2. [tarFile].tar 압축파일 CT로 전송
+* [tarFile].tar 파일이 있는 로컬 PC의 디렉토리에서 터미널 명령어 실행(본 가이드에서는 /home/kecpuser 에 파일을 전송)
 
 ```powershell
-scp -P 10040 [DockerImage_name.tar] kecpuser@[CT_IP]:/home/kecpuser
+scp -P 10040 [tarFile].tar kecpuser@[CT_IP]:/home/kecpuser
 ```
 
 > :bulb:**tip**: `/home/kecpuser`의 경우 사용자가 원하는 경로를 작성하여 해당 경로에 압축파일을 전송할 수 있습니다.
 
-3. CT에서 [DockerImage_name.tar] 파일확인
-* [DockerImage_name.tar]가 있는 경로로 이동
+3. CT에서 [tarFile].tar 파일확인
+* [tarFile].tar가 있는 경로로 이동
 
 ```bash
 cd /home/kecpuser
@@ -180,13 +180,13 @@ ls
 ```
 
 ```
-[DockerImage_name.tar]
+[tarFile].tar
 ```
 
 4. CT에 docker image 파일 업로드
 
 ```bash
-podman load -i [DockerImage_name.tar]
+podman load -i [tarFile].tar
 ```
 
 ```
@@ -216,7 +216,7 @@ REPOSITORY                    TAG         IMAGE ID      CREATED      SIZE
 localhost/[DockerImage_name]  [tag]      af59c6679339  4 hours ago  191 MB
 ```
 
-6. CT에서 podman을 통해 K-ECP의 OSP 레지스트리 로그인
+6. CT에서 podman을 통해 K-ECP의 OSP 이미지 레지스트리 로그인
 
 > :bell:**안내**: [CT_USER_ID]의 경우 CT서비스에서 생성한 USER ID 입니다.
 
@@ -226,8 +226,10 @@ podman login -u [CT_USER_ID] -p $(oc whoami -t) default-route-openshift-image-re
 
 7. 현재 podman image에 등록된 docker image의 tag 수정
 
+> :bulb:**TIP**: tag수정 명령어 실행시 [REPOSITORY]는 5. 에서 수행한 podman images의 결과 화면에서 REPOSITORY에 해당하는 값입니다. (위의 예제의 경우 localhost/[DockerImage_name])
+
 ```bash
-podman tag [DockerImage_name]:[tag] default-route-openshift-image-registry.apps.ocp4.kdnecp.com/[project명]/[DockerImage_name]:[tag]
+podman tag [REPOSITORY]:[tag] default-route-openshift-image-registry.apps.ocp4.kdnecp.com/[project명]/[DockerImage_name]:[tag]
 ```
 
 * podman image에 tag가 수정되었는지 확인
@@ -287,7 +289,7 @@ NAME                        IMAGE REPOSITORY                                    
 1. 이미지 기반으로 Conatiner 실행
 
 ```bash
-oc new-app [DockerImage_name] --name=[App명 (Container 명)]
+oc new-app [DockerImage_name] --name=[App명]
 ```
 
 ```
@@ -295,11 +297,11 @@ oc new-app [DockerImage_name] --name=[App명 (Container 명)]
 
 
 --> Creating resources ...
-    deployment.apps "[App명 (Container 명)]" created
-    service "[App명 (Container 명)]" created
+    deployment.apps "[App명]" created
+    service "[App명]" created
 --> Success
     Application is not exposed. You can expose services to the outside world by executing one or more of the commands below:
-     'oc expose service/[App명 (Container 명)]'
+     'oc expose service/[App명]'
     Run 'oc status' to view your app.
 ```
 
@@ -311,7 +313,7 @@ oc get pod
 
 ```
 NAME                                     READY   STATUS    RESTARTS   AGE
-[App명 (Container 명)]-6476b476d6-s6sqx   1/1     Running   0          2m38s
+[App명]-6476b476d6-s6sqx                 1/1     Running   0          2m38s
 ```
 
 ```bash
@@ -320,17 +322,17 @@ oc get service
 
 ```
 NAME                    TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)   AGE
-[App명 (Container 명)]   ClusterIP   172.30.235.243   <none>        80/TCP    3m15s
+[App명]                 ClusterIP   172.30.235.243   <none>        80/TCP    3m15s
 ```
 
 3. 생성된 service 외부 노출
 
 ```bash
-oc expose service/[App명 (Container 명)]
+oc expose service/[App명]
 ```
 
 ```
-route.route.openshift.io/[App명 (Container 명)] exposed
+route.route.openshift.io/[App명] exposed
 ```
 
 4. service 외부 노출 확인
@@ -341,7 +343,7 @@ oc get route
 
 ```
 NAME                     HOST/PORT                                  PATH   SERVICES                  PORT     TERMINATION   WILDCARD
-[App명 (Container 명)]   di2ocp-ssg-test-del.apps.ocp4.kdnecp.com          [App명 (Container 명)]     80-tcp                 None
+[App명]   di2ocp-ssg-test-del.apps.ocp4.kdnecp.com                         [App명]                    80-tcp                 None
 ```
 
 5. HOST/PORT에 표시된 URL을 통해 브라우저에서 HTML기반 Website 기동 확인

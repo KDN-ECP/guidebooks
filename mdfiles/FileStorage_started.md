@@ -100,13 +100,15 @@ K-ECP FS는 User Console를 통해 신청한 후 최종 승인 시 제공 되며
 
 ## 2단계: File Storage 마운트
 
-> :warning: **주의사항:** VM 서비스가 사전에 신청되어 있어야 합니다.
+> :warning: **주의사항**: VM 서비스가 사전에 신청되어 있어야 합니다.
 
 1. FS 서비스 신청 승인이 완료 된 경우 K-ECP User Console에서 `서비스 현황 > 스토리지`로 이동
 
 2. 해당 FS 서비스를 신청한 프로젝트 상세의 돋보기 아이콘:mag: 클릭
 
 3. 파일스토리지 목록에서 신청한 스토리지ID와 스토리지명을 확인
+
+> :warning: **주의사항**: 1단계에서 작성한 스토리지ID와 다릅니다. (/[Project명]/[1단계에서 작성한 스토리지ID] 의 형태로 표현됩니다.)
 
 4. 해당 FS의 파일경로 확인
 
@@ -186,7 +188,7 @@ tmpfs                      1.9G     0  1.9G   0% /sys/fs/cgroup
 /dev/vda3                   50G  7.5G   43G  15% /
 /dev/vda2                  100M  5.8M   95M   6% /boot/efi
 tmpfs                      374M     0  374M   0% /run/user/1001
-filestorage:/[스토리지ID]        10G     0   10G   0% /FS_data
+filestorage:/[스토리지ID]    10G     0   10G   0% /FS_data
 ```
 
 ---
@@ -210,61 +212,61 @@ vi /etc/fstab
 ```
 
 * 자동 마운트 내용 추가(UUID = ...) (1.에서 확인한 UUID 입력)
-  
-  > :bulb:**안내**: vi 편집기 실행 후 **"i"** 키를 눌러 편집을 실행할 수 있습니다. 이후 **"ESC"** , **":wq"** 입력을 통해 편집 내용을 저장할 수 있습니다.
-  
-  ```
-  UUID=d47ead13-ec24-428e-9175-46aefa764b26       /       xfs     defaults        0       0
-  UUID=7B77-95E7  /boot/efi       vfat          defaults,uid=0,gid=0,umask=077,shortname=winnt  0       2
-  filestorage:/[스토리지ID] /FS_data                  nfs           nosuid,rw,sync,hard,intr        0 0
-  ```
+
+> :bulb:**안내**: vi 편집기 실행 후 **"i"** 키를 눌러 편집을 실행할 수 있습니다. 이후 **"ESC"** , **":wq"** 입력을 통해 편집 내용을 저장할 수 있습니다.
+
+```
+UUID=d47ead13-ec24-428e-9175-46aefa764b26       /       xfs     defaults        0       0
+UUID=7B77-95E7  /boot/efi       vfat          defaults,uid=0,gid=0,umask=077,shortname=winnt  0       2
+filestorage:/[스토리지ID] /FS_data                  nfs           nosuid,rw,sync,hard,intr        0 0
+```
+
 3. 자동 마운트 설정내역 테스트
-   
-   * /data umount
-   
-   ```bash
-   umount /FS_data
-   ```
-   
-   * umount 확인
-   
-   ```bash
-   df -h
-   ```
-   
-   ```
-   devtmpfs        1.8G     0  1.8G   0% /dev
-   tmpfs           1.9G   84K  1.9G   1% /dev/shm
-   mpfs           1.9G   25M  1.8G   2% /run
-   tmpfs           1.9G     0  1.9G   0% /sys/fs/cgroup
-   /dev/vda3        50G  7.5G   43G  15% /
-   /dev/vda2       100M  5.8M   95M   6% /boot/efi
-   tmpfs           374M  8.0K  374M   1% /run/user/1001
-   ```
-   
-   * 전체 마운트 명령
-   
-   ```bash
-   mount -a
-   ```
-   
-   * 자동 마운트 확인
-   
-   ```bash
-   df -h
-   ```
-   
-   ```
-   Filesystem               Size  Used Avail Use% Mounted on
-   devtmpfs                 1.8G     0  1.8G   0% /dev
-   tmpfs                    1.9G   84K  1.9G   1% /dev/shm
-   tmpfs                    1.9G   25M  1.8G   2% /run
-   tmpfs                    1.9G     0  1.9G   0% /sys/fs/cgroup
-   /dev/vda3                 50G  7.5G   43G  15% /
-   /dev/vda2                100M  5.8M   95M   6% /boot/efi
-   tmpfs                    374M  8.0K  374M   1% /run/user/1001
-   filestorage:/[스토리지ID]  10G     0   10G   0% /FS_data
-   ```
+* /data umount
+
+```bash
+umount /FS_data
+```
+
+* umount 확인
+
+```bash
+df -h
+```
+
+```
+devtmpfs        1.8G     0  1.8G   0% /dev
+tmpfs           1.9G   84K  1.9G   1% /dev/shm
+mpfs           1.9G   25M  1.8G   2% /run
+tmpfs           1.9G     0  1.9G   0% /sys/fs/cgroup
+/dev/vda3        50G  7.5G   43G  15% /
+/dev/vda2       100M  5.8M   95M   6% /boot/efi
+tmpfs           374M  8.0K  374M   1% /run/user/1001
+```
+
+* 전체 마운트 명령(2. 에서 fstab에 등록된 정보들을 모두 마운트시킵니다.)
+
+```bash
+mount -a
+```
+
+* 자동 마운트 확인
+
+```bash
+df -h
+```
+
+```
+Filesystem               Size  Used Avail Use% Mounted on
+devtmpfs                 1.8G     0  1.8G   0% /dev
+tmpfs                    1.9G   84K  1.9G   1% /dev/shm
+tmpfs                    1.9G   25M  1.8G   2% /run
+tmpfs                    1.9G     0  1.9G   0% /sys/fs/cgroup
+/dev/vda3                 50G  7.5G   43G  15% /
+/dev/vda2                100M  5.8M   95M   6% /boot/efi
+tmpfs                    374M  8.0K  374M   1% /run/user/1001
+filestorage:/[스토리지ID]  10G     0   10G   0% /FS_data
+```
 
 ---
 
