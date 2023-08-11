@@ -27,7 +27,7 @@
 
 ---
 
-<span id="precondition"/>
+<span id= "precondition"/>
 
 ## 전제 조건
 
