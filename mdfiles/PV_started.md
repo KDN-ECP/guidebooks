@@ -232,4 +232,4 @@ tmpfs                               504G     0  504G   0% /sys/firmware
 
 # 다음단계
 
-* [Container Terminal 시작하기](./ContainerTerminal_started.md)를 통하여 `Container`를 관리할 수 있습니다.
+* [CT_use2](./mdfile/CT_use2.md)를 통하여 DB컨테이너를 생성할 수 있습니다.

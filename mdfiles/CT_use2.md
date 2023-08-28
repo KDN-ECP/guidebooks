@@ -6,7 +6,7 @@
 
 ###### #1 PV를 통해 mariadb컨테이너를 K-ECP의 Container Platform에 등록시키기
 
-본 가이드에서는 사용자의 로컬 PC에서 dockerfile을 생성하고 해당 파일을 build하여 docker image를 생성시키고 K-ECP의 Container Platform에 등록시키는 과정을 안내합니다.
+본 가이드에서는 K-ECP의 mariadb 이미지를 통해서 db 컨테이너를 K-ECP의 Contaner Platform에 등록시키는 과정을 안내합니다.
 
 ### 관련 안내서
 
