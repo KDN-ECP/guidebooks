@@ -113,7 +113,8 @@ CT 접속 후 CLI 명령어인 `oc`를 통해 Container Project를 위한 다음
 
 2. 선택된 프로젝트내에 VM Server형태로 생성된 CT의 **IP 주소 확인**
 
-3. SSL VPN 연결 후 SSH 접속 툴 또는 커맨드을 통해 BS를 신청한 VM서버로 접속(SSH client를 통해 접속해야 합니다.)
+3. SSL VPN 연결 후 SSH 접속 툴 또는 커맨드을 통해 CT를 신청한 VM서버로 접속(SSH client를 통해 접속해야 합니다.)
+
 * Windows에서 SSH로 접속하는 Command
 
 ```bash
