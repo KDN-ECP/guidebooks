@@ -139,10 +139,13 @@ edupv1-claim    Bound    edupv1    10Gi       RWX                           17d
 ## 3단계: PVC를 해당 Pod에 마운트하기
 
 1. 할당 받은 PVC를 Pod에 마운트(deployment파일 수정)
-* deployment파일 확인
+
+> :warning:**주의사항**: [CT 활용하기#1](./mdfiles/CT_use1.md)를 통하여 생성한 Pod의 경우 deployment파일을 수정해야하고, [Container 시작하기](./mdfiles/Container_started.md)를 통하여 S2I방식으로 생성한 Pod의 경우 deploymentconfig파일을 수정해야 합니다.
+
+* deployment(deploymentconfig)파일 확인
 
 ```bash
-oc get deployment
+oc get deployment(deploymentconfig)
 ```
 
 ```
@@ -150,7 +153,7 @@ NAME      READY   UP-TO-DATE   AVAILABLE   AGE
 test      1/1     1            1           6d7h
 ```
 
-* deployment파일 수정(본 가이드에서는 test pod에 PVC 할당)
+* deployment(deploymentconfig)파일 수정(본 가이드에서는 test pod에 PVC 할당)
 
 ```bash
 oc edit deployment/test
@@ -160,7 +163,7 @@ oc edit deployment/test
 
 ```
 apiVersion: apps/v1
-kind: Deployment
+kind: Deployment(Deploymentconfig)
 metadata:
 annotations:
   deployment.kubernetes.io/revision: "2"
