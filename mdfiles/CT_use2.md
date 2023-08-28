@@ -99,6 +99,23 @@ spec:
 
 > :bulb:**안내**: image: 'registry.redhat.io/rhel8/mariadb-105:latest' 의 경우 사용자의 OS버전과 mariadb버전을 확인 후 작성해야 합니다.
 
+> :bulb:**안내**: mariadb의 이미지 정보는 다음과 같습니다.
+> rhscl: Red Hat Software Collections (RHSCL)(RHEL6, 7 버전)
+> rhel8: 레드헷 8버전의 기본 컨테이너 이미지
+> mariadb-103: mariadb 10.3 버전
+> mariadb-105: mariadb 10.5 버전
+
+* K-ECP의 OpenShift 컨테이너 플랫폼에서 사용 가능한 mariadb 이미지는 다음과 같습니다. (본 가이드의 경우 registry.redhat.io/rhel8/mariadb-105 를 사용합니다.)
+
+> registry.redhat.io/rhscl/mariadb-103-rhel7
+> registry.redhat.io/rhel8/mariadb-105
+> registry.redhat.io/rhscl/mariadb-103-rhel7
+> registry.redhat.io/rhel8/mariadb-103
+> registry.redhat.io/rhscl/mariadb-105-rhel7
+> registry.redhat.io/rhel8/mariadb-103
+> registry.redhat.io/rhel8/mariadb-105
+> registry.redhat.io/rhscl/mariadb-105-rhel7
+
 2. mariadb Pod 생성(yaml파일을 저장한 경로에서 실행)
 
 ```bash
