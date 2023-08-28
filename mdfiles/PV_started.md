@@ -156,7 +156,7 @@ test      1/1     1            1           6d7h
 * deployment(deploymentconfig)파일 수정(본 가이드에서는 test pod에 PVC 할당)
 
 ```bash
-oc edit deployment/test
+oc edit deployment(deploymentconfig)/test
 ```
 
 * volumes: 내용 추가(spec의 하위), volumeMounts: 내용 추가(containers의 하위)
