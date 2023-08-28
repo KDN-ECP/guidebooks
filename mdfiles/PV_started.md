@@ -1,4 +1,4 @@
-[문서 최종 수정일자 : 2023-08-02]: # 
+[문서 최종 수정일자 : 2023-08-28]: # 
 
 [문서 최종 수정자 : 신승규]: #
 
@@ -125,7 +125,7 @@ PV와 PVC는 다음과 같은 생명주기가 있습니다.
 oc get pvc
 ```
 
-* STATUS 가 BOUND 상태임을 확인
+* STATUS 가 BOUND 상태임을 확인(본 가이드에서는 PV명을 edupv1으로 설정, PVC명은 edupv1-claim으로 자동 설정됩니다.)
 
 ```
 NAME            STATUS   VOLUME    CAPACITY   ACCESS MODES   STORAGECLASS   AGE
@@ -138,13 +138,94 @@ edupv1-claim    Bound    edupv1    10Gi       RWX                           17d
 
 ## 3단계: PVC를 해당 Pod에 마운트하기
 
-1. 
+1. 할당 받은 PVC를 Pod에 마운트(deployment파일 수정)
+* deployment파일 확인
+
+```bash
+oc get deployment
+```
+
+```
+NAME      READY   UP-TO-DATE   AVAILABLE   AGE
+test      1/1     1            1           6d7h
+```
+
+* deployment파일 수정(본 가이드에서는 test pod에 PVC 할당)
+
+```bash
+oc edit deployment/test
+```
+
+* volumes: 내용 추가(spec의 하위), volumeMounts: 내용 추가(containers의 하위)
+
+```
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+annotations:
+  deployment.kubernetes.io/revision: "2"
+...(중략)
+  spec:
+    volumes:
+    - name: edupv1-claim
+      persistentVolumeClaim:
+        claimName: edupv1-claim
+    containers:
+      volumeMounts:
+      - name: edupv1-claim
+        mountPath: /data
+    - image: image-registry.openshift-image-registry.svc:5000/edu-ssg-test/new_proposal@sha256:46712c7cd5e619403c17b6
+803ecd81ab54c9bd1dc4644329a728d22c2d727d05
+      imagePullPolicy: IfNotPresent
+  ...(중략)
+```
+
+2. Pod에 마운트상태 확인
+* 해당 Pod 접속(test)
+
+```bash
+oc get pod
+```
+
+```
+NAME                       READY   STATUS      RESTARTS   AGE
+test-6f894bc98-g5fx5       1/1     Running     0          3m45s
+```
+
+* 위에서 확인한 NAME으로 접속
+
+```bash
+oc rsh test-6f894bc98-g5fx5
+```
+
+```
+sh-4.2#
+```
+
+* Pod에서 마운트 확인
+
+```bash
+df -h
+```
+
+```
+Filesystem                          Size  Used Avail Use% Mounted on
+overlay                             446G   47G  400G  11% /
+tmpfs                                64M     0   64M   0% /dev
+tmpfs                               504G     0  504G   0% /sys/fs/cgroup
+shm                                  64M     0   64M   0% /dev/shm
+tmpfs                               504G   69M  504G   1% /run/secrets
+[PV_IP]:/EDU-SSG-TEST/edupv1         10G  334M  9.7G   4% /data
+/dev/sda4                           446G   47G  400G  11% /etc/hosts
+tmpfs                               2.0G   20K  2.0G   1% /run/secrets/kubernetes.io/serviceaccount
+tmpfs                               504G     0  504G   0% /proc/acpi
+tmpfs                               504G     0  504G   0% /proc/scsi
+tmpfs                               504G     0  504G   0% /sys/firmware
+```
 
 ---
 
 <span id="nextstep"/>
-
-</span>
 
 # 다음단계
 
