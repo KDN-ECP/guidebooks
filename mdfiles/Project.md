@@ -13,7 +13,7 @@ Project는 K-ECP에서 업무 시스템을 의미하며, 프로젝트 신청 이
 
 ### 관련 안내서
 
-- [VM Server 시작하기](./VirutalMachine_started.md)
+- [VM Server 시작하기](./VirtualMachine_started.md)
 - [Container 시작하기](./Container_started.md)
 - [SSL VPN 시작하기](./SSLVPN_started.md)
 

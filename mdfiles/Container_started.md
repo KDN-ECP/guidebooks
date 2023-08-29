@@ -4,7 +4,7 @@
 
 # Container 시작하기
 
-이 안내서를 사용하여 **Container** 서비스를 시작 하십시오. Container(PaaS)서비스를 사용하는 방법을 안내합니다.
+이 안내서를 사용하여 **Container** 서비스를 시작 하십시오. Container서비스를 사용하는 방법을 안내합니다.
 
 Container는 소프트웨어 서비스를 실행하는 데 필요한 특정 버전의 프로그래밍 언어 런타임 및 라이브러리와 같은 종속 항목과 애플리케이션 코드를 함께 포함하는 경량 패키지입니다.
 
@@ -53,7 +53,7 @@ sequenceDiagram
 
 ---
 
-<span id= "prediction"/>
+<span id= "precondition"/>
 
 ### 전제 조건
 
