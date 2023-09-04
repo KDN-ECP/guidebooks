@@ -30,6 +30,8 @@
 
 3. [CT 활용하기#1](./mdfiles/CT_use1.md) : CT_use1.md
 
+[CT 활용하기#1](./mdfiles/CT_use1.md) : CT_use1.md
+
 #### Database
 
 #### Network
