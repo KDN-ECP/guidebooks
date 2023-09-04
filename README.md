@@ -30,7 +30,7 @@
 
 3. [CT 활용하기#1](./mdfiles/CT_use1.md) : CT_use1.md
 
-[CT 활용하기#1](./mdfiles/CT_use1.md) : CT_use1.md
+4. [CT 활용하기#2](./mdfiles/CT_use2.md) : CT_use2.md
 
 #### Database
 
