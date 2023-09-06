@@ -28,9 +28,9 @@
 
 2. [Container Terminal 시작하기](./mdfiles/ContainerTerminal_started.md) : ContainerTerminal_started.md
 
-3. [CT 활용하기#1](./mdfiles/CT_use1.md) : CT_use1.md
+3. [CT 활용하기#1 docker 이미지를 K-ECP 컨테이너 플랫폼에 등록](./mdfiles/CT_use1.md) : CT_use1.md
 
-4. [CT 활용하기#2](./mdfiles/CT_use2.md) : CT_use2.md
+4. [CT 활용하기#2 PV를 이용하여 mariadb 컨테이너 등록시키기](./mdfiles/CT_use2.md) : CT_use2.md
 
 #### Database
 
