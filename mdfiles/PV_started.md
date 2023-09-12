@@ -175,8 +175,8 @@ annotations:
         claimName: edupv1-claim
     containers:
       volumeMounts:
-      - name: edupv1-claim
-        mountPath: /data
+      - mountPath: /data 
+        name: edupv1-claim
     - image: image-registry.openshift-image-registry.svc:5000/edu-ssg-test/new_proposal@sha256:46712c7cd5e619403c17b6
 803ecd81ab54c9bd1dc4644329a728d22c2d727d05
       imagePullPolicy: IfNotPresent
