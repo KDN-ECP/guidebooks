@@ -17,17 +17,17 @@ SSL VPN(Secure Sockets Layer VPN)은 컴퓨터 네트워크에 통신 보안을 
 
 ### 목차
 
-[개요](#abstract)
+[개요](#개요)
 
-[전제 조건](#precondition)
+[전제 조건](#전제-조건)
 
-[1단계: SSL VPN 서비스 신청](#step1)
+[1단계: SSL VPN 서비스 신청](#1단계-ssl-vpn-서비스-신청)
 
-[2단계: SSL VPN 접속](#step2)
+[2단계: SSL VPN 접속](#2단계-ssl-vpn-접속)
 
-[3단계: SSL VPN 사용](#step3)
+[3단계: SSL VPN 사용](#3단계-ssl-vpn-사용)
 
-[다음 단계](#nextstep)
+[다음 단계](#다음-단계)
 
 ---
 

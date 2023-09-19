@@ -15,15 +15,15 @@
 
 ### 목차
 
-[전제 조건](#preconditon)
+[전제 조건](#전제-조건)
 
-[1단계: docker 개발환경 구축](#step1)
+[1단계: docker 개발환경 구축](#1단계-docker-개발환경-구축)
 
-[2단계: docker image K-ECP에 배포](#step2)
+[2단계: docker image K-ECP에 배포](#2단계-docker-image-k-ecp에-배포)
 
-[3단계: K-ECP Container실행](#step3)
+[3단계: K-ECP Container실행](#3단계-k-ecp-container실행)
 
-[다음단계](#nextstep)
+[다음단계](#다음단계)
 
 ---
 

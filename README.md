@@ -4,7 +4,7 @@
 
 #### 공통
 
-1. K-ECP 시작하기
+1. [K-ECP 시작하기](./mdfiles/K-ECP_started.md) : K-ECP_started.md
 
 2. [Project 만들기](./mdfiles/Project.md) : Project.md
 
@@ -12,7 +12,7 @@
 
 1. [VM Server 시작하기](./mdfiles/VirtualMachine_started.md) : VirtualMachine_started.md
 
-2. VM Server 삭제하기
+2. [VM Server 삭제하기](./mdfiles/VirtualMachine_delete.md) : VirtualMachine_delete.md
 
 #### Storage
 

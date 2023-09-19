@@ -15,17 +15,17 @@ FS는 파일과 폴더의 계층구조로 저장됩니다. FS에서는 데이터
 
 ### 목차
 
-[개요](#abstract)
+[개요](#개요)
 
-[전제 조건](#precondition)
+[전제 조건](#전제-조건)
 
-[1단계: File Storage 서비스 신청](#step1)
+[1단계: File Storage 서비스 신청](#1단계-file-storage-서비스-신청)
 
-[2단계: File Storage 마운트](#step2)
+[2단계: File Storage 마운트](#2단계-file-storage-마운트)
 
-[3단계: File Storage 자동 마운트](#step3)
+[3단계: File Storage 자동 마운트](#3단계-file-storage-자동-마운트)
 
-[다음 단계](#nextstep)
+[다음 단계](#다음-단계)
 
 ---
 

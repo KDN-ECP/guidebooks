@@ -15,9 +15,9 @@ BS는 데이터를 일정한 크기의 블록(Block)으로 나누어 저장하�
 
 ### 목차
 
-[개요](#abstract)
+[개요](#개요)
 
-[전제 조건](#precondition)
+[전제 조건](#전제-조건)
 
 [1단계: Block Storage 서비스 신청](#1단계-block-storage-서비스-신청)
 

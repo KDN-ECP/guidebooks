@@ -16,17 +16,17 @@
 
 ### 목차
 
-[개요](#abstract)
+[개요](#개요)
 
-[전제 조건](#precondition)
+[전제 조건](#전제-조건)
 
-[1단계: 추가자원 정리](#step1)
+[1단계: 추가자원 정리](#1단계-추가자원-정리)
 
-[2단계: VM Server 정리](#step2)
+[2단계: VM Server 정리](#2단계-vm-server-정리)
 
-[3단계: VM Server 삭제](#step3)
+[3단계: VM Server 삭제](#3단계-vm-server-삭제)
 
-[다음 단계](#nextstep)
+[다음 단계](#다음-단계)
 
 ---
 

@@ -15,15 +15,15 @@
 
 ### 목차
 
-[전제 조건](#precondition)
+[전제 조건](#전제-조건)
 
-[1단계: PV, PVC 확인](#step1)
+[1단계: PV, PVC 확인](#1단계-pv,-pvc-확인)
 
-[2단계: mariadb 컨테이너 실행](#step2)
+[2단계: mariadb 컨테이너 실행](#2단계-mariadb-컨테이너-실행)
 
-[3단계: mariadb 컨테이너 접속](#step3)
+[3단계: mariadb 컨테이너 접속](#3단계-mariadb-컨테이너-접속)
 
-[다음단계](#nextstep)
+[다음단계](#다음단계)
 
 ---
 
@@ -65,7 +65,7 @@ edupv1-claim    Bound    edupv1    10Gi       RWX                           15d
 
 <span id = "step2"/>
 
-## 2단계: mariadb 컨테이너 pod 실행
+## 2단계: mariadb 컨테이너 실행
 
 1. CT 서버에서 pod yaml파일 작성
 * mariadb-pod.yaml
@@ -258,7 +258,7 @@ show databases;
 
 <span id = "step3"/>
 
-## 3단계: mariadb 컨테이너 서비스 생성, 외부 툴 접속
+## 3단계: mariadb 컨테이너 접속
 
 1. CT 서버에서 서비스 yaml파일 작성
 * mariadb-svc.yaml

@@ -19,15 +19,15 @@ Project는 K-ECP에서 업무 시스템을 의미하며, 프로젝트 신청 이
 
 ### 목차
 
-[개요](#abstract)
+[개요](#개요)
 
-[전제 조건](#precondition)
+[전제 조건](#전제-조건)
 
-[1단계: Project 신청](#step1)
+[1단계: Project 신청](#1단계-project-신청)
 
-[2단계: Project 사용](#step2)
+[2단계: Project 사용](#2단계-project-사용)
 
-[다음 단계](#nextstep)
+[다음 단계](#다음-단계)
 
 ---
 
@@ -62,7 +62,7 @@ sequenceDiagram
 
 <span id = "step1"/>
 
-## 1단계: Project 서비스 신청
+## 1단계: Project 신청
 
 1. K-ECP User Console에서 `프로젝트 > 프로젝트 현황(신청)`에서:heavy_check_mark:`승인의뢰`버튼을 클릭
 
