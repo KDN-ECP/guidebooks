@@ -19,15 +19,15 @@ BS는 데이터를 일정한 크기의 블록(Block)으로 나누어 저장하�
 
 [전제 조건](#precondition)
 
-[1단계: Block Storage 서비스 신청](#step1)
+[1단계: Block Storage 서비스 신청](#1단계-block-storage-서비스-신청)
 
-[2단계: Block Storage 파티셔닝](#step2)
+[2단계: Block Storage 파티셔닝](#2단계-block-storage-파티셔닝)
 
-[3단계: Block Storage 마운트](#step3)
+[3단계: Block Storage 마운트](#3단계-block-storage-마운트)
 
-[4단계: Block Storage 자동마운트](#step4)
+[4단계: Block Storage 자동마운트](#4단계-block-storage-자동마운트)
 
-[다음단계](#nextstep)
+[다음단계](#다음단계)
 
 ---
 
