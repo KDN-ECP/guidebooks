@@ -16,11 +16,15 @@
 
 #### Storage
 
-1. [Block Storage 시작하기](./mdfiles/BlockStorage_started.md): BlockStorage_started.md
+1. [Block Storage 시작하기](./mdfiles/BlockStorage_started.md) : BlockStorage_started.md
 
-2. [File Storage 시작하기](./mdfiles/FileStorage_started.md): FileStorage_started.md
+2. [Block Storage 삭제하기](./mdfiles/BlockStorage_delete.md) : BlockStorage_delete.md
 
-3. [PV(Persistent Volume, Container용) 시작하기](./mdfiles/PV_started.md): PV_started.md
+3. [File Storage 시작하기](./mdfiles/FileStorage_started.md) : FileStorage_started.md
+
+4. [File Storage 삭제하기](./mdfiles/FileStorage_delete.md) : FileStorage_delete.md
+
+5. [PV(Persistent Volume, Container용) 시작하기](./mdfiles/PV_started.md) : PV_started.md
 
 #### Container
 
