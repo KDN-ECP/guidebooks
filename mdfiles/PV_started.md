@@ -161,6 +161,8 @@ oc edit deployment(deploymentconfig)/test
 
 * volumes: 내용 추가(spec의 하위), volumeMounts: 내용 추가(containers의 하위)
 
+>  :bulb:**안내**: 한번에 모두 수정하지 않고, volumes를 먼저 입력 후 저장한 다음 진행해야합니다.
+
 ```
 apiVersion: apps/v1
 kind: Deployment(Deploymentconfig)
